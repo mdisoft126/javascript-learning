@@ -4,12 +4,10 @@
 // shift + alt + down arrow --> duplicate line
 // shift + ctrl + k --> remove line
 
-var res = '\n';
-for(var i = 0; i < 10; i++) {
-    for(var j = 0; j < 10; j++) {
-        console.log('* ');
-    }
-    console.log('\n');
-}
+var a = 1;
+a = delete a;
+console.log(typeof a);
+var a = a || 10;
 
-// Page 68
+console.log(a);
+// Page 72 --> do the exercise 3!
