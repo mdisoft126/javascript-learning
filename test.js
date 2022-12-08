@@ -23,4 +23,4 @@ console.log(n[0]());
 console.log(n[1]());
 console.log(n[2]());
 
-// Page 93 --> Functions range
+// Page 98 --> Access functions
