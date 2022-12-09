@@ -4,23 +4,18 @@
 // shift + alt + down arrow --> duplicate line
 // shift + ctrl + k --> remove line
 
-function f() {
-    function c(x) {
-        return function() {
-            return x;
-        }
-    }
-    var a = [];
-    var i;
-    for(i = 0; i < 3; i++) {
-        a[i] = c(i);
-    }
-    return a;
+function f(x) {
+  var i = 0;
+  return function () {
+    return x[i++];
+  };
 }
 
-var n = f();
-console.log(n[0]());
-console.log(n[1]());
-console.log(n[2]());
+var next = f([8, 3, 5]);
+console.log(next());
+console.log(next());
+console.log(next());
+console.log(next());
+console.log(next());
 
-// Page 98 --> Access functions
+// Page 100 --> Exercises
