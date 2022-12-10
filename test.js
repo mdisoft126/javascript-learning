@@ -4,18 +4,22 @@
 // shift + alt + down arrow --> duplicate line
 // shift + ctrl + k --> remove line
 
-function f(x) {
-  var i = 0;
-  return function () {
-    return x[i++];
-  };
+//// Example f the solution for exercise 1 from the internet. First finish regexp tutorial
+
+function hexToRGBA(hex, opacity) {
+  return (
+    "rgba(" +
+    (hex = hex.replace("#", ""))
+      .match(new RegExp("(.{" + hex.length / 3 + "})", "g"))
+      .map(function (l) {
+        return parseInt(hex.length % 2 ? l + l : l, 16);
+      })
+      .concat(isFinite(opacity) ? opacity : 1)
+      .join(",") +
+    ")"
+  );
 }
 
-var next = f([8, 3, 5]);
-console.log(next());
-console.log(next());
-console.log(next());
-console.log(next());
-console.log(next());
+////
 
 // Page 100 --> Exercises
