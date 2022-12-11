@@ -4,11 +4,9 @@
 
 var a = "hello blue Hello RED";
 var p = /hello/gi;
-var s = p.source;
+var s = p.toString();
 
 console.log(s);
 
 
-// Status:
-// next this one:
-// https://www.w3schools.com/jsref/jsref_regexp_onemore.asp
+// Status: done
