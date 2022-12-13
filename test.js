@@ -6,12 +6,16 @@
 
 ////
 
-console.log(parseInt(1e1));
-console.log(parseInt('1e1'));
-console.log(parseFloat('1e1'));
-console.log(isFinite(0/10));
-console.log(isFinite(20/0));
-console.log(isNaN(parseInt(NaN)));
+var a = 1;
+function f() {
+  var a = 2;
+  function n() {
+    console.log(a);
+  }
+  n();
+}
+
+f();
 
 
 // Page 101 --> Exercises nr 2
