@@ -5,22 +5,14 @@
 // shift + ctrl + k --> remove line
 
 ////
-var f = console.log
-f("hello");
-////
-// 4.1
-var f = console.log
-eval('f("hello2")');
-// 4.2
-var e;
-var f = console.log;
-eval('e=f')("hello3");
-// 4.3
-(
-  function() {
-    return console.log;
+var dog = {
+  name: console.log('Rex'),
+  say: function() {
+    console.log("Hau hau");
   }
-)()("hello4");
+}
 
+dog.name;
+dog.say()
 
-// Page 101 --> Exercises nr 2
+// Page 106 --> Dostęp do własności obiektu
