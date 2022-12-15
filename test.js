@@ -10,15 +10,8 @@ var animal = {};
 
 animal.species = 'dog';
 animal.name = 'max';
-animal.sayName = function() {return animal.name};
+animal.sayName = function() {return this.name};
 
-
-console.log(animal);
-console.log(animal.species);
-console.log(animal.name);
-console.log(animal.sayName());
-
-console.log(delete animal.name);
 
 console.log(animal);
 console.log(animal.species);
