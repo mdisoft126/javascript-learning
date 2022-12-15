@@ -5,14 +5,24 @@
 // shift + ctrl + k --> remove line
 
 ////
+var key = 'name';
+
 var dog = {
-  name: console.log('Rex'),
+  name: 'Rex',
   say: function() {
-    console.log("Hau hau");
+    return "Hau hau";
+  },
+  author: {
+    name: 'Max',
+    surname: 'Last'
   }
 }
 
-dog.name;
-dog.say()
+console.log(dog.name);
+console.log(dog['name']);
+console.log(dog.say());
+console.log(dog['say']());
+console.log(dog['author'].name);
+console.log(dog[key]);
 
 // Page 106 --> Dostęp do własności obiektu
