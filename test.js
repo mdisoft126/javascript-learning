@@ -6,16 +6,39 @@
 
 ////
 
-var animal = {};
+// function Work() {
+//   this.specialization = 'Analyst';
+// }
 
-animal.species = 'dog';
-animal.name = 'max';
-animal.sayName = function() {return this.name};
+// var work = new Work();
+// console.log(work.specialization);
 
+// function Animal(species, name) {
+//   this.species = species;
+//   this.name = name;
+//   this.whatAnimal = function() {
+//     return "My species is " + species + " and my name is " + name;
+//   }
+// }
 
-console.log(animal);
-console.log(animal.species);
-console.log(animal.name);
-console.log(animal.sayName());
+// var dog = new Animal("dog", "max");
+// var cat = new Animal("cat", "kitty");
 
-// Page 106 --> Dostęp do własności obiektu
+// console.log(dog.whatAnimal());
+// console.log(cat.whatAnimal());
+
+function Work(name, position) {
+  this.name = name;
+  this.position = position;
+  this.whatNameAndPosition = function() {
+    return "My name is " + name + " and my position is " + position;
+  }
+}
+
+var marcin = new Work("Marcin", "analyst");
+var justyn = new Work("Justyn", "journalist");
+
+console.log(marcin.whatNameAndPosition());
+console.log(justyn.whatNameAndPosition());
+
+// Page 110
