@@ -7,27 +7,22 @@
 
 ////
 
-// function factory(name) {
-//   return {name:name};
-// }
+var oryginal = {a: 1};
+var copy = oryginal;
+console.log(copy.a);
+copy.a = 100;
+console.log(copy.a);
+console.log(oryginal.a);
 
-// var f = factory('herbapol');
-// console.log(f.name);
-// console.log(f.constructor);
-// console.log(f instanceof Object);
+var oryginal = {a: 1};
+var reset = function(o) {(o.a = 0)};
+reset(oryginal);
+console.log(oryginal.a);
 
-function C() {this.a = 1};
-var c = new C();
-console.log(c.a);
+var oryginal = {a: 1};
+var multi = function(o) {(o.a = 2*oryginal.a)};
+multi(oryginal);
+console.log(oryginal.a);
 
-function C2() {this.a = 1; return 2};
-var c2 = new C2();
-console.log(c2.a);
-console.log(c2.b);
-
-function C3() {this.a = 1; return {b: 2}};
-var c3 = new C3();
-console.log(c3.a);
-console.log(c3.b);
 
 // Page 110
