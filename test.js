@@ -7,22 +7,18 @@
 
 ////
 
-var oryginal = {a: 1};
-var copy = oryginal;
-console.log(copy.a);
-copy.a = 100;
-console.log(copy.a);
-console.log(oryginal.a);
+var max = {species: 'dog'};
+var vito = {species: 'dog'};
+console.log(max==vito);
+console.log(max===vito);
 
-var oryginal = {a: 1};
-var reset = function(o) {(o.a = 0)};
-reset(oryginal);
-console.log(oryginal.a);
+var myDog = max;
+console.log(myDog==max);
+console.log(myDog===max);
+console.log(myDog==vito);
+console.log(myDog===vito);
 
-var oryginal = {a: 1};
-var multi = function(o) {(o.a = 2*oryginal.a)};
-multi(oryginal);
-console.log(oryginal.a);
+
 
 
 // Page 110
