@@ -7,18 +7,6 @@
 
 ////
 
-var max = {species: 'dog'};
-var vito = {species: 'dog'};
-console.log(max==vito);
-console.log(max===vito);
-
-var myDog = max;
-console.log(myDog==max);
-console.log(myDog===max);
-console.log(myDog==vito);
-console.log(myDog===vito);
 
 
-
-
-// Page 110
+// Page 117 Built-in objects
