@@ -9,12 +9,11 @@
 
 function Animal(species, name) {this.species = species; this.name = name}
 var a = new Animal("dog", "Rex");
-var b = new Animal("cat", "Kitty");
-var c = new b.constructor("hamster", "Puszka");
-console.log(c);
+console.log(a instanceof Animal);
+console.log(a instanceof Object);
 
 var o = {};
-console.log(o.constructor);
-console.log(typeof(o.constructor));
+console.log(o instanceof Animal);
+console.log(o instanceof Object);
 
 // Page 110
