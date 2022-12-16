@@ -7,13 +7,27 @@
 
 ////
 
-function Animal(species, name) {this.species = species; this.name = name}
-var a = new Animal("dog", "Rex");
-console.log(a instanceof Animal);
-console.log(a instanceof Object);
+// function factory(name) {
+//   return {name:name};
+// }
 
-var o = {};
-console.log(o instanceof Animal);
-console.log(o instanceof Object);
+// var f = factory('herbapol');
+// console.log(f.name);
+// console.log(f.constructor);
+// console.log(f instanceof Object);
+
+function C() {this.a = 1};
+var c = new C();
+console.log(c.a);
+
+function C2() {this.a = 1; return 2};
+var c2 = new C2();
+console.log(c2.a);
+console.log(c2.b);
+
+function C3() {this.a = 1; return {b: 2}};
+var c3 = new C3();
+console.log(c3.a);
+console.log(c3.b);
 
 // Page 110
