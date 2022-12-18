@@ -6,31 +6,24 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-function f(a) {return a};
-console.log(f.constructor);
+function sum(a, b, c) {return a + b + c};
+console.log(sum.toString());
 
-function f2(a, b, c) {return a + b + c};
-console.log(f2.length);
-
-function a() {return a.caller};
-function b() {return a()}
-console.log(b());
+console.log(eval.toString());
 
 var obj = {
     name: 'max',
-    say: function() {
-        return "I am " + this.name;
-    }
+    say: function(who) {return "Hello " + who + " I am " + this.name}
 }
-console.log(obj.say());
+console.log(obj.say("Martin"));
 
-function F() {};
-console.log(typeof F.prototype);
+var my_obj = {
+    name: 'Leonidas papanidas'
+}
 
-F.prototype = obj;
+console.log(obj.say.call(my_obj, 'Michael'));
+console.log(obj.say.call('Michael'));
 
-var tst = new F();
-console.log(tst.name);
-console.log(tst.say());
+console.log(obj.say.apply(my_obj, ['Miguel']));
 
 // Page 122 Built-in objects - Function
