@@ -6,27 +6,25 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = [3,6,3,8,'test'];
-console.log(a.push(8));
-console.log(a);
-console.log(a.pop());
-console.log(a);
-a[a.length] = 8;
-console.log(a);
-a.length--;
-console.log(a);
-var b = a.sort();
-console.log(a);
-console.log(b);
-console.log(a.join(' and '));
-console.log(a);
-b = a.slice(1,4);
-console.log(a);
-console.log(b);
-a.splice(1,3, 'jey', 102, 'hoho');
-console.log(a);
-a.splice(1,1);
-console.log(a);
+function sum(a, b) {return a + b};
+console.log(sum(2,3));
+
+var sum2 = function(a, b) {return a + b};
+console.log(sum2(2,3));
+
+var sum3 = new Function('a', 'b', 'return a + b');
+console.log(sum3(2,3));
+
+var sum4 = new Function('a, b', 'return a + b');
+console.log(sum4(2,3));
+
+function rargs(a, b, c) {return arguments};
+console.log(rargs(2,3,4));
+console.log(typeof(rargs()));
+console.log(typeof(sum()));
+console.log(typeof(sum2()));
+console.log(typeof(sum3()));
+console.log(typeof(sum4()));
 
 
 // Page 122 Built-in objects - Function
