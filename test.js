@@ -6,25 +6,31 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-function sum(a, b) {return a + b};
-console.log(sum(2,3));
+function f(a) {return a};
+console.log(f.constructor);
 
-var sum2 = function(a, b) {return a + b};
-console.log(sum2(2,3));
+function f2(a, b, c) {return a + b + c};
+console.log(f2.length);
 
-var sum3 = new Function('a', 'b', 'return a + b');
-console.log(sum3(2,3));
+function a() {return a.caller};
+function b() {return a()}
+console.log(b());
 
-var sum4 = new Function('a, b', 'return a + b');
-console.log(sum4(2,3));
+var obj = {
+    name: 'max',
+    say: function() {
+        return "I am " + this.name;
+    }
+}
+console.log(obj.say());
 
-function rargs(a, b, c) {return arguments};
-console.log(rargs(2,3,4));
-console.log(typeof(rargs()));
-console.log(typeof(sum()));
-console.log(typeof(sum2()));
-console.log(typeof(sum3()));
-console.log(typeof(sum4()));
+function F() {};
+console.log(typeof F.prototype);
 
+F.prototype = obj;
+
+var tst = new F();
+console.log(tst.name);
+console.log(tst.say());
 
 // Page 122 Built-in objects - Function
