@@ -6,26 +6,24 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-function f(a, b, c) {return arguments};
-console.log(f(4,2,8));
-console.log(f.length);
+var b = new Boolean();
+console.log(b);
+console.log(typeof b);
+console.log(typeof b.valueOf());
+console.log(b.valueOf());
 
-function f2(a, b) {return arguments.callee};
-console.log(f(3,1));
+console.log(Boolean("test"));
+console.log(Boolean(""));
+console.log(Boolean({}));
 
-function f3() {return arguments};
-console.log(f3());
+var a = new Boolean(true);
+console.log(a.valueOf());
+var b = new Boolean(false);
+console.log(b.valueOf());
 
-function f4() {return arguments.callee};
-console.log(f4());
+console.log(a);
 
-(
-    function(count) {
-        if (count < 5) {
-            console.log("hello " + count);
-            arguments.callee(++count);
-        }
-    }
-)(1)
+console.log(Boolean(a));
+console.log(Boolean(b));
 
 // Page 127 Boolean
