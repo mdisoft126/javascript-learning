@@ -6,38 +6,34 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = Number('12.12');
-console.log(a);
-console.log(typeof a);
+var p = 'hello';
+console.log(p);
+console.log(typeof p);
+console.log(p.length);
 
-var b = new Number('12.12');
-console.log(b);
-console.log(typeof b);
+var o = new String('world');
+console.log(o);
+console.log(typeof o);
+console.log(o.length);
+console.log(o.valueOf());
+console.log(o[0]);
+console.log(o[4]);
+console.log(o.toString());
+console.log(o + "");
 
-console.log(Number.MAX_VALUE);
-console.log(Number.MIN_VALUE);
-console.log(Number.POSITIVE_INFINITY);
-console.log(Number.NEGATIVE_INFINITY);
-console.log(Number.NaN);
-console.log(Number.MAX_SAFE_INTEGER);
-console.log(Number.MIN_SAFE_INTEGER);
+console.log("potato".length);
+console.log("potato"[0]);
+console.log("potato".length-1);
+console.log("potato"["potato".length-1]);
 
-var a = new Number(123.736);
-console.log(a.toFixed(2));
+console.log(Boolean(""));
+console.log(Boolean("a"));
+console.log(Boolean(new String("")));
+console.log(Boolean(String("")));
 
-console.log((34.653).toFixed(1));
+console.log(String({p: 1}));
+console.log(String([1,2,3]));
 
-console.log((1736.768).toExponential());
 
-console.log((753.246).toPrecision(2));
-
-var n = new Number(255);
-console.log(n.toString());
-console.log(n.toString(10));
-console.log(n.toString(16));
-console.log(n.toString(2));
-console.log(n.toString(8));
-
-console.log((6).toString(2));
 
 // Page 127 Boolean
