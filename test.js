@@ -6,34 +6,26 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var p = 'hello';
-console.log(p);
-console.log(typeof p);
-console.log(p.length);
+var a = new String("Master of disaster");
+console.log(a.toUpperCase());
+console.log(a.toLowerCase());
+console.log(a.charAt(0));
+console.log(a[0]);
+console.log(a.charAt(55));
+console.log(a[55]);
+console.log(a.indexOf('s'));
+console.log(a.indexOf('S'));
+console.log(a.indexOf('s', 3));
+console.log(a.lastIndexOf('s'));
+console.log(a.indexOf('of'));
+console.log(a.toLocaleLowerCase().indexOf('master'));
 
-var o = new String('world');
-console.log(o);
-console.log(typeof o);
-console.log(o.length);
-console.log(o.valueOf());
-console.log(o[0]);
-console.log(o[4]);
-console.log(o.toString());
-console.log(o + "");
+if (a.indexOf('Master')) {
+    console.log('yes');
+} else {console.log('no');}
 
-console.log("potato".length);
-console.log("potato"[0]);
-console.log("potato".length-1);
-console.log("potato"["potato".length-1]);
+if (a.indexOf('Master') !== -1) {
+    console.log('yes');
+} else {console.log('no');}
 
-console.log(Boolean(""));
-console.log(Boolean("a"));
-console.log(Boolean(new String("")));
-console.log(Boolean(String("")));
-
-console.log(String({p: 1}));
-console.log(String([1,2,3]));
-
-
-
-// Page 127 Boolean
+// Page 133 (end of the page) Methods slice and substring
