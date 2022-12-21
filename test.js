@@ -6,33 +6,21 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = new String("Master of disaster");
-console.log(a.slice(1,5));
-console.log(a.substring(1,5));
-console.log(a.slice(1,-1));
-console.log(a.substring(1,-1));
-console.log(a.substring(2,-1));
-console.log(a.substring(3,-1));
-console.log(a.substring(1,0));
-console.log(a.substring(2,0));
-console.log(a.substring(3,1));
-console.log(a.slice(1,-1));
-console.log(a.slice(2,-1));
-console.log(a.slice(3,-1));
-console.log(a.slice(1,0));
-console.log(a.slice(2,0));
-console.log(a.slice(3,0));
-console.log(a.slice(-1,-1));
-console.log(a.slice(-2,-1));
-console.log(a.slice(-3,-1));
-console.log(a.slice(-1,1));
-console.log(a.slice(-2,2));
-console.log(a.slice(-3,3));
-console.log(a.substring(-1,-1));
-console.log(a.substring(-2,-1));
-console.log(a.substring(-3,-1));
-console.log(a.substring(-1,1));
-console.log(a.substring(-2,2));
-console.log(a.substring(-3,3));
+var a = new String('master of disaster');
+console.log(a.valueOf());
+console.log(typeof a.split(' '));
+var b = "master of disaster";
+console.log(b);
+console.log(typeof b);
+
+var a1 = a.split(" ");
+console.log(a1);
+var b1 = b.split(" ");
+console.log(b1);
+console.log(typeof a1.join(" "));
+console.log(typeof b1.join(" "));
+
+console.log(a.concat(" it is me!"));
+console.log(a);
 
 // Page 133 (end of the page) Methods slice and substring
