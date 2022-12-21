@@ -7,25 +7,32 @@
 
 ////
 var a = new String("Master of disaster");
-console.log(a.toUpperCase());
-console.log(a.toLowerCase());
-console.log(a.charAt(0));
-console.log(a[0]);
-console.log(a.charAt(55));
-console.log(a[55]);
-console.log(a.indexOf('s'));
-console.log(a.indexOf('S'));
-console.log(a.indexOf('s', 3));
-console.log(a.lastIndexOf('s'));
-console.log(a.indexOf('of'));
-console.log(a.toLocaleLowerCase().indexOf('master'));
-
-if (a.indexOf('Master')) {
-    console.log('yes');
-} else {console.log('no');}
-
-if (a.indexOf('Master') !== -1) {
-    console.log('yes');
-} else {console.log('no');}
+console.log(a.slice(1,5));
+console.log(a.substring(1,5));
+console.log(a.slice(1,-1));
+console.log(a.substring(1,-1));
+console.log(a.substring(2,-1));
+console.log(a.substring(3,-1));
+console.log(a.substring(1,0));
+console.log(a.substring(2,0));
+console.log(a.substring(3,1));
+console.log(a.slice(1,-1));
+console.log(a.slice(2,-1));
+console.log(a.slice(3,-1));
+console.log(a.slice(1,0));
+console.log(a.slice(2,0));
+console.log(a.slice(3,0));
+console.log(a.slice(-1,-1));
+console.log(a.slice(-2,-1));
+console.log(a.slice(-3,-1));
+console.log(a.slice(-1,1));
+console.log(a.slice(-2,2));
+console.log(a.slice(-3,3));
+console.log(a.substring(-1,-1));
+console.log(a.substring(-2,-1));
+console.log(a.substring(-3,-1));
+console.log(a.substring(-1,1));
+console.log(a.substring(-2,2));
+console.log(a.substring(-3,3));
 
 // Page 133 (end of the page) Methods slice and substring
