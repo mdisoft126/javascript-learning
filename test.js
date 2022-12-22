@@ -8,16 +8,30 @@
 ////
 var a = new Date();
 console.log(a);
+console.log(a.getMonth());
+console.log(a.setMonth(2));
+// a.setMonth(2);
+console.log(a);
+console.log(a.toString());
+console.log(a.getMonth());
 
-var b = new Date(2020, 11, 21, 18, 45, 15, 120);
-var c = new Date(2020, 11, 21);
+var b = Date.parse('Jan 1, 2020');
 console.log(b);
-console.log(c);
-console.log(new Date(1199865795109));
-console.log(new Date());
-console.log(typeof new Date());
-console.log(Date());
-console.log(typeof Date());
+console.log(new Date(b));
+console.log((new Date(b)).toString());
+var c = new Date(b);
+console.log(c.toString());
+
+var d = new Date(2022, 11, 22, 23, 29);
+console.log(d);
+// console.log(d.toString());
+// console.log((new Date(Date.UTC(2022, 11, 22, 23, 29))).toString());
+console.log(new Date(Date.UTC(2022, 11, 22, 23, 29)));
 
 
-// Page 136 Date
+var birt = new Date(2023, 3, 3, 12);
+console.log(birt);
+console.log(birt.getDay());
+console.log(birt.toDateString());
+
+// Page 140 Finish loop
