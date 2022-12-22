@@ -9,7 +9,15 @@
 var a = new Date();
 console.log(a);
 
-console.log(new Date('1 3 2022 1:00'));
+var b = new Date(2020, 11, 21, 18, 45, 15, 120);
+var c = new Date(2020, 11, 21);
+console.log(b);
+console.log(c);
+console.log(new Date(1199865795109));
+console.log(new Date());
+console.log(typeof new Date());
+console.log(Date());
+console.log(typeof Date());
 
 
 // Page 136 Date
