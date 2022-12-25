@@ -6,11 +6,11 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = [0, 0 , 0, 0, 0, 0, 0];
-for(i = 2022; i <= 2032; i++) {
-    a[new Date(i , 3, 3).getDay()]++;
-}
-
-console.log(a);
+var a = new RegExp("h.*o", "gmi");
+console.log(a.global);
+a.global = false;
+console.log(a.global);
+var b = /j.*t/ig;
+console.log(b);
 
 // Page 140 Finish loop
