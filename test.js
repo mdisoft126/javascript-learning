@@ -6,11 +6,10 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = new RegExp("h.*o", "gmi");
-console.log(a.global);
-a.global = false;
-console.log(a.global);
-var b = /j.*t/ig;
-console.log(b);
+var a = /h.*r/ig;
+console.log(a.test("Hello world"));
+console.log(a.exec("hello")[0]);
 
-// Page 140 Finish loop
+
+
+// Page 143 finish .exec()
