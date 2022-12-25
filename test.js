@@ -6,32 +6,11 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = new Date();
+var a = [0, 0 , 0, 0, 0, 0, 0];
+for(i = 2022; i <= 2032; i++) {
+    a[new Date(i , 3, 3).getDay()]++;
+}
+
 console.log(a);
-console.log(a.getMonth());
-console.log(a.setMonth(2));
-// a.setMonth(2);
-console.log(a);
-console.log(a.toString());
-console.log(a.getMonth());
-
-var b = Date.parse('Jan 1, 2020');
-console.log(b);
-console.log(new Date(b));
-console.log((new Date(b)).toString());
-var c = new Date(b);
-console.log(c.toString());
-
-var d = new Date(2022, 11, 22, 23, 29);
-console.log(d);
-// console.log(d.toString());
-// console.log((new Date(Date.UTC(2022, 11, 22, 23, 29))).toString());
-console.log(new Date(Date.UTC(2022, 11, 22, 23, 29)));
-
-
-var birt = new Date(2023, 3, 3, 12);
-console.log(birt);
-console.log(birt.getDay());
-console.log(birt.toDateString());
 
 // Page 140 Finish loop
