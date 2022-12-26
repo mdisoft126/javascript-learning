@@ -6,23 +6,11 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = /h/ig;
-console.log(typeof a);
-// console.log(a.test("Hello world"));
-console.log(a.exec("hello"));
-console.log(typeof a);
-console.log(a.test("Hello world"));
-console.log(a.exec("hello"));
-console.log(typeof a);
-
-// var b = /h/ig.exec("hello")[0];
-// console.log(b);
-
-// var a = "E6t7665D, BluEw, rfed,1 REd, orrrrange, he9j, BLUe, blue,";
-// var p = /e/i;
-// var s = p.exec(a);
-
-// console.log(p.exec("E6t7665D, BluEw, rfed,1 REd, orrrrange, he9j, BLUe, blue,"));
+var a = new String("HelloJavaScriptWorld");
+console.log(a.match(/a/g));
+console.log(a.match(/a/g)['index']);
+console.log(a.match(/j.*s/i));
+console.log(a.search(/j.*s/i));
 
 
 // Page 143 finish .exec()
