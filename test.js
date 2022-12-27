@@ -6,11 +6,10 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-var a = 'hej, hello, nice , bad ,green, red';
-var s = a.split(',');
-console.log(s);
-var s = a.split(/\s*,\s*/);
-console.log(s);
+var a = 'test';
+console.log(a.replace('e', 'o'));
+console.log(a);
+console.log(a.replace(new RegExp('e'), 'o'));
 
 
 // Page 145 replace callback
