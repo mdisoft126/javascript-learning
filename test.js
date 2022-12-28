@@ -6,71 +6,42 @@
 // {selected code} + ctrl + shift + l --> insert console log
 
 ////
-try {
-    hello();
-} catch (e) {
-    console.log(e.name + ": " + e.message);
-} finally {
-    console.log("The end!");
-}
 
-function f() {
-    return 0;
-}
+//Exercise 1
+// function Animal(name) {
+//     this.species = 'dog';
+//     this.name = name;
+//     this.bark = function() {
+//         return "hau hau";
+//     }
+// }
 
-try {
-    var total = f();
-    if(total === 0) {
-        throw new Error('Dividing by O!');
-    } else {
-        console.log(50/total);
-    }
-} catch (e) {
-    console.log(e.name + ": " + e.message);
-} finally {
-    console.log('The end!');
-}
+// var max = new Animal('max');
+// console.log(max.name);
+// console.log(max.species);
+// console.log(max.bark());
+// console.log(typeof max);
 
-try {
-    var total = f();
-    if(total === 0) {
-        throw new RangeError('Dividing by O!');
-    } else {
-        console.log(50/total);
-    }
-} catch (e) {
-    console.log(e.name + ": " + e.message);
-} finally {
-    console.log('The end!');
-}
+// var henk = Animal('henk');
+// console.log(bark());
+// console.log(name);
+// console.log(species);
+// console.log(typeof henk);
 
-try {
-    var total = f();
-    if(total === 0) {
-        throw {
-            name: "My error",
-            message: "Something bad happened"
-        };
-    } else {
-        console.log(50/total);
-    }
-} catch (e) {
-    console.log(e.name + ": " + e.message);
-} finally {
-    console.log('The end!');
-}
+// function f(a) {
+//     console.log(a);
+//     f = function c(b) {
+//         return console.log(b * 2);;
+//     }
+// }
 
-try {
-    var total = f();
-    if(total === 0) {
-        throw new Error('Dividing by O!');
-    } else {
-        console.log(50/total);
-    }
-} catch (e) {
-    console.log(e);
-} finally {
-    console.log('The end!');
-}
+// f(2);
+// f(2);
 
-// Page 151 exercises
+// console.log(Animal("max"));
+
+// console.log(o);
+
+//// Answer: The value 'this' refers to object 'o' because the object was created properly using the world 'new'.  
+
+// Page 152 exercise 2
