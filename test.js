@@ -7,41 +7,27 @@
 
 ////
 
-//Exercise 1
-// function Animal(name) {
-//     this.species = 'dog';
-//     this.name = name;
-//     this.bark = function() {
-//         return "hau hau";
-//     }
-// }
+//Exercise 2
 
-// var max = new Animal('max');
-// console.log(max.name);
-// console.log(max.species);
-// console.log(max.bark());
-// console.log(typeof max);
+function C() {
+    this.a = 1;
+    // return false;
 
-// var henk = Animal('henk');
-// console.log(bark());
-// console.log(name);
-// console.log(species);
-// console.log(typeof henk);
+}
 
-// function f(a) {
-//     console.log(a);
-//     f = function c(b) {
-//         return console.log(b * 2);;
-//     }
-// }
+function D() {
+    this.a = 1;
+    return {b: 2};
+}
 
-// f(2);
-// f(2);
+var c = new C();
+var d = new D();
 
-// console.log(Animal("max"));
+console.log(typeof new C());
+console.log(c);
+console.log(typeof new D());
+console.log(d);
 
-// console.log(o);
+//// Answer: the result will be type =  object
 
-//// Answer: The value 'this' refers to object 'o' because the object was created properly using the world 'new'.  
-
-// Page 152 exercise 2
+// Page 151 exercise 3
