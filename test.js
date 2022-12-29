@@ -7,27 +7,16 @@
 
 ////
 
-//Exercise 2
+//Exercise 3
 
-function C() {
-    this.a = 1;
-    // return false;
-
-}
-
-function D() {
-    this.a = 1;
-    return {b: 2};
-}
-
-var c = new C();
-var d = new D();
-
-console.log(typeof new C());
+var c = [1,.2, [1, 2]];
 console.log(c);
-console.log(typeof new D());
-console.log(d);
+c.sort();
+console.log(c);
+c = c.join('--');
+console.log(c);
+console.log(typeof c);
 
-//// Answer: the result will be type =  object
+//// Answer: The result will be 0.2--1--1,2
 
-// Page 151 exercise 3
+// Page 151 exercise 4
