@@ -10,32 +10,63 @@
 //Exercise 4
 
 function MyString(input) {
+
+    // conversion to string
+    var a = '';
+    var str = a + input;
+
+    // insert each character to table to be able to looking for specyfic characters
     var i;
     var r = [];
-    for (i = 0; i < input.length; i++) {
-        r[i] = input[i];
+    for (i = 0; i < str.length; i++) {
+        r[i] = str[i];
     }
-    this.length = r.length;
-    return this.result = r;
-    this.toString = function() {
-        var j;
-        var r2 = "";
-        for (j = 0; j < input.length; j++) {
-            r2 += r[j];
-        };
-        return r2;
-        // return input;
+
+    // length
+    r.lengthMy = str.length;
+
+    // toString
+    r.toStringMy = function() {
+        return str;
     }
-    // return this.result = r;
+
+    // valueOf
+    r.valueOfMy = function() {
+        return input;
+    }
+
+    // chatAt
+    r.charAtMy = function(char) {
+        var a = 0;
+        if(!isNaN(a + char)) {
+            return r[char];
+        } else {
+            return r[0];
+        }
+    }
+
+    // concat
+    r.concatMy = function(con) {
+        return input += con;
+    }
+
+
+    return r
 };
 
 var s = new MyString('hello');
-console.log(s.length);
+console.log(s);
+console.log(s.lengthMy);
 console.log(s[0]);
-console.log(s.toString());
+console.log(s.toStringMy());
+console.log(s.valueOfMy());
+console.log(s.charAtMy(1));
+console.log(s.charAtMy('2'));
+console.log(s.charAtMy('e'));
+console.log(s.concatMy(' world!'));
 
 
-///////
+/////// example of constructor
 // function Dog(name) {
 //     this.name = name;
 //     this.bark = function() {
@@ -47,6 +78,12 @@ console.log(s.toString());
 // console.log(d.name);
 // console.log(d.bark());
 
+/////// implicit conversion
+// var a = '';
+// var b = 123;
+// var c = a + b;
+// console.log(typeof c);
+
 //// Answer:
 
-// Page 151 exercise 4 ---> finish exercise 4 because something is still wrong with toString method
+// Page 151 exercise 4 ---> finish exercise 4, next slice
