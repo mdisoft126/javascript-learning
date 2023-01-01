@@ -7,7 +7,7 @@
 
 ////
 
-//Exercise 4
+//Exercise 5
 
 function MyString(input) {
 
@@ -89,6 +89,11 @@ function MyString(input) {
         return res;
     }
 
+    // reverse
+    r.reverseMy = function() {
+        return r.reverse();
+    }
+
     // return
     return r
 };
@@ -108,118 +113,7 @@ console.log(s.sliceMy(0,-1));
 console.log(s.sliceMy(-3,-1));
 console.log(s.splitMy('e'));
 console.log(s.splitMy('l'));
+console.log(s.reverseMy());
 
 
-
-/////// example of constructor
-// function Dog(name) {
-//     this.name = name;
-//     this.bark = function() {
-//         return "hau hau";
-//     }
-// }
-
-// var d = new Dog('max');
-// console.log(d.name);
-// console.log(d.bark());
-
-/////// implicit conversion
-// var a = '';
-// var b = 123;
-// var c = a + b;
-// console.log(typeof c);
-
-/////// access to array
-// var a = [1, 2, 3, 4, 5];
-// var s = -3;
-// var e = -1;
-// if (s < 0) {
-//     s = a.length + s;
-// }
-// if (e < 0) {
-//     e = a.length + e;
-// }
-// var str = '';
-// for (i = s; i < e; i++) {
-//     str += a[i];
-// }
-
-// console.log(str);
-
-//////// how the slice works
-// var a = '12345'
-// console.log(a.slice(-3,-1));
-// console.log(a.slice(-2,-1));
-// console.log(a.slice(0, -2));
-// console.log(a.slice(3, 4));
-
-//////// how the split works
-// var a = 'hellloella';
-// a = a.split('l');
-// // var i;
-// // var r = '';
-// // for (i = 0; i < a.length; i++) {
-// //     r += a[i];
-// // }
-// // console.log(r);
-// console.log(a);
-
-////////// test split
-// var a = 'helloello';
-// var d = 'l';
-// var del = [];
-// var i;
-// var str = '';
-// var r = [];
-// for (i = 0; i < a.length; i ++) {
-//     if (a[i] === d) {
-//         del[i] = i;
-//     } 
-// }
-
-// console.log(del);
-// var res = [];
-// var j;
-// var k = 0;
-// for (j = 0; j < del.length; j++) {
-//     if (del[j]!= undefined) {
-//         res[k] = del[j];
-//         k++;
-//     }
-// }
-// console.log(res);
-
-// var l;
-// var ld = 0;
-// var spl = [];
-// for (l = 0; l < a.length; l++) {
-//     if(del[ld] === a[l]) {
-
-//     }
-// }
-
-///////// splitMy
-// var a = 'hello';
-// var d = 'l';
-// var i;
-// var j = 0;
-// var str = '';
-// var res = [];
-// for (i = 0; i < a.length; i++) {
-//     if (a[i] !== d && i === a.length -1) {
-//         str += a[i];
-//         res[j] = str;
-//         console.log('hey');
-//     } else if (a[i] === d) {
-//         res[j] = str;
-//         str = '';
-//         j++;
-//     } else if (a[i] !== d) {
-//         str += a[i];
-//     }
-// }
-// console.log(res);
-
-//// Answer:
-
-// Page 151 exercise 4 ---> finish exercise 4, finish split
+// Page 152 exercise 6
