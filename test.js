@@ -9,36 +9,33 @@
 
 //Exercise 6
 
-function MyArray({input}) {
+function MyArray(...args) {
 
-    console.log({input});
-
-    // convert to string
-    var s = '';
-    var str = s + input;
-
-    // insert each character to object
-    var i;
-    var r = {};
-    for (i = 0; i < str.length; i++) {
-        r[i] = str[i];
-    }
+    console.log(arguments);
+    var arg = arguments;
 
     // toString
-    r.toStringMy = function() {
+    this.toStringMy = function() {
+        var str = "";
+        for (var a in arg) {
+            if (a < arg.length -1) {
+                str += arg[a] + ',';
+            } else {
+                str += arg[a];
+            }
+        }
         return str;
     }
 
     // length
-    r.lengthMy = str.length;
+    this.lengthMy = arg.length;
 
-    // return
-    return r;
+    
 
 }
 
 var a = new MyArray(1,2,3,"test");
-console.log(a.lengthMy);
 console.log(a.toStringMy());
+console.log(a.lengthMy);
 
 // Page 152 exercise 6 in progress
