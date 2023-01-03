@@ -7,113 +7,38 @@
 
 ////
 
-//Exercise 5
+//Exercise 6
 
-function MyString(input) {
+function MyArray({input}) {
 
-    // conversion to string
-    var a = '';
-    var str = a + input;
+    console.log({input});
 
-    // insert each character to table to be able to looking for specyfic characters
+    // convert to string
+    var s = '';
+    var str = s + input;
+
+    // insert each character to object
     var i;
-    var r = [];
+    var r = {};
     for (i = 0; i < str.length; i++) {
         r[i] = str[i];
     }
-
-    // length
-    r.lengthMy = str.length;
 
     // toString
     r.toStringMy = function() {
         return str;
     }
 
-    // valueOf
-    r.valueOfMy = function() {
-        return input;
-    }
-
-    // chatAt
-    r.charAtMy = function(char) {
-        var a = 0;
-        if(!isNaN(a + char)) {
-            return r[char];
-        } else {
-            return r[0];
-        }
-    }
-
-    // concat
-    r.concatMy = function(con) {
-        return input += con;
-    }
-
-    // slice
-    r.sliceMy = function(s, e) {
-        // var s = s1;
-        // var e = e1;
-        if (s < 0) {
-            s = r.length + s;
-        }
-        if (e < 0) {
-            e = r.length + e;
-        }
-        var str = '';
-        for (i = s; i < e; i++) {
-            str += r[i];
-        }
-        return str;
-    }
-
-    // split
-    r.splitMy = function(d) {
-
-        var i;
-        var j = 0;
-        var str = '';
-        var res = [];
-        for (i = 0; i < r.length; i++) {
-            if (r[i] !== d && i === r.length -1) {
-                str += r[i];
-                res[j] = str;
-            } else if (r[i] === d) {
-                res[j] = str;
-                str = '';
-                j++;
-            } else if (r[i] !== d) {
-                str += r[i];
-            }
-        }
-        return res;
-    }
-
-    // reverse
-    r.reverseMy = function() {
-        return r.reverse();
-    }
+    // length
+    r.lengthMy = str.length;
 
     // return
-    return r
-};
+    return r;
 
-var s = new MyString('hello');
-console.log(s);
-console.log(s.lengthMy);
-console.log(s[0]);
-console.log(s.toStringMy());
-console.log(s.valueOfMy());
-console.log(s.charAtMy(1));
-console.log(s.charAtMy('2'));
-console.log(s.charAtMy('e'));
-console.log(s.concatMy(' world!'));
-console.log(s.sliceMy(1,3));
-console.log(s.sliceMy(0,-1));
-console.log(s.sliceMy(-3,-1));
-console.log(s.splitMy('e'));
-console.log(s.splitMy('l'));
-console.log(s.reverseMy());
+}
 
+var a = new MyArray(1,2,3,"test");
+console.log(a.lengthMy);
+console.log(a.toStringMy());
 
-// Page 152 exercise 6
+// Page 152 exercise 6 in progress
