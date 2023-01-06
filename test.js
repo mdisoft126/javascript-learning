@@ -58,4 +58,4 @@ console.log(a[a.length -1]);
 console.log(a.pushMy('hey', 99));
 console.log(a.toStringMy());
 
-// Page 152 exercise 6 in progress --> find out how to overwrite global object from function.
+// Page 152 exercise 6 in progress --> find out how to overwrite global object from function. Still in progress.
