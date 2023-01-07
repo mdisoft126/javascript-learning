@@ -9,41 +9,46 @@
 
 //Exercise 6
 
-function MyArray(...args) {
+function MyArray() {
 
-    console.log(arguments);
-    var arg = arguments;
-
-    // conversion to string
-    var str = "";
-    for (var a in arg) {
-        if (a < arg.length -1) {
-            str += arg[a] + ',';
-        } else {
-            str += arg[a];
-        }
+    var arg = {};
+    var i;
+    var argL = 0;
+    for (i = 0; i < arguments.length; i++) {
+        arg[i] = arguments[i];
     }
+
+    var argL = Object.keys(arg).length;
 
     // toString
     arg.toStringMy = function() {
+        var str = "";
+        var is;
+        for (is = 0; is < argL; is++) {
+            if (is < argL -1) {
+                str += arg[is] + ',';
+            } else {
+                str += arg[is];
+            }
+        }
         return str;
     }
 
     // length
-    arg.lengthMy = arg.length;
-
-    var r = {};
+    arg.lengthMy = argL;
 
     // push
-    arg.pushMy = function(...args) {
+    arg.pushMy = function() {
         var p = arguments;
-        var i = arg.length;
+        var i = argL;
+        var aL = argL;
         var j = 0;
-        for (i; i < arg.length + p.length; i++) {
+        for (i; i < argL + p.length; i++) {
             arg[i] = p[j];
-            j++
+            j++;
         }
-        return arg;
+        argL += p.length;
+        return argL;
     }
 
 
@@ -52,10 +57,13 @@ function MyArray(...args) {
 }
 
 var a = new MyArray(1,2,3,"test");
+console.log(a);
 console.log(a.toStringMy());
 console.log(a.lengthMy);
-console.log(a[a.length -1]);
+console.log(a[a.lengthMy -1]);
 console.log(a.pushMy('hey', 99));
 console.log(a.toStringMy());
+console.log(a);
+console.log(a.lengthMy);
 
-// Page 152 exercise 6 in progress --> find out how to overwrite global object from function. Still in progress.
+// Page 152 exercise 6 in progress --> finish but first repair lenght because after push method is still shows 4 instead of 6.
