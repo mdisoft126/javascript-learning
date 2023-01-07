@@ -35,7 +35,10 @@ function MyArray() {
     }
 
     // length
-    arg.lengthMy = argL;
+    arg.lengthMy = Object.keys(arg).length;
+
+    // good example 
+    // https://stackoverflow.com/questions/11957191/var-variables-this-variables-and-global-variables-inside-a-javascript-c
 
     // push
     arg.pushMy = function() {
