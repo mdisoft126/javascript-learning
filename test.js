@@ -64,6 +64,26 @@ function MyArray() {
     }
 
     // join
+    arg.join = function(d) {
+        var joined = "";
+        var ij;
+        for (ij = 0; ij < count; ij++) {
+            if (d == null) {
+                if (ij < count -1) {
+                    joined += arg[ij] + ',';
+                } else {
+                    joined += arg[ij];
+                }
+            } else {
+                if (ij < count -1) {
+                    joined += arg[ij] + d;
+                } else {
+                    joined += arg[ij];
+                }
+            }
+        }
+        return joined;
+    }
 
 
 
@@ -85,5 +105,9 @@ console.log(a.lengthMy);
 console.log(a.pop());
 console.log(a.toStringMy());
 console.log(a.lengthMy);
+console.log(a.join());
+console.log(a.join(', '));
+console.log(a.join(' a '));
+console.log(a.toStringMy());
 
-// Page 152 exercise 6 in progress --> finish but first repair lenght because after push method is still shows 4 instead of 6.
+// Page 152 exercise 6 in progress --> join.
