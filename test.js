@@ -9,32 +9,33 @@
 
 //Exercise 6
 
-// function MyMath() {
+function MyMath() {
 
-//     // random
-//     this.randMy = function(min, max, incl) {
+    this.rand = function(min, max) {
 
-//         var r = [];
-//         var i;
-//         var l = max - min;
-        
-//         for (i = 0; i < l; i++) {
-//             r[i] = min;
-//             min++;
-//         }
+        // date
+        const date = new Date();
+        var t = date.getTime() + '';
 
-//         return r;
-//     }
+        // random number
+        var r = parseInt(t.slice(-1));
 
-// }
+        // factor
+        var f;
+        var res;
+        var diff = max - min;
+        if (r === 0) {
+            res = parseInt((diff * 0) + min);
+        } else {
+            f = (r/10);
+            res = parseInt(((diff * f) + min));
+        }
+        return res;
+    }
+}
 
-// var a = new MyMath();
-// console.log(a.randMy(1,9));
-
-const date = new Date();
-var rand = date.getTime() + '';
-console.log(rand.slice(-2));
-// console.log(date.getTime()/date.getTime().length);
+var a = new MyMath();
+console.log(a.rand(5,10));
 
 
-// Page 152 exercise 7 in progress. Try to change git e-mail address. check git
+// Page 152 exercise 7 in progress --> add functionality for included max
