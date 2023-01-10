@@ -37,4 +37,4 @@ console.log(rand.slice(-2));
 // console.log(date.getTime()/date.getTime().length);
 
 
-// Page 152 exercise 7 in progress .
+// Page 152 exercise 7 in progress. Try to change git e-mail address. check git
