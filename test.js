@@ -7,55 +7,19 @@
 
 ////
 
-//Exercise 6
+// 5 Prototypes
 
-
-
-function MyMath() {
-
-    // set type of parameter
-    /**
-    * @param {Boolean} incl - The boolean
-    */
-
-    this.rand = function(min, max, incl) {
-
-        // date
-        const date = new Date();
-        var t = date.getTime() + '';
-
-        // random number
-        var r = parseInt(t.slice(-1));
-
-        // main
-        var f;
-        var res;
-        var diff = max - min;
-        if (incl === true) {
-            if (r === 0) {
-                res = parseInt((diff * 0) + min);
-            } else {
-                f = (r/10);
-                res = parseInt(((diff * f) + min +1));
-            }
-            return res;
-        } else {
-            if (r === 0) {
-                res = parseInt((diff * 0) + min + 1);
-            } else if (r === 1) {
-                f = (r/10);
-                res = parseInt(((diff * f) + min + 1));
-            } else {
-                f = (r/10);
-                res = parseInt(((diff * f) + min));
-            }
-            return res;
-        }
-    }
+function foo(a, b, c) {
+    return a + b + c;
 }
 
-var a = new MyMath();
-console.log(a.rand(5, 10, true));
+console.log(foo.length);
+console.log(typeof foo);
+console.log(typeof foo.constructor);
+console.log(typeof foo.prototype);
+
+
+
 
 
 // Page 152 exercise 7 in progress --> add functionality for included max
