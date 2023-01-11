@@ -15,10 +15,16 @@ function Gadget(name, color) {
     this.whoAreYou = function() {
         return "I am " + this.color + ' ' + this.name;
     }
+    Gadget.prototype.price = 100;
+    Gadget.prototype.user_rating = 3;
+    Gadget.prototype.inform = function() {
+        return "User rating: " + this.user_rating + ", price: " + this.price;
+    }
 }
 
 var a = new Gadget("Henry", "Yellow");
 console.log(a.whoAreYou());
+console.log(a.inform());
 
 
-// Page 152 exercise 7 in progress --> add functionality for included max
+// Page 157 --> finish at the begining of the page;
