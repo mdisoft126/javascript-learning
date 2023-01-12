@@ -34,21 +34,39 @@
 // console.log(a.whoAreYou());
 // console.log(typeof Gadget());
 
-// exercise from W3Schools
+// exercise from mozilla
 
-function Person(name, surname, age) {
-    this.name = name;
-    this.surname = surname;
-    this.age = age;
+var myObj = {
+    city: "Konin",
+    greet() {
+        // console.log("Greetings from " + this.city);
+        console.log(`Greetings from ${this.city}.`);
+    }
 }
 
-var a = new Person("Mark", "Shoolz", 35);
-console.log(a.name);
+myObj.greet();
+console.log(myObj.toString());
+console.log(Object.getPrototypeOf(myObj));
+console.log(Object.prototype);
 
-Person.prototype.nationality = "German";
-console.log(a.nationality);
+const myDate = new Date();
+var object = myDate;
 
-console.log(a);
+// console.log(Object.getPrototypeOf(object));
+// var object2 = Object.getPrototypeOf(object);
+// console.log(Object.getPrototypeOf(object2));
+// var object3 = Object.getPrototypeOf(object2);
+// console.log(Object.getPrototypeOf(object3));
+
+do {
+    object = Object.getPrototypeOf(object);
+    console.log(object);
+} while (object);
+
+
+// Finish prototypes from Mozilla page !!!
+// https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
+// next header --> Shadowing properties
 
 
 // Page 157 --> finish at the begining of the page;
