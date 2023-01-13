@@ -37,14 +37,19 @@
 
 // exercise from mozilla
 
-var myDate = new Date(2012,03,01);
-console.log(myDate.getMonth());
-
-myDate.getMonth = function() {
-    console.log("Hello");
+const personPrototype = {
+    greet() {
+        console.log("hello");
+    }
 }
 
-myDate.getMonth();
+var a = Object.create(personPrototype);
+a.greet();
+
+a.name = "Henry";
+
+console.log(a);
+
 
 
 // Finish prototypes from Mozilla page !!!
