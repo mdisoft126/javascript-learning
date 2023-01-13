@@ -33,35 +33,18 @@
 // var a = new Gadget("Henry", "Yellow");
 // console.log(a.whoAreYou());
 // console.log(typeof Gadget());
+/////////////////////
 
 // exercise from mozilla
 
-var myObj = {
-    city: "Konin",
-    greet() {
-        // console.log("Greetings from " + this.city);
-        console.log(`Greetings from ${this.city}.`);
-    }
+var myDate = new Date(2012,03,01);
+console.log(myDate.getMonth());
+
+myDate.getMonth = function() {
+    console.log("Hello");
 }
 
-myObj.greet();
-console.log(myObj.toString());
-console.log(Object.getPrototypeOf(myObj));
-console.log(Object.prototype);
-
-const myDate = new Date();
-var object = myDate;
-
-// console.log(Object.getPrototypeOf(object));
-// var object2 = Object.getPrototypeOf(object);
-// console.log(Object.getPrototypeOf(object2));
-// var object3 = Object.getPrototypeOf(object2);
-// console.log(Object.getPrototypeOf(object3));
-
-do {
-    object = Object.getPrototypeOf(object);
-    console.log(object);
-} while (object);
+myDate.getMonth();
 
 
 // Finish prototypes from Mozilla page !!!
