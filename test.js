@@ -37,24 +37,27 @@
 
 // exercise from mozilla
 
-const personPrototype = {
+var personPrototype = {
     greet() {
-        console.log("hello");
+        console.log(`Hello ${this.name}!`);
     }
 }
 
-var a = Object.create(personPrototype);
+function Person(name) {
+    this.name = name;
+}
+
+Object.assign(Person.prototype, personPrototype);
+// or
+// Person.prototype.greet = personPrototype.greet;
+
+var a = new Person('Henry');
 a.greet();
-
-a.name = "Henry";
-
-console.log(a);
-
 
 
 // Finish prototypes from Mozilla page !!!
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
-// next header --> Shadowing properties
+// next header --> Own properties
 
 
 // Page 157 --> finish at the begining of the page;
