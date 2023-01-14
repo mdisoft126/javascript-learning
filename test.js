@@ -39,7 +39,8 @@
 
 var personPrototype = {
     greet() {
-        console.log(`Hello ${this.name}!`);
+        // console.log(`Hello ${this.name}!`);
+        return `Hello ${this.name}!`;
     }
 }
 
@@ -51,13 +52,22 @@ Object.assign(Person.prototype, personPrototype);
 // or
 // Person.prototype.greet = personPrototype.greet;
 
-var a = new Person('Henry');
-a.greet();
+var a = new Person('Macin');
+console.log(a.name);
+console.log(a.greet());
+// console.log(Object.hasOwn(a, "name"));
+
+//// Object.hasOwn is valid from Node version 16. Here is 10
+// console.log(Object.hasOwn(a, "name"));
+// console.log(Object.hasOwn(a, "greet"));
+
+console.log(a.hasOwnProperty("name"));
+console.log(a.hasOwnProperty("greet"));
 
 
 // Finish prototypes from Mozilla page !!!
 // https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes
-// next header --> Own properties
+// next header --> Prototypes and inheritance
 
 
 // Page 157 --> finish at the begining of the page;
