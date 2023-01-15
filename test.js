@@ -8,22 +8,6 @@
 ////
 
 // 5 Prototypes
-
-//// 1st way
-// function Gadget(name, color) {
-//     this.name = name;
-//     this.color = color;
-//     this.whoAreYou = function() {
-//         return "I am " + this.color + ' ' + this.name;
-//     }
-//     Gadget.prototype.price = 100;
-//     Gadget.prototype.user_rating = 3;
-//     Gadget.prototype.inform = function() {
-//         return "User rating: " + this.user_rating + ", price: " + this.price;
-//     }
-// }
-
-//// 2nd way
 function Gadget(name, color) {
     this.name = name;
     this.color = color;
@@ -32,29 +16,15 @@ function Gadget(name, color) {
     }
 }
 
-Gadget.prototype = {
-    price: 100,
-    user_rating: 3,
-
-    //// 1st way
-    inform: function() {
-        return "User rating: " + this.user_rating + " price: " + this.price;
-    }
-    
-    ////// 2nd way
-    // inform: function() {
-    //     return "User rating: " + Gadget.prototype.user_rating + " price: " + Gadget.prototype.price;
-    //}
+Gadget.prototype.price = 100;
+Gadget.prototype.user_rating = 3;
+Gadget.prototype.inform = function() {
+    return "User rating: " + Gadget.prototype.user_rating + " price: " + Gadget.prototype.price;
 }
 
 
-var a = new Gadget("Henry", "Yellow");
-console.log(a.whoAreYou());
-console.log(a.price);
-console.log(a.inform());
 
-// list of prototypes
-console.log(Object.getPrototypeOf(a));
+var a = new Gadget("Henry", "Yellow");
 
 // adding new method after creating object a
 Gadget.prototype.download = function(what) {
@@ -63,5 +33,14 @@ Gadget.prototype.download = function(what) {
 
 console.log(a.download('color'));
 
+var b = new Gadget("John", "Blue");
 
-// Page 158 --> next "Własne pola obiektu a pola prototypu";
+console.log(b.name);
+console.log(b.user_rating);
+console.log(b);
+console.log(b.constructor);
+console.log(b.constructor.prototype);
+console.log(b.constructor.prototype.constructor);
+
+
+// Page 159 --> next "Nadpisywanie pól prototypu własnymi polami obiektu";
