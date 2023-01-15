@@ -35,9 +35,16 @@ function Gadget(name, color) {
 Gadget.prototype = {
     price: 100,
     user_rating: 3,
+
+    //// 1st way
     inform: function() {
         return "User rating: " + this.user_rating + " price: " + this.price;
     }
+    
+    ////// 2nd way
+    // inform: function() {
+    //     return "User rating: " + Gadget.prototype.user_rating + " price: " + Gadget.prototype.price;
+    //}
 }
 
 
