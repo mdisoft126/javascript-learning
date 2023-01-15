@@ -45,7 +45,16 @@ var a = new Gadget("Henry", "Yellow");
 console.log(a.whoAreYou());
 console.log(a.price);
 console.log(a.inform());
-console.log(typeof a);
+
+// list of prototypes
+console.log(Object.getPrototypeOf(a));
+
+// adding new method after creating object a
+Gadget.prototype.download = function(what) {
+    return this[what];
+}
+
+console.log(a.download('color'));
 
 
-// Page 157 --> finish at the begining of the page;
+// Page 158 --> next "Własne pola obiektu a pola prototypu";
