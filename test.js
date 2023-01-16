@@ -8,39 +8,18 @@
 ////
 
 // 5 Prototypes
-function Gadget(name, color) {
+function Gadget(name) {
     this.name = name;
-    this.color = color;
-    this.whoAreYou = function() {
-        return "I am " + this.color + ' ' + this.name;
-    }
+    Gadget.prototype.name = 'hello';
 }
 
-Gadget.prototype.price = 100;
-Gadget.prototype.user_rating = 3;
-Gadget.prototype.inform = function() {
-    return "User rating: " + Gadget.prototype.user_rating + " price: " + Gadget.prototype.price;
-}
+var a = new Gadget("John");
 
-
-
-var a = new Gadget("Henry", "Yellow");
-
-// adding new method after creating object a
-Gadget.prototype.download = function(what) {
-    return this[what];
-}
-
-console.log(a.download('color'));
-
-var b = new Gadget("John", "Blue");
-
-console.log(b.name);
-console.log(b.user_rating);
-console.log(b);
-console.log(b.constructor);
-console.log(b.constructor.prototype);
-console.log(b.constructor.prototype.constructor);
+console.log(a.name);
+console.log(a.constructor.prototype.name);
+console.log(delete a.name);
+console.log(a.name);
+console.log(a.name = 'Henry');
 
 
 // Page 159 --> next "Nadpisywanie pól prototypu własnymi polami obiektu";
