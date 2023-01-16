@@ -8,18 +8,22 @@
 ////
 
 // 5 Prototypes
-function Gadget(name) {
-    this.name = name;
-    Gadget.prototype.name = 'hello';
+
+var t = [1, 2, 3];
+
+for (var i in t) {
+    console.log(t[i]);
 }
 
-var a = new Gadget("John");
+var o = {
+    p1: 1,
+    p2: 2,
+    p3: 3
+};
 
-console.log(a.name);
-console.log(a.constructor.prototype.name);
-console.log(delete a.name);
-console.log(a.name);
-console.log(a.name = 'Henry');
+for (var j in o) {
+    console.log(j + " = " + o[j]);
+}
 
 
 // Page 159 --> next "Nadpisywanie pól prototypu własnymi polami obiektu";
