@@ -10,7 +10,6 @@
 //// Example out of the book - use of apply
 
 function sum() {
-    console.log(this);
     var result = 0;
     for (var i = 0; i < arguments.length; i++) {
         result += arguments[i];
@@ -18,8 +17,7 @@ function sum() {
     return result;
 }
 
-var a = sum.apply({name: 'John', color: 'yellow'}, [3, 4, 5]);
-console.log(a);
+console.log(sum(1,2,3));
 
 
 // 5 Prototypes
