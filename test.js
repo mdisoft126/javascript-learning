@@ -7,19 +7,6 @@
 
 ////
 
-//// Example out of the book - use of apply
-
-function sum() {
-    var result = 0;
-    for (var i = 0; i < arguments.length; i++) {
-        result += arguments[i];
-    }
-    return result;
-}
-
-console.log(sum(1,2,3));
-
-
 // 5 Prototypes
 
 // Array.prototype.inArray = function(needle) {
@@ -37,9 +24,7 @@ console.log(sum(1,2,3));
 // console.log(t.inArray("black"));
 
 //////
-// var s = 'hello';
-// var appl = apply(s);
-// console.log(appl);
 
+// --> put code here
 
-// Page 165 --> next Rozszerzanie obiektów wbudowanych;
+// Page 166 --> at the begining --> finish;
