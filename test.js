@@ -7,32 +7,40 @@
 
 ////
 
-// 5 Prototypes
+//// Example out of the book - use of apply
 
-var monkey = {
-    eat: 'bananas',
-    breathing: 'air'
+function sum() {
+    var result = 0;
+    for (var i = 0; i < arguments.length; i++) {
+        result += arguments[i];
+    }
+    return result;
 }
 
-function Human() {};
+var a = sum.apply(null, [3, 4, 5]);
+console.log(a);
 
-Human.prototype = monkey;
 
-var programmer = new Human();
-programmer.eat = 'pizza';
-programmer.is_good_at = 'JavaScript';
+// 5 Prototypes
 
-console.log(programmer.eat);
-console.log(programmer.is_good_at);
-console.log(programmer.breathing);
-// programmer.constructor = 'hello';
-console.log(typeof programmer.constructor.prototype);
-console.log(programmer.__proto__);
-console.log(typeof programmer.prototype);
-console.log(typeof programmer.__proto__);
-console.log('\n');
-monkey.test = 'hello elo';
-console.log(programmer.test);
+// Array.prototype.inArray = function(needle) {
+//     for (var i = 0; i < this.length; i++) {
+//         if (this[i] === needle) {
+//             return true;
+//         }
+//     }
+//     return false;
+// }
+
+// var t = ["reb", "black", "white"];
+
+// console.log(t.inArray("yellow"));
+// console.log(t.inArray("black"));
+
+//////
+// var s = 'hello';
+// var appl = apply(s);
+// console.log(appl);
 
 
 // Page 165 --> next Rozszerzanie obiektów wbudowanych;
