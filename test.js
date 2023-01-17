@@ -11,22 +11,28 @@
 
 var monkey = {
     eat: 'bananas',
-    hairy: true
+    breathing: 'air'
 }
 
-function Human(name) {
-    this.name = name;
-}
+function Human() {};
 
 Human.prototype = monkey;
 
-var a = new Human("John");
-console.log(a.name);
-console.log(a.eat);
-console.log(a.hairy);
+var programmer = new Human();
+programmer.eat = 'pizza';
+programmer.is_good_at = 'JavaScript';
+
+console.log(programmer.eat);
+console.log(programmer.is_good_at);
+console.log(programmer.breathing);
+// programmer.constructor = 'hello';
+console.log(typeof programmer.constructor.prototype);
+console.log(programmer.__proto__);
+console.log(typeof programmer.prototype);
+console.log(typeof programmer.__proto__);
 console.log('\n');
+monkey.test = 'hello elo';
+console.log(programmer.test);
 
-console.log(monkey.isPrototypeOf(a));
 
-
-// Page 162 --> next "isPrototypeOf()";
+// Page 165 --> next Rozszerzanie obiektów wbudowanych;
