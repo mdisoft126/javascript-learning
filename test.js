@@ -9,22 +9,27 @@
 
 // 5 Prototypes
 
-// Array.prototype.inArray = function(needle) {
-//     for (var i = 0; i < this.length; i++) {
-//         if (this[i] === needle) {
-//             return true;
-//         }
-//     }
-//     return false;
-// }
+Array.prototype.inArray = function(needle) {
+    for (var i = 0; i < this.length; i++) {
+        if (this[i] === needle) {
+            return true;
+        }
+    }
+    return false;
+}
 
-// var t = ["reb", "black", "white"];
+var t = ["reb", "black", "white"];
 
-// console.log(t.inArray("yellow"));
-// console.log(t.inArray("black"));
+console.log(t.inArray("yellow"));
+console.log(t.inArray("black"));
 
 //////
 
-// --> put code here
+String.prototype.reverse = function() {
+    return Array.prototype.reverse.apply(this.split('')).join('');
+}
 
-// Page 166 --> at the begining --> finish;
+var s = 'abc';
+console.log(s.reverse());
+
+// Page 166 --> extending buid-in objects - controversies;
