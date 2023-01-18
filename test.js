@@ -9,27 +9,15 @@
 
 // 5 Prototypes
 
-Array.prototype.inArray = function(needle) {
-    for (var i = 0; i < this.length; i++) {
-        if (this[i] === needle) {
-            return true;
-        }
+//// check if the the field or method which you want to add to the build-in method, doesn't already exists.
+
+if (!String.prototype.reverse) {
+    String.prototype.reverse = function() {
+        return Array.prototype.reverse.apply(this.split('')).join('');
     }
-    return false;
-}
-
-var t = ["reb", "black", "white"];
-
-console.log(t.inArray("yellow"));
-console.log(t.inArray("black"));
-
-//////
-
-String.prototype.reverse = function() {
-    return Array.prototype.reverse.apply(this.split('')).join('');
 }
 
 var s = 'abc';
 console.log(s.reverse());
 
-// Page 166 --> extending buid-in objects - controversies;
+// Page 167 --> prototype pitfalls;
