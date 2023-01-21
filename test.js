@@ -7,50 +7,22 @@
 
 ////
 
-// 5 Prototypes - Exercise 2, 3, 4, 5
+// 5 Prototypes - Exercise 6
 
-// prototype for Triangle
-var shape = {
-    type: 'triangle',
-    getType: function() {
-        return this.type;
+function potasuj() {
+    // var a = arguments;
+    var a = [1,2,3,4,5,6,7,8,9];
+    var t2 = [];
+    for (var i = 0; i < a.length; i++) {
+        t2[i] = a[Math.random * a.length];
     }
+    return t2;
 }
 
-// Constructor
-function Triangle(a, b, c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
-}
+console.log(potasuj());
 
-// assign prototype shape to Triangle
-Triangle.prototype = shape; 
-
-// add a new method to prototype
-shape.getCircuit = function() {
-    return this.a + this.b + this.c;
-}
-
-var t = new Triangle(1, 2, 3);
-console.log(t.a);
-console.log(t.b);
-console.log(t.c);
-console.log(t.type);
-console.log(t.getType());
-console.log(t.getCircuit());
-console.log(t.constructor);
-console.log(t.constructor.prototype.constructor);
-console.log(shape.isPrototypeOf(t));
-console.log(t.own);
-
-// has own property
-for (var f in t) {
-    if (t.hasOwnProperty(f)) {
-        console.log(f);
-    }
-}
+// var t = [1,2,3,4,5,6,7,8,9];
 
 
 
-// Page 170 --> exercises;
+// Page 170 --> finish exercise 6;
