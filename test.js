@@ -9,20 +9,22 @@
 
 // 5 Prototypes - Exercise 6
 
-function potasuj() {
-    // var a = arguments;
-    var a = [1,2,3,4,5,6,7,8,9];
-    var t2 = [];
-    for (var i = 0; i < a.length; i++) {
-        t2[i] = a[Math.random * a.length];
+function shuffle() {
+    // arguments
+    var a = [];
+    for (var j in arguments) {
+        a[j] = arguments[j];
     }
-    return t2;
+
+    // shuffle
+    var b = a.length;
+    var t = [];
+    for (var i = 0; i < b; i++) {
+        t[i] = a.splice(Math.floor(Math.random() * a.length),1)[0];
+    }
+    console.log(t);
 }
 
-console.log(potasuj());
-
-// var t = [1,2,3,4,5,6,7,8,9];
-
-
+shuffle(1,2,3,4,5,6,7,8,9);
 
 // Page 170 --> finish exercise 6;
