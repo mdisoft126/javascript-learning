@@ -9,29 +9,29 @@
 
 // 6 Inheritance
 
-function Figure() {
+//// using this
+function Figure(){
     this.name = 'figure';
 }
 
-function Figure2D() {
-    this.name = 'figure2d';
+var a = new Figure;
+console.log(a.name);
+
+delete Figure;
+console.log(a.name);
+console.log('\n');
+
+//// using prototype
+function Figure2() {
+    Figure2.prototype.name = 'figure';
 }
 
-function Triangle(side, height) {
-    this.name = 'triangle';
-    this.side = side;
-    this.height = height;
-    this.getArea = function() {
-        return (this.side * this.height)/2;
-    }
-}
+var b = new Figure2;
+console.log(b.name);
 
-Figure2D.prototype = new Figure;
-Triangle.prototype = new Figure2D;
+console.log(delete Figure2());
+console.log(b.name);
 
-var t = new Triangle(4, 5);
 
-console.log(t.name);
-console.log(t.getArea());
 
-// Page 173;
+// Page 175
