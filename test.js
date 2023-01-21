@@ -9,29 +9,43 @@
 
 // 6 Inheritance
 
-//// using this
-function Figure(){
-    this.name = 'figure';
+function Shape() {};
+
+// prototype extending
+Shape.prototype.name = 'figure';
+Shape.prototype.toString = function() {
+    return this.name;
 }
 
-var a = new Figure;
+//// good sequence, first inheritance, then prototype extending
+
+// Shape2D
+function Shape2D() {};
+
+// inheritance handling
+Shape2D.prototype = new Shape();
+Shape2D.prototype.constructor = Shape2D;
+
+// prototype extending
+Shape2D.prototype.name = 'figure2d';
+
+var a = new Shape2D;
 console.log(a.name);
 
-delete Figure;
-console.log(a.name);
-console.log('\n');
+//// wrong sequence, first should be inheritance, then prototype extending
 
-//// using prototype
-function Figure2() {
-    Figure2.prototype.name = 'figure';
-}
+// Shape2D2
+function Shape2D2() {};
 
-var b = new Figure2;
-console.log(b.name);
+// prototype extending <<<------ should be after inheritance handling
+Shape2D2.prototype.name = 'figure2d';
 
-console.log(delete Figure2());
-console.log(b.name);
+// inheritance handling
+Shape2D2.prototype = new Shape();
+Shape2D2.prototype.constructor = Shape2D;
 
+var a = new Shape2D2;
+console.log(a.name); // --> in results the name overvrited by Shape's proptotype
 
 
 // Page 175
