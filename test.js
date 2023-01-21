@@ -7,24 +7,31 @@
 
 ////
 
-// 5 Prototypes - Exercise 6
+// 6 Inheritance
 
-function shuffle() {
-    // arguments
-    var a = [];
-    for (var j in arguments) {
-        a[j] = arguments[j];
-    }
-
-    // shuffle
-    var b = a.length;
-    var t = [];
-    for (var i = 0; i < b; i++) {
-        t[i] = a.splice(Math.floor(Math.random() * a.length),1)[0];
-    }
-    console.log(t);
+function Figure() {
+    this.name = 'figure';
 }
 
-shuffle(1,2,3,4,5,6,7,8,9);
+function Figure2D() {
+    this.name = 'figure2d';
+}
 
-// Page 170 --> finish exercise 6;
+function Triangle(side, height) {
+    this.name = 'triangle';
+    this.side = side;
+    this.height = height;
+    this.getArea = function() {
+        return (this.side * this.height)/2;
+    }
+}
+
+Figure2D.prototype = new Figure;
+Triangle.prototype = new Figure2D;
+
+var t = new Triangle(4, 5);
+
+console.log(t.name);
+console.log(t.getArea());
+
+// Page 173;
