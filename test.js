@@ -10,61 +10,38 @@
 // 6 Inheritance
 
 function Shape() {};
-
-// prototype extending
-Shape.prototype.name = 'figure';
+Shape.prototype.name = 'shape';
 Shape.prototype.toString = function() {
     return this.name;
 }
 
-//// good sequence, first inheritance, then prototype extending
-
-// Shape2D
 function Shape2D() {};
-
-// inheritance handling
-Shape2D.prototype = new Shape();
+Shape2D.prototype = Shape.prototype; // reference to the prototype instead to the whole object
+// Shape2D.prototype = new Shape(); // previous way
 Shape2D.prototype.constructor = Shape2D;
+Shape2D.prototype.name = 'shape 2d';
 
-// prototype extending
-Shape2D.prototype.name = 'figure2d';
-
-// Triangle
 function Triangle(side, height) {
     this.side = side;
     this.height = height;
 }
-
-// inheritance handling
-Triangle.prototype = new Shape2D();
-Triangle.prototype.constructor = Triangle;
-
-// prototype extending
+Triangle.prototype = Shape2D.prototype; // reference to the prototype instead to the whole object
+// Triangle.prototype = new Shape2D(); // previous way
+Triangle.prototype.constructor = Shape2D;
 Triangle.prototype.name = 'triangle';
 Triangle.prototype.getArea = function() {
     return this.side * this.height / 2;
 }
 
-var t = new Triangle(4, 5);
-console.log(t.name);
-console.log(t.getArea());
-console.log(t.toString());
-console.log('\n');
+var a = new Triangle(4, 5);
 
-//// checking if own property
-console.log(t.hasOwnProperty('side')); // true
-console.log(t.hasOwnProperty('name')); // false
-console.log('\n');
+console.log(a.name);
+console.log(a.getArea());
 
-//// checking if prototype
-console.log(Shape2D.prototype.isPrototypeOf(t));
-console.log(Shape.prototype.isPrototypeOf(t));
-console.log('\n');
+//// check the name for Shape
+var f = new Shape();
+console.log(f.name); // triangle --->>> it means that by using reference we overwrite the value from prototypes
 
-//// instanceof
-console.log(t instanceof Triangle);
-console.log(t instanceof Shape2D);
-console.log(t instanceof Shape);
+// Inheriting the prototype itself
 
-
-// Page 177
+// Page 178 --> next temporary constructor new F()
