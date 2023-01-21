@@ -29,23 +29,42 @@ Shape2D.prototype.constructor = Shape2D;
 // prototype extending
 Shape2D.prototype.name = 'figure2d';
 
-var a = new Shape2D;
-console.log(a.name);
-
-//// wrong sequence, first should be inheritance, then prototype extending
-
-// Shape2D2
-function Shape2D2() {};
-
-// prototype extending <<<------ should be after inheritance handling
-Shape2D2.prototype.name = 'figure2d';
+// Triangle
+function Triangle(side, height) {
+    this.side = side;
+    this.height = height;
+}
 
 // inheritance handling
-Shape2D2.prototype = new Shape();
-Shape2D2.prototype.constructor = Shape2D;
+Triangle.prototype = new Shape2D();
+Triangle.prototype.constructor = Triangle;
 
-var a = new Shape2D2;
-console.log(a.name); // --> in results the name overvrited by Shape's proptotype
+// prototype extending
+Triangle.prototype.name = 'triangle';
+Triangle.prototype.getArea = function() {
+    return this.side * this.height / 2;
+}
+
+var t = new Triangle(4, 5);
+console.log(t.name);
+console.log(t.getArea());
+console.log(t.toString());
+console.log('\n');
+
+//// checking if own property
+console.log(t.hasOwnProperty('side')); // true
+console.log(t.hasOwnProperty('name')); // false
+console.log('\n');
+
+//// checking if prototype
+console.log(Shape2D.prototype.isPrototypeOf(t));
+console.log(Shape.prototype.isPrototypeOf(t));
+console.log('\n');
+
+//// instanceof
+console.log(t instanceof Triangle);
+console.log(t instanceof Shape2D);
+console.log(t instanceof Shape);
 
 
-// Page 175
+// Page 177
