@@ -9,39 +9,53 @@
 
 // 6 Inheritance
 
+//// Shape
 function Shape() {};
 Shape.prototype.name = 'shape';
 Shape.prototype.toString = function() {
     return this.name;
 }
 
+//// Shahpe2D
 function Shape2D() {};
-Shape2D.prototype = Shape.prototype; // reference to the prototype instead to the whole object
-// Shape2D.prototype = new Shape(); // previous way
-Shape2D.prototype.constructor = Shape2D;
-Shape2D.prototype.name = 'shape 2d';
 
+// using auxiliary function F()
+var F = function() {};
+F.prototype = Shape.prototype;
+Shape2D.prototype = new F();
+
+// add prototypes to Shape2d
+Shape2D.prototype.constructor = Shape2D;
+Shape2D.prototype.name = 'shape2d'
+
+//// Triangle
 function Triangle(side, height) {
     this.side = side;
     this.height = height;
 }
-Triangle.prototype = Shape2D.prototype; // reference to the prototype instead to the whole object
-// Triangle.prototype = new Shape2D(); // previous way
-Triangle.prototype.constructor = Shape2D;
+
+// using auxiliary function F()
+var F = function() {};
+F.prototype = Shape2D.prototype;
+Triangle.prototype = new F();
+
+// add prototypes to Triangle
+Triangle.prototype.constructor = Triangle;
 Triangle.prototype.name = 'triangle';
 Triangle.prototype.getArea = function() {
-    return this.side * this.height / 2;
+    return this.side * this. height / 2;
 }
 
-var a = new Triangle(4, 5);
-
+var a = new Triangle(5, 7);
 console.log(a.name);
+console.log(a.toString());
 console.log(a.getArea());
 
-//// check the name for Shape
-var f = new Shape();
-console.log(f.name); // triangle --->>> it means that by using reference we overwrite the value from prototypes
+console.log(a.__proto__);
+console.log(a.__proto__.__proto__);
+console.log(a.__proto__.__proto__.__proto__);
 
-// Inheriting the prototype itself
+var b = new Shape();
+console.log(b.name);
 
-// Page 178 --> next temporary constructor new F()
+// Page 180 --> next Uber: access to the parent-object
