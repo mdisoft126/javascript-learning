@@ -9,53 +9,60 @@
 
 // 6 Inheritance
 
-//// Shape
-function Shape() {};
-Shape.prototype.name = 'shape';
-Shape.prototype.toString = function() {
-    return this.name;
+//////// Out of the book --> Question mark operator
+
+//// 1. Ternary operator
+
+var temp = 35;
+var tempState = temp > 30 ? "Warm" : "Cold";
+console.log(tempState);
+
+//// 2. Optional Chaining
+
+var user = {
+    name: "Alex",
+    age: 24,
+    tell: function() {
+        return 1000;
+    }
 }
 
-//// Shahpe2D
-function Shape2D() {};
+// console.log(user.salary?.()); // expecting output: undefined //// working only since Node 14
 
-// using auxiliary function F()
-var F = function() {};
-F.prototype = Shape.prototype;
-Shape2D.prototype = new F();
+//// 3. Nullish Coalescing
 
-// add prototypes to Shape2d
-Shape2D.prototype.constructor = Shape2D;
-Shape2D.prototype.name = 'shape2d'
+// option with or ||
 
-//// Triangle
-function Triangle(side, height) {
-    this.side = side;
-    this.height = height;
+var a = {
+    name: undefined || 'N/A',
+    color: undefined || 'Some description',
+    species: 'fish' || 'Unknown species'
 }
-
-// using auxiliary function F()
-var F = function() {};
-F.prototype = Shape2D.prototype;
-Triangle.prototype = new F();
-
-// add prototypes to Triangle
-Triangle.prototype.constructor = Triangle;
-Triangle.prototype.name = 'triangle';
-Triangle.prototype.getArea = function() {
-    return this.side * this. height / 2;
-}
-
-var a = new Triangle(5, 7);
 console.log(a.name);
-console.log(a.toString());
-console.log(a.getArea());
+console.log(a.color);
+console.log(a.species);
 
-console.log(a.__proto__);
-console.log(a.__proto__.__proto__);
-console.log(a.__proto__.__proto__.__proto__);
+// but
 
-var b = new Shape();
-console.log(b.name);
+var b = {
+    name: '' || 'N/A',
+    age: 0 || 24
+}
+
+console.log(b.name); // we expect '' but got 'N/A'
+console.log(b.age); // we expect 0 but got 24
+
+// so in that case better use ??
+
+var c = {
+    name: undefined ?? 'N/A',
+    color: '' ?? 'N/A',
+    age: 0 ?? 30
+}
+
+console.log(c.name); // expecting output: 'N/A' //// working only since Node 14
+console.log(c.color); // expecting output: '' //// working only since Node 14
+console.log(c.age); // expecting output: 0 //// working only since Node 14
+
 
 // Page 180 --> next Uber: access to the parent-object
