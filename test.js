@@ -15,9 +15,18 @@ Parent.prototype.name = 'parent';
 Parent.prototype.getName = function() {
     return this.name;
 }
+// get first grand parent
 Parent.prototype.getParentName = function() {
-    return this.constructor.uber.name;
+    if (this.constructor.uber) {
+        // console.log(this.name);
+        return this.constructor.uber.getParentName();
+    }
+    return this.name;
 }
+//// get direct parent
+// Parent.prototype.getParentName = function() {
+//     return this.constructor.uber.name;
+// }
 
 //// Child1
 function Child1() {};
@@ -46,12 +55,12 @@ Child2.uber = Child1.prototype;
 Child2.prototype.name = 'child2';
 
 var a = new Child2();
-console.log(a.getName());
+// console.log(a.getName());
 console.log(a.getParentName());
 
-var b = new Child1();
-console.log(b.getName());
-console.log(b.getParentName());
+// var b = new Child1();
+// console.log(b.getName());
+// console.log(b.getParentName());
 
 
 
