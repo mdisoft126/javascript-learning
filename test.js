@@ -15,18 +15,36 @@ Parent.prototype.name = 'parent';
 Parent.prototype.getName = function() {
     return this.name;
 }
-// get first grand parent
+
+// get direct parent
 Parent.prototype.getParentName = function() {
+    return this.constructor.uber.name;
+}
+
+// get first grand parent
+Parent.prototype.getGrandParentName = function() {
     if (this.constructor.uber) {
-        // console.log(this.name);
-        return this.constructor.uber.getParentName();
+        return this.constructor.uber.getGrandParentName();
     }
     return this.name;
 }
-//// get direct parent
-// Parent.prototype.getParentName = function() {
-//     return this.constructor.uber.name;
-// }
+
+// get list of names including parent
+Parent.prototype.getListOfNames = function() {
+    var t = [];
+    // console.log(t + '1');
+    if (this.constructor.uber) {
+        // console.log(t + '2');
+        console.log(t[t.length] = this.constructor.uber.getListOfNames());
+        console.log(t.length);
+        // console.log(t + '4');
+    }
+    // console.log(t + '5');
+    console.log(t.length);
+    t[t.length] = this.name;
+    // console.log(t + '6');
+    return t.join(', ');
+}
 
 //// Child1
 function Child1() {};
@@ -56,7 +74,9 @@ Child2.prototype.name = 'child2';
 
 var a = new Child2();
 // console.log(a.getName());
-console.log(a.getParentName());
+// console.log(a.getParentName());
+// console.log(a.getGrandParentName());
+console.log(a.getListOfNames());
 
 // var b = new Child1();
 // console.log(b.getName());
@@ -64,4 +84,4 @@ console.log(a.getParentName());
 
 
 
-// Page 180 --> next Uber: access to the parent-object
+// Page 180 --> next Uber: access to the parent-object --> in progress. It works but I need to understand it
