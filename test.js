@@ -32,18 +32,12 @@ Parent.prototype.getGrandParentName = function() {
 // get list of names including parent
 Parent.prototype.getListOfNames = function() {
     var t = [];
-    // console.log(t + '1');
     if (this.constructor.uber) {
-        // console.log(t + '2');
-        console.log(t[t.length] = this.constructor.uber.getListOfNames());
-        console.log(t.length);
-        // console.log(t + '4');
+        t[t.length] = this.constructor.uber.getListOfNames();
     }
-    // console.log(t + '5');
-    console.log(t.length);
     t[t.length] = this.name;
-    // console.log(t + '6');
-    return t.join(', ');
+    // return t.join(', ');
+    return t;
 }
 
 //// Child1
