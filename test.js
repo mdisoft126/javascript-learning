@@ -35,6 +35,8 @@ Parent.prototype.getListOfNames = function() {
     if (this.constructor.uber) {
         t[t.length] = this.constructor.uber.getListOfNames();
     }
+    console.log(this.name);
+    console.log(t.length);
     t[t.length] = this.name;
     // return t.join(', ');
     return t;
