@@ -7,48 +7,66 @@
 
 ////
 
-// 6 Inheritance
+//// 6 Inheritance
 
-function Shape() {};
-Shape.prototype.name = 'Shape';
-Shape.prototype.experience = 'only Shape';
-
-function Triangle() {};
-Triangle.prototype.name = 'Triangle';
-Triangle.prototype.brave = 'Triangle only Triangle'
-
-var p = new Shape();
-console.log(p.name);
-console.log(p.experience);
-console.log(p.brave);
-
-var c = new Triangle();
-console.log(c.name);
-console.log(c.brave);
-console.log(c.experience);
-
-console.log('\n');
+// extend function
 
 function extend(Child, Parent) {
     var F = function() {};
-    F.prototype = Shape.prototype;
-    Triangle.prototype = new F();
-    Triangle.prototype.constructor = Triangle;
-    Triangle.uber = Shape.prototype;
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.uber = Parent.prototype;
 }
 
-extend(Triangle, Shape);
+// Animal
+function Animal() {};
+Animal.prototype.name = 'animal';
 
-var p1 = new Shape();
-console.log(p1.name);
-console.log(p1.experience);
-console.log(p1.brave);
+// get name
+Animal.prototype.getName = function() {
+    return this.name;
+}
 
-console.log('\n');
+//get Parent name
+Animal.prototype.getParentName = function() {
+    return this.constructor.uber.name;
+}
 
-var c1 = new Triangle();
-console.log(c1.name);
-console.log(c1.brave);
-console.log(c1.experience);
+// get first Grandparent name
+Animal.prototype.getGrandParentName = function() {
+    if(this.constructor.uber) {
+        return this.constructor.uber.getGrandParentName();
+    }
+    return this.name;
+}
 
-// Page 181 --> Closing inheritance inside a function
+// get list of names;
+Animal.prototype.getListOfNames = function() {
+    var t = [];
+    if(this.constructor.uber) {
+        t[t.length] = this.constructor.uber.getListOfNames();
+    }
+    t[t.length] = this.name;
+    return t;
+}
+
+// Mammal
+function Mammal() {};
+extend(Mammal, Animal);
+Mammal.prototype.name = 'mammal';
+
+// Dog
+function Dog() {};
+extend(Dog, Mammal);
+Dog.prototype.name = 'dog';
+
+
+var a = new Dog();
+console.log(a.getName());
+console.log(a.getParentName());
+console.log(a.getGrandParentName());
+console.log(a.getListOfNames());
+
+
+// Page 182 next --> Copying fields
