@@ -9,75 +9,46 @@
 
 // 6 Inheritance
 
-//// Parent
-function Parent() {};
-Parent.prototype.name = 'parent';
-Parent.prototype.getName = function() {
-    return this.name;
+function Shape() {};
+Shape.prototype.name = 'Shape';
+Shape.prototype.experience = 'only Shape';
+
+function Triangle() {};
+Triangle.prototype.name = 'Triangle';
+Triangle.prototype.brave = 'Triangle only Triangle'
+
+var p = new Shape();
+console.log(p.name);
+console.log(p.experience);
+console.log(p.brave);
+
+var c = new Triangle();
+console.log(c.name);
+console.log(c.brave);
+console.log(c.experience);
+
+console.log('\n');
+
+function extend(Child, Parent) {
+    var F = function() {};
+    F.prototype = Shape.prototype;
+    Triangle.prototype = new F();
+    Triangle.prototype.constructor = Triangle;
+    Triangle.uber = Shape.prototype;
 }
 
-// get direct parent
-Parent.prototype.getParentName = function() {
-    return this.constructor.uber.name;
-}
+extend(Triangle, Shape);
 
-// get first grand parent
-Parent.prototype.getGrandParentName = function() {
-    if (this.constructor.uber) {
-        return this.constructor.uber.getGrandParentName();
-    }
-    return this.name;
-}
+var p1 = new Shape();
+console.log(p1.name);
+console.log(p1.experience);
+console.log(p1.brave);
 
-// get list of names including parent
-Parent.prototype.getListOfNames = function() {
-    var t = [];
-    if (this.constructor.uber) {
-        t[t.length] = this.constructor.uber.getListOfNames();
-    }
-    console.log(this.name);
-    console.log(t.length);
-    t[t.length] = this.name;
-    // return t.join(', ');
-    return t;
-}
+console.log('\n');
 
-//// Child1
-function Child1() {};
-var F = function() {};
-F.prototype = Parent.prototype;
-Child1.prototype = new F();
-Child1.prototype.constructor = Child1;
+var c1 = new Triangle();
+console.log(c1.name);
+console.log(c1.brave);
+console.log(c1.experience);
 
-// Uber for Child1 --> creating connection to parent!!!
-Child1.uber = Parent.prototype;
-
-// extending prototype
-Child1.prototype.name = 'child1';
-
-//// Child2
-function Child2() {};
-var F = function() {};
-F.prototype = Child1.prototype;
-Child2.prototype = new F();
-Child2.prototype.constructor = Child2;
-
-// Uber for child2 --> creating connection to parent!!!
-Child2.uber = Child1.prototype;
-
-// extending prototype
-Child2.prototype.name = 'child2';
-
-var a = new Child2();
-// console.log(a.getName());
-// console.log(a.getParentName());
-// console.log(a.getGrandParentName());
-console.log(a.getListOfNames());
-
-// var b = new Child1();
-// console.log(b.getName());
-// console.log(b.getParentName());
-
-
-
-// Page 180 --> next Uber: access to the parent-object --> in progress. It works but I need to understand it
+// Page 181 --> Closing inheritance inside a function
