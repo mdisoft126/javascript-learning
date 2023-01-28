@@ -9,61 +9,47 @@
 
 //// 6 Inheritance
 
-// extend function
+// Copying fields
 
-function extend(Child, Parent) {
-    var F = function() {};
-    F.prototype = Parent.prototype;
-    Child.prototype = new F();
-    Child.prototype.constructor = Child;
+function extend2(Child, Parent) {
+    var c = Child.prototype;
+    var p = Parent.prototype;
+    for (var i in p) {
+        c[i] = p[i];
+    }
     Child.uber = Parent.prototype;
 }
 
-// Animal
 function Animal() {};
 Animal.prototype.name = 'animal';
-
-// get name
-Animal.prototype.getName = function() {
-    return this.name;
-}
-
-//get Parent name
 Animal.prototype.getParentName = function() {
     return this.constructor.uber.name;
 }
-
-// get first Grandparent name
 Animal.prototype.getGrandParentName = function() {
     if(this.constructor.uber) {
         return this.constructor.uber.getGrandParentName();
     }
     return this.name;
 }
-
-// get list of names;
 Animal.prototype.getListOfNames = function() {
     var t = [];
     if(this.constructor.uber) {
         t[t.length] = this.constructor.uber.getListOfNames();
     }
     t[t.length] = this.name;
-    return t;
+    return t.join(', ');
 }
 
-// Mammal
 function Mammal() {};
-extend(Mammal, Animal);
+extend2(Mammal, Animal);
 Mammal.prototype.name = 'mammal';
 
-// Dog
 function Dog() {};
-extend(Dog, Mammal);
+extend2(Dog, Mammal);
 Dog.prototype.name = 'dog';
 
-
 var a = new Dog();
-console.log(a.getName());
+console.log(a.name);
 console.log(a.getParentName());
 console.log(a.getGrandParentName());
 console.log(a.getListOfNames());
