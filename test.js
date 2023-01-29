@@ -9,68 +9,46 @@
 
 //// 6 Inheritance
 
-// Copying fields
+// Beware of copying by reference!
 
 function extend(Child, Parent) {
-    var F = function() {};
-    F.prototype = Parent.prototype;
-    Child.prototype = new F();
-    Child.prototype.constructor = Child;
-    Child.uber = Parent.prototype;
-}
-
-function extend2(Child, Parent) {
     var c = Child.prototype;
     var p = Parent.prototype;
     for (var i in p) {
         c[i] = p[i];
     }
-    Child.uber = Parent.prototype;
+    Child.uber = p;
 }
 
 function Animal() {};
 Animal.prototype.name = 'animal';
-Animal.prototype.getParentName = function() {
-    return this.constructor.uber.name;
-}
-Animal.prototype.getGrandParentName = function() {
-    if(this.constructor.uber) {
-        return this.constructor.uber.getGrandParentName();
-    }
-    return this.name;
-}
-Animal.prototype.getListOfNames = function() {
-    var t = [];
-    if(this.constructor.uber) {
-        t[t.length] = this.constructor.uber.getListOfNames();
-    }
-    t[t.length] = this.name;
-    return t.join(', ');
-}
-
+Animal.prototype.table = [1,2,3];
 function Mammal() {};
-// extend(Mammal, Animal);
-extend2(Mammal, Animal);
-// Mammal.prototype.name = 'mammal';
+extend(Mammal, Animal);
 
-function Dog() {};
-// extend(Dog, Mammal);
-extend2(Dog, Mammal);
-// Dog.prototype.name = 'dog';
-
-var a = new Dog();
-console.log(a.name);
-console.log(a.getParentName());
-console.log(a.getGrandParentName());
-console.log(a.getListOfNames());
-
+console.log(Animal.prototype.name);
+console.log(Animal.prototype.table);
+console.log(Mammal.prototype.name);
+console.log(Mammal.prototype.table);
 console.log('\n');
 
-console.log(a.name); // extend: animal, extend2: animal
-console.log(a.constructor.prototype.hasOwnProperty('name'));            // extend: false, extend2: true
-console.log(a.constructor.prototype.hasOwnProperty('getParentName'));   // extend: false, extend2: true
-console.log(a.__proto__.hasOwnProperty('name'));                        // extend: false, extend2: true
-console.log(a.__proto__.hasOwnProperty('getParentName'));               // extend: false, extend2: true
+// Simple type is not touched. Parent's name value is not touched
+Mammal.prototype.name = 'mammal';
+console.log(Animal.prototype.name);
+console.log(Mammal.prototype.name);
+console.log('\n');
+
+// // Assignement to the new object is fine. Parent object will stay not touched.
+// Mammal.prototype.table = [3,4,5];
+// console.log(Animal.prototype.table);
+// console.log(Mammal.prototype.table);
+// console.log('\n');
+
+// Doing something on currecnt object like table will result that on the aparent object will be visible a new value as well.
+Mammal.prototype.table.push(3,4,5);
+console.log(Animal.prototype.table);
+console.log(Mammal.prototype.table);
+console.log('\n');
 
 
-// Page 184 next --> Beware of copying by reference!
+// Page 186 next --> Objects inherit from objects
