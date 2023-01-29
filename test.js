@@ -11,6 +11,14 @@
 
 // Copying fields
 
+function extend(Child, Parent) {
+    var F = function() {};
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.uber = Parent.prototype;
+}
+
 function extend2(Child, Parent) {
     var c = Child.prototype;
     var p = Parent.prototype;
@@ -41,12 +49,14 @@ Animal.prototype.getListOfNames = function() {
 }
 
 function Mammal() {};
+// extend(Mammal, Animal);
 extend2(Mammal, Animal);
-Mammal.prototype.name = 'mammal';
+// Mammal.prototype.name = 'mammal';
 
 function Dog() {};
+// extend(Dog, Mammal);
 extend2(Dog, Mammal);
-Dog.prototype.name = 'dog';
+// Dog.prototype.name = 'dog';
 
 var a = new Dog();
 console.log(a.name);
@@ -54,5 +64,13 @@ console.log(a.getParentName());
 console.log(a.getGrandParentName());
 console.log(a.getListOfNames());
 
+console.log('\n');
 
-// Page 182 next --> Copying fields
+console.log(a.name); // extend: animal, extend2: animal
+console.log(a.constructor.prototype.hasOwnProperty('name'));            // extend: false, extend2: true
+console.log(a.constructor.prototype.hasOwnProperty('getParentName'));   // extend: false, extend2: true
+console.log(a.__proto__.hasOwnProperty('name'));                        // extend: false, extend2: true
+console.log(a.__proto__.hasOwnProperty('getParentName'));               // extend: false, extend2: true
+
+
+// Page 184 next --> Beware of copying by reference!
