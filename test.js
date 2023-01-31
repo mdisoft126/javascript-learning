@@ -9,43 +9,12 @@
 
 //// 6 Inheritance
 
-// extend by copying object
-function extendCopy(p) {
-    var c = {};
-    for(var i in p) {
-        c[i] = p[i];
-    }
-    c.uber = p;
-    return c;
+function deepCopy(p, c) {
+    var a = c || {};
+    var b = p;
+    return a;
 }
 
-//// Create objects (no constructors)
-// grand parent
-var shape = {
-    name: 'shape',
-    toString: function() {return this.name}
-}
+console.log(deepCopy(22));
 
-// parent
-var shape2d = extendCopy(shape);
-shape2d.name = 'shape 2d';
-shape2d.toString = function() {return this.uber.toString() + ', ' + this.name};
-
-// child
-var triangle = extendCopy(shape2d);
-triangle.name = 'triangle';
-triangle.toString = function() {return this.uber.toString() + ', ' + this.name};
-triangle.side = 10;
-triangle.heght = 7;
-triangle.getArea = function() {return this.side * this.heght / 2};
-
-console.log(shape.name);
-console.log(shape2d.name);
-console.log(triangle.name);
-console.log('\n');
-
-console.log(shape.toString());
-console.log(shape2d.toString());
-console.log(triangle.toString());
-
-// Page 187 next --> Deep copying
+// Page 187 next --> Deep copying- in progress
