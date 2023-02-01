@@ -9,6 +9,16 @@
 
 //// 6 Inheritance
 
+// shallow copy
+function extendCopy(p) {
+    var c = {};
+    for(var i in p) {
+        c[i] = p[i]
+    }
+    return c;
+}
+
+// deep copy
 function deepCopy(p, c) {
     var c = c || {};
     for(var i in p) {
@@ -22,13 +32,34 @@ function deepCopy(p, c) {
     return c;
 }
 
+// object
 var o = {
     name: 'hello',
+    num: [1,2,3],
     obj: {
         field: 1,
         desc: 'triangle'
-    }};
+    }
+};
 
-console.log(deepCopy(o));
 
-// Page 187 next --> Deep copying- in progress
+var deep = deepCopy(o);
+var shallow = extendCopy(o);
+
+console.log(deep);
+console.log(shallow);
+console.log('\n');
+
+// adding value in deep - everything ok, original object not touched
+deep.num.push(4,5,6);
+console.log(deep);
+console.log(o);
+console.log('\n');
+
+// adding value in shallow - using shallow copying, the original object is touched as well
+shallow.num.push(4,5,6);
+console.log(shallow);
+console.log(o);
+console.log('\n');
+
+// Page 189 next --> Object()
