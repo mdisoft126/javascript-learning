@@ -9,57 +9,47 @@
 
 //// 6 Inheritance
 
-// shallow copy
-function extendCopy(p) {
-    var c = {};
-    for(var i in p) {
-        c[i] = p[i]
-    }
-    return c;
+//// inheritance using Object() method
+// function Object (without uber)
+function object(o) {
+    function F() {};
+    F.prototype = o;
+    return new F();
 }
 
-// deep copy
-function deepCopy(p, c) {
-    var c = c || {};
-    for(var i in p) {
-        if (typeof p[i] === 'object') {
-            c[i] = (p[i].constructor === Array) ? [] : {};
-            deepCopy(p[i], c[i]);
-        } else {
-            c[i] = p[i];
-        }
-    }
-    return c;
+// grand parent
+var shape = {
+    name: 'shape',
+    obj: {1:'a', 2:'b'},
+    toString: function() {return this.name}
 }
 
-// object
-var o = {
-    name: 'hello',
-    num: [1,2,3],
-    obj: {
-        field: 1,
-        desc: 'triangle'
-    }
-};
+// parent
+var shape2d = object(shape);
+shape2d.name = 'shape 2d';
+shape2d.obj= {3:'c', 4:'d'};
+// shape2d.toString = function() {return this.uber.toString() + ', ' + this.name};
 
+// child
+var triangle = object(shape2d);
+triangle.name = 'triangle';
+triangle.obj= {5:'e', 6:'f'};
+// triangle.toString = function() {return this.uber.toString() + ', ' + this.name};
+triangle.side = 10;
+triangle.heght = 7;
+triangle.getArea = function() {return this.side * this.heght / 2};
 
-var deep = deepCopy(o);
-var shallow = extendCopy(o);
-
-console.log(deep);
-console.log(shallow);
+console.log(shape.name);
+console.log(shape2d.name);
+console.log(triangle.name);
 console.log('\n');
 
-// adding value in deep - everything ok, original object not touched
-deep.num.push(4,5,6);
-console.log(deep);
-console.log(o);
-console.log('\n');
+console.log(shape.obj);
+console.log(shape2d.obj);
+console.log(triangle.obj);
+console.log(triangle.obj['3'] = 'c');
+console.log(triangle.obj);
+console.log(shape.obj);
 
-// adding value in shallow - using shallow copying, the original object is touched as well
-shallow.num.push(4,5,6);
-console.log(shallow);
-console.log(o);
-console.log('\n');
 
 // Page 189 next --> Object()
