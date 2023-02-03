@@ -9,63 +9,53 @@
 
 //// 6 Inheritance
 
-//// inheritance using Object() method
+//// The combination of prototypical inheritance with field duplication
 
-// // function Object (without uber)
-// function object(o) {
-//     function F() {};
-//     F.prototype = o;
-//     return new F();
-// }
-
-// function Object - version with uber <--
-function object(o) {
+// function for cloning and aldo copying fields
+function objectPlus(o, additions) {
     var n;
     function F() {};
     F.prototype = o;
     n = new F();
     n.uber = o;
+    for (var i in additions) {
+        n[i] = additions[i];
+    }
     return n;
 }
 
-// grand parent
+// shape object
 var shape = {
     name: 'shape',
-    obj: {1:'a', 2:'b'},
     toString: function() {return this.name}
 }
 
-// parent
-var shape2d = object(shape);
-shape2d.name = 'shape 2d';
-shape2d.obj= {3:'c', 4:'d'};
-shape2d.toString = function() {return this.uber.toString() + ', ' + this.name};
+// shape 2d
+var shape2d = objectPlus(shape, {
+    name: 'sahep 2d',
+    toString: function() {return this.uber.toString() + ', ' + this.name}
+})
 
-// child
-var triangle = object(shape2d);
-triangle.name = 'triangle';
-triangle.obj= {5:'e', 6:'f'};
-triangle.toString = function() {return this.uber.toString() + ', ' + this.name};
-triangle.side = 10;
-triangle.heght = 7;
-triangle.getArea = function() {return this.side * this.heght / 2};
+// triangle
+var triangle = objectPlus(shape2d, {
+    name: 'triangle',
+    toString: function() {return this.uber.toString() + ', ' + this.name},
+    side: 0,
+    height: 0,
+    getArea: function() {
+        return this.side * this.height / 2;
+    }
+})
 
-console.log(shape.name);
-console.log(shape2d.name);
-console.log(triangle.name);
-console.log('\n');
+var a = objectPlus(triangle, {
+    // name: 'aaaaaa', ///////////// --> if it is not added the the value is inherited from parent.
+    side: 5,
+    height: 4,
+    toString: function() {return this.uber.toString() + ', ' + this.name}
+})
 
-console.log(shape.obj);
-console.log(shape2d.obj);
-console.log(triangle.obj);
-console.log(triangle.obj['3'] = 'c');
-console.log(triangle.obj);
-console.log(shape.obj);
-console.log('\n');
+console.log(a.getArea());
+console.log(a.toString());
+console.log(a.name);
 
-console.log(shape.toString());
-console.log(shape2d.toString());
-console.log(triangle.toString());
-
-
-// Page 190 next --> The combination of prototypical inheritance with field duplication
+// Page 191 next --> Multiple inheritance
