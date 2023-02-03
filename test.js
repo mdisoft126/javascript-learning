@@ -9,53 +9,45 @@
 
 //// 6 Inheritance
 
-//// The combination of prototypical inheritance with field duplication
+//// Multiple inheritance
 
-// function for cloning and aldo copying fields
-function objectPlus(o, additions) {
-    var n;
-    function F() {};
-    F.prototype = o;
-    n = new F();
-    n.uber = o;
-    for (var i in additions) {
-        n[i] = additions[i];
+// function multi --> can copy inheritance/copy multiple objects at once
+// version without uber
+function multi() {
+    var n = {}, extras, j = 0, len = arguments.length;
+    for (j = 0; j < len; j++) {
+        extras = arguments[j];
+        for (var i in extras) {
+            n[i] = extras[i]
+        }
     }
     return n;
 }
 
-// shape object
+//// version without uber
+// shape
 var shape = {
     name: 'shape',
     toString: function() {return this.name}
 }
 
 // shape 2d
-var shape2d = objectPlus(shape, {
-    name: 'sahep 2d',
-    toString: function() {return this.uber.toString() + ', ' + this.name}
-})
+var shape2d = {
+    name: 'shape2d',
+    size: 'large'
+}
 
 // triangle
-var triangle = objectPlus(shape2d, {
+var triangle = {
     name: 'triangle',
-    toString: function() {return this.uber.toString() + ', ' + this.name},
-    side: 0,
-    height: 0,
-    getArea: function() {
-        return this.side * this.height / 2;
-    }
-})
+    getArea: function(side, height) {return side * height / 2}
+}
 
-var a = objectPlus(triangle, {
-    // name: 'aaaaaa', ///////////// --> if it is not added the the value is inherited from parent.
-    side: 5,
-    height: 4,
-    toString: function() {return this.uber.toString() + ', ' + this.name}
-})
+var a = multi(shape, shape2d, triangle);
 
-console.log(a.getArea());
-console.log(a.toString());
 console.log(a.name);
+console.log(a.toString());
+console.log(a.size);
+console.log(a.getArea(4, 7));
 
-// Page 191 next --> Multiple inheritance
+// Page 193 next --> Mixins
