@@ -11,26 +11,30 @@
 
 //// Summary
 
-////// 1. Prototype chaining (pseudo-class pattern)
+////// 2. Inheriting the prototype itself
 function Parent() {
     this.name = 'parent';
     this.toString = function() {return this.name};
 }
-Parent.size = 4; //// <----
+Parent.prototype.size = 4;
 
 function Child() {
     this.name = 'child';
 }
 
-Child.prototype = new Parent();
-Child.prototype.constructor = Child;
+Child.prototype = Parent.prototype;
 
 var a = new Child();
-var b = new Parent();
 
-console.log(a.toString());  // result: child
-console.log(a.size);        // result: undefined --> because Parent.size was created as own field in Parent object 
-console.log(b.name);        // children can't change the parent's functionality
+console.log(a.name);
+console.log(a.toString());
+console.log(a.size);
+console.log('\n');
+
+Child.prototype.size = 10; ////// using this method we can overwrite the parent's value
+
+var b = new Parent();
+console.log(b.size);
 
 //////
 
