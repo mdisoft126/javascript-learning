@@ -9,58 +9,45 @@
 
 //// 6 Inheritance
 
-//// Borrowing a constructor - with prototype inheritance
+//// Borrowing a constructor - borrow a constructor and copy its prototype
 
-// Shape constructor
+// function extend2 --> taking parameters from parent constructor
+function extend2(Child, Parent) {
+    var p = Parent.prototype;
+    var c = Child.prototype;
+    for (var i in p) {
+        c[i] = p[i];
+    }
+    c.uber = p;
+}
+
+// constructor Shape
 function Shape(id) {
     this.id = id;
 }
 Shape.prototype.name = 'shape';
-Shape.prototype.size = 4;
+Shape.prototype.size = 45;
 Shape.prototype.toString = function() {return this.name};
 
-// Triangle constructor
+// constructor Triangle
 function Triangle() {
     Shape.apply(this, arguments);
 }
-Triangle.prototype = new Shape(); ///////// thanks for that, new object inherits prototype as well
+extend2(Triangle, Shape);
 Triangle.prototype.name = 'triangle';
 
-var t = new Triangle(100);
-console.log(t.id);
-console.log(t.name);
-console.log(t.size); // Shape prototype was not inherited
-console.log(t.toString()); // Shape prototype was not inherited
-console.log('\n');
-
-var a = new Shape(200);
+////
+var a = new Triangle(200);
 console.log(a.id);
 console.log(a.name);
-console.log(a.size); // Shape prototype was not inherited
-console.log(a.toString()); // Shape prototype was not inherited
+console.log(a.size);
+console.log(a.toString());
+console.log(a.uber.name);
 console.log('\n');
 
-var t = new Triangle(100);
-console.log(t.id);
-console.log(t.name);
-console.log(t.size); // Shape prototype was not inherited
-console.log(t.toString()); // Shape prototype was not inherited
-console.log('\n');
+console.log(a.id);
+console.log(a.__proto__.id);                //// without double inheritance (it is better now)
+console.log(a.constructor.prototype.id);    //// without double inheritance (it is better now)
+console.log(a.uber.name);
 
-console.log(t.name);
-console.log(t.__proto__.name);
-console.log(t.constructor.prototype.name);
-console.log('\n');
-
-console.log(delete t.name);
-// console.log(delete t.__proto__.name);
-// console.log(delete t.constructor.prototype.name);
-console.log('\n');
-
-console.log(t.name);
-console.log(t.__proto__.name);
-console.log(t.constructor.prototype.name);
-console.log('\n');
-
-
-// Page 196 next --> Borrowing a constructor - borrow a constructor and copy its prototype
+// Page 197 next --> Summary
