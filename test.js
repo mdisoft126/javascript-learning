@@ -9,10 +9,10 @@
 
 //// 6 Inheritance
 
-//// Multiple inheritance
+//// Mixins
 
-// function multi --> can copy inheritance/copy multiple objects at once
-// version without uber
+// Mixins
+
 function multi() {
     var n = {}, extras, j = 0, len = arguments.length;
     for (j = 0; j < len; j++) {
@@ -24,7 +24,6 @@ function multi() {
     return n;
 }
 
-//// version without uber
 // shape
 var shape = {
     name: 'shape',
@@ -49,5 +48,11 @@ console.log(a.name);
 console.log(a.toString());
 console.log(a.size);
 console.log(a.getArea(4, 7));
+console.log('\n');
 
-// Page 193 next --> Mixins
+// mixin concept --> during creating an object, in this case object "a", you can provide some functionalities
+// from other objects but they are not inherited for that object. For example toString is not inherited into Shape2d.
+console.log(triangle.toString());
+console.log(triangle.size);
+
+// Page 193 next --> Parasitic inheritance
