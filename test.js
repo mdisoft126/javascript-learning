@@ -9,50 +9,30 @@
 
 //// 6 Inheritance
 
-//// Mixins
+//// Parasitic inheritance
 
-// Mixins
-
-function multi() {
-    var n = {}, extras, j = 0, len = arguments.length;
-    for (j = 0; j < len; j++) {
-        extras = arguments[j];
-        for (var i in extras) {
-            n[i] = extras[i]
-        }
-    }
-    return n;
-}
-
-// shape
+// normal object
 var shape = {
     name: 'shape',
-    toString: function() {return this.name}
+    size: 4
 }
 
-// shape 2d
-var shape2d = {
-    name: 'shape2d',
-    size: 'large'
+// parasite function --> taking everything from parent object and overwrite values on it. Even simple fields are overwritten.
+function triangle(s, h) {
+    var parasite = Object(shape);
+    parasite.name = 'triangle';
+    // parasite.size = 3;
+    parasite.side = s;
+    parasite.height = h;
+    parasite.getArea = function() {return this.side * this.height / 2};
+    return parasite;
 }
 
-// triangle
-var triangle = {
-    name: 'triangle',
-    getArea: function(side, height) {return side * height / 2}
-}
-
-var a = multi(shape, shape2d, triangle);
-
+var a = triangle(4, 8);
 console.log(a.name);
-console.log(a.toString());
 console.log(a.size);
-console.log(a.getArea(4, 7));
+console.log(a.getArea());
 console.log('\n');
 
-// mixin concept --> during creating an object, in this case object "a", you can provide some functionalities
-// from other objects but they are not inherited for that object. For example toString is not inherited into Shape2d.
-console.log(triangle.toString());
-console.log(triangle.size);
-
-// Page 193 next --> Parasitic inheritance
+console.log(shape.name);
+// Page 194 next --> Borrowing a constructor
