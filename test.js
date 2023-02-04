@@ -11,32 +11,31 @@
 
 //// Summary
 
-////// 2. Inheriting the prototype itself
-function Parent() {
-    this.name = 'parent';
-    this.toString = function() {return this.name};
+////// 3. Temporary constructor
+// function tempConstructor
+function tempConstructor(Child, Parent) {
+    function F() {}; ////// --> remporary constructor
+    F.prototype = Parent.prototype;
+    Child.prototype = new F();
+    Child.prototype.constructor = Child;
+    Child.uber = Parent.prototype;
 }
-Parent.prototype.size = 4;
 
-function Child() {
-    this.name = 'child';
-}
+function Parent() {};
+Parent.prototype.name = 'parent';
+Parent.prototype.toString = function() {return this.name};
 
-Child.prototype = Parent.prototype;
+function Child() {};
+Child.prototype.name = 'child'
+
+tempConstructor(Child, Parent);
 
 var a = new Child();
-
 console.log(a.name);
 console.log(a.toString());
-console.log(a.size);
-console.log('\n');
-
-Child.prototype.size = 10; ////// using this method we can overwrite the parent's value
-
-var b = new Parent();
-console.log(b.size);
-
-//////
 
 
-// Page 200 next --> Case study: we draw shapes - analysis
+//////  /////////////////////////// finish this one!!!!!!!!!!!!!!!!!!!!!!!
+
+
+// Page 198 next --> Copying prototype fields 
