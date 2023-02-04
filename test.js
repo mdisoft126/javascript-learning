@@ -9,30 +9,27 @@
 
 //// 6 Inheritance
 
-//// Parasitic inheritance
+//// Borrowing a constructor - without prototype inheritance
 
-// normal object
-var shape = {
-    name: 'shape',
-    size: 4
+// Shape constructor
+function Shape(id) {
+    this.id = id;
 }
+Shape.prototype.name = 'shape';
+Shape.prototype.size = 4;
+Shape.prototype.toString = function() {return this.name};
 
-// parasite function --> taking everything from parent object and overwrite values on it. Even simple fields are overwritten.
-function triangle(s, h) {
-    var parasite = Object(shape);
-    parasite.name = 'triangle';
-    // parasite.size = 3;
-    parasite.side = s;
-    parasite.height = h;
-    parasite.getArea = function() {return this.side * this.height / 2};
-    return parasite;
+// Triangle constructor
+function Triangle() {
+    Shape.apply(this, arguments);
 }
+Triangle.prototype.name = 'triangle';
 
-var a = triangle(4, 8);
-console.log(a.name);
-console.log(a.size);
-console.log(a.getArea());
-console.log('\n');
+var t = new Triangle(100);
+console.log(t.id);
+console.log(t.name);
+console.log(t.size); // Shape prototype was not inherited
+console.log(t.toString()); // Shape prototype was not inherited
 
-console.log(shape.name);
-// Page 194 next --> Borrowing a constructor
+
+// Page 196 next --> Borrowing a constructor - borrow a constructor and copy its prototype
