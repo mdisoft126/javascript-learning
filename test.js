@@ -9,45 +9,30 @@
 
 //// 6 Inheritance
 
-//// Borrowing a constructor - borrow a constructor and copy its prototype
+//// Summary
 
-// function extend2 --> taking parameters from parent constructor
-function extend2(Child, Parent) {
-    var p = Parent.prototype;
-    var c = Child.prototype;
-    for (var i in p) {
-        c[i] = p[i];
-    }
-    c.uber = p;
+////// 1. Prototype chaining (pseudo-class pattern)
+function Parent() {
+    this.name = 'parent';
+    this.toString = function() {return this.name};
+}
+Parent.size = 4; //// <----
+
+function Child() {
+    this.name = 'child';
 }
 
-// constructor Shape
-function Shape(id) {
-    this.id = id;
-}
-Shape.prototype.name = 'shape';
-Shape.prototype.size = 45;
-Shape.prototype.toString = function() {return this.name};
+Child.prototype = new Parent();
+Child.prototype.constructor = Child;
 
-// constructor Triangle
-function Triangle() {
-    Shape.apply(this, arguments);
-}
-extend2(Triangle, Shape);
-Triangle.prototype.name = 'triangle';
+var a = new Child();
+var b = new Parent();
 
-////
-var a = new Triangle(200);
-console.log(a.id);
-console.log(a.name);
-console.log(a.size);
-console.log(a.toString());
-console.log(a.uber.name);
-console.log('\n');
+console.log(a.toString());  // result: child
+console.log(a.size);        // result: undefined --> because Parent.size was created as own field in Parent object 
+console.log(b.name);        // children can't change the parent's functionality
 
-console.log(a.id);
-console.log(a.__proto__.id);                //// without double inheritance (it is better now)
-console.log(a.constructor.prototype.id);    //// without double inheritance (it is better now)
-console.log(a.uber.name);
+//////
 
-// Page 197 next --> Summary
+
+// Page 200 next --> Case study: we draw shapes - analysis
