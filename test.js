@@ -11,46 +11,51 @@
 
 //// Summary
 
-////// 4. Copying prototype fields 
-// function copyFields()
-function copyFields(Child, Parent) {
-    var c = Child.prototype;
-    var p = Parent.prototype;
+////// 5. Copying all fields (shallow)
+// function shallowCopy
+function shallowCopy(p) {
+    var c = {};
     for (var i in p) {
         c[i] = p[i];
     }
     c.uber = p;
+    return c;
 }
 
-// Parent
-function Shape() {
-    this.name = 'shape';
-    this.info = 'lololo'
-}
-Shape.prototype.size = 4;
-Shape.prototype.toString = function() {return this.name};
-Shape.prototype.tab = [1, 2, 3];
-
-// Child
-function Shape2d() {
-    this.name = 'shape2d';
+// grand parent object
+var shape = {
+    name: 'shape',
+    toString: function() {return this.name}
 }
 
-copyFields(Shape2d, Shape);
+// parent object
+var shape2d = shallowCopy(shape);
+shape2d.name = 'shape2d';
+shape2d.toString = function() {return this.uber.toString() + ', ' + this.name};
+shape2d.tab = [1, 2, 3];
 
-var a = new Shape2d();
-console.log(a.name); // result: shape2d --> name from its own
-console.log(a.info); // reult: undefined --> this method copy only prototypes. So tere is no access to parent's own fields!!!!!!!
-console.log(a.size); // result: 4 --> value from paren't prototype
-console.log(a.tab);- // result: [1, 2, 3]
+// child object
+var triangle = shallowCopy(shape2d);
+triangle.name = 'triangle';
+triangle.side = 4;
+triangle.height = 8;
+triangle.getArea = function() {return this.side * this.height / 2};
+
+//// call
+console.log(triangle.name);
+console.log(triangle.toString());
+console.log(triangle.getArea(4, 8));
+console.log(triangle.tab);
 console.log('\n');
 
-Shape2d.prototype.size = 6; ////// using this method we can't overwrite the simple parent's value
-Shape2d.prototype.tab.push(4, 5, 6); ////// adding new values to the tab field
+// overvriting parent's value
+triangle.tab.push(4, 5, 6);
+console.log(triangle.tab);
+console.log('\n');
 
-var b = new Shape();
-console.log(b.size); // result: 4 --> it is not overwritten because size is a simple type of value
-console.log(b.tab); // result: [1, 2, 3, 4, 5, 6] --> it was overwritten because for objects and tables there is a reference to the parten't value
+// checking parent table value
+console.log(shape2d.tab); // result: [1, 2, 3, 4, 5, 6] --> the partent't value was ooverwritten. it is a shallow copy then.
 
 
-// Page 198 next --> 5. Copying all fields (shallow)
+
+// Page 198 next --> 6. Deep copying
