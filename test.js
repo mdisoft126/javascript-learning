@@ -11,14 +11,15 @@
 
 //// Summary
 
-////// 3. Temporary constructor
-// function tempConstructor
-function tempConstructor(Child, Parent) {
-    function F() {};
-    F.prototype = Parent.prototype;
-    Child.prototype = new F();
-    Child.prototype.constructor = Child;
-    Child.uber = Parent.prototype;
+////// 4. Copying prototype fields 
+// function copyFields()
+function copyFields(Child, Parent) {
+    var c = Child.prototype;
+    var p = Parent.prototype;
+    for (var i in p) {
+        c[i] = p[i];
+    }
+    c.uber = p;
 }
 
 // Parent
@@ -35,7 +36,7 @@ function Shape2d() {
     this.name = 'shape2d';
 }
 
-tempConstructor(Shape2d, Shape);
+copyFields(Shape2d, Shape);
 
 var a = new Shape2d();
 console.log(a.name); // result: shape2d --> name from its own
@@ -52,4 +53,4 @@ console.log(b.size); // result: 4 --> it is not overwritten because size is a si
 console.log(b.tab); // result: [1, 2, 3, 4, 5, 6] --> it was overwritten because for objects and tables there is a reference to the parten't value
 
 
-// Page 198 next --> Copying prototype fields 
+// Page 198 next --> 5. Copying all fields (shallow)
