@@ -9,57 +9,55 @@
 
 //// Summary
 
-////// 7. Prototype inheritance
-// function object()
-function object(o) {
-    function F() {};
-    F.prototype = o;
-    return new F();
-}
-
-// function objectWithParent() --> with uber
-function objectWithParent(o) {
+////// 8. The combination of prototypical inheritance with field duplication
+// function inheritAndCopy()
+function inheritAndCopy(o, addition) {
     var n;
     function F() {};
     F.prototype = o;
     n = new F();
     n.uber = o;
-    return n; 
+    for(var i in addition) {
+        n[i] = addition[i];
+    }
+    return n;
 }
 
-// object
-var parent = {
-    name: 'parent',
+// object shape
+var shape = {
+    name: 'shape',
     toString: function() {return this.name}
 }
 
-// create child object and inherite fields an methods from parent
-var child = object(parent);
+// object shappe2d
+var shape2d = inheritAndCopy(shape, {
+    name: 'shape2d',
+    toString: function() {return this.uber.toString() + ', ' + this.name},
+    size: 4
+})
 
-child.name = "child";
+// object triangle
+var triangle = inheritAndCopy(shape2d, {
+    name: 'triangle',
+    getArea: function() {return this.side * this.height / 2}
+})
 
-console.log(child.name);
-console.log(child.toString());
+// call object a
+var a = inheritAndCopy(triangle, {
+    side: 4,
+    height: 8,
+    name: 'a'
+})
+
+console.log(a.getArea()); // result: 16
+console.log(a.toString()); // result: shape, shape2d, triangle, a
 console.log('\n');
 
-console.log(parent.name);
-console.log(parent.toString());
-console.log('\n');
-
-//// with uber
-// objetc with uber
-var parentU = {
-    name: 'parent uber',
-    toString: function() {return this.name}
-}
-
-// child with uber
-var childU = objectWithParent(parentU);
-childU.name = 'childU uber';
-
-console.log(childU.name);
-console.log(childU.toString());
-console.log(childU.uber.name);
+// check if not overwritten parent's values --> /////// parent's valuies are not overwritten
+console.log(shape.name);
+console.log(shape.toString());
+console.log(shape2d.name);
+console.log(shape2d.toString());
 
 
-// Page 198 next --> 8. The combination of prototypical inheritance with field duplication
+// Page 198 next --> 9. Multiple inheritance
