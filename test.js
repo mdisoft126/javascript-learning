@@ -7,46 +7,59 @@
 
 ////
 
-//// 6 Inheritance
-
 //// Summary
 
-////// 6. Deep copying
-// function deepCopying
-function deepCopying(p, c) {
-    var c = c || {};
-    for (var i in p) {
-        if (typeof p[i] === 'object') {
-            c[i] = (p[i].constructor === Array) ? [] : {};
-            deepCopying(p[i], c[i]);
-        } else {
-            c[i] = p[i];
-        }
-    }
-    return c;
+////// 7. Prototype inheritance
+// function object()
+function object(o) {
+    function F() {};
+    F.prototype = o;
+    return new F();
 }
 
-// parent
-var shape = {
-    name: 'shape',
-    tab: [1, 2, 3],
-    toString: function() {return this.name},
+// function objectWithParent() --> with uber
+function objectWithParent(o) {
+    var n;
+    function F() {};
+    F.prototype = o;
+    n = new F();
+    n.uber = o;
+    return n; 
 }
 
-// child
-var triangle = deepCopying(shape);
-console.log(triangle.name = 'triangle');
-triangle.tab.push(4, 5, 6);
+// object
+var parent = {
+    name: 'parent',
+    toString: function() {return this.name}
+}
 
-// call
-console.log(triangle.name);
-console.log(triangle.toString());
-console.log(triangle.tab);
+// create child object and inherite fields an methods from parent
+var child = object(parent);
+
+child.name = "child";
+
+console.log(child.name);
+console.log(child.toString());
 console.log('\n');
 
-// // check if parent was overwritten
-console.log(shape.tab); // result: [1, 2, 3] --> parent's value was not overwritten
+console.log(parent.name);
+console.log(parent.toString());
+console.log('\n');
+
+//// with uber
+// objetc with uber
+var parentU = {
+    name: 'parent uber',
+    toString: function() {return this.name}
+}
+
+// child with uber
+var childU = objectWithParent(parentU);
+childU.name = 'childU uber';
+
+console.log(childU.name);
+console.log(childU.toString());
+console.log(childU.uber.name);
 
 
-
-// Page 198 next --> 7. Prototype inheritance
+// Page 198 next --> 8. The combination of prototypical inheritance with field duplication
