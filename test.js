@@ -9,55 +9,34 @@
 
 //// Summary
 
-////// 9. Multiple inheritance
-// function multi()
-function multi() {
-    var n = {}, stuff, j, len = arguments.length;
-    for(j = 0; j < len; j++) {
-        stuff = arguments[j];
-        for(i in stuff) {
-            n[i] = stuff[i]
-        }
-    }
-    return n;
-}
-//// objects
-// shape
+////// 10. Parasitic inheritance
+// object
 var shape = {
     name: 'shape',
     toString: function() {return this.name}
 }
 
-// shape2d
-var shape2d = {
-    name: 'shape2d',
-    size: 4
+
+// function parasite()
+function parasite(s, h) {
+    var that = Object(shape);
+    that.name = 'parasite';
+    that.size = 4;
+    that.side = s;
+    that.height = h;
+    that.getArea = function() {return this.side * this.height / 2};
+    return that;
 }
 
-// triangle
-var triangle = {
-    name: 'triangle',
-    side: 0,
-    height: 0,
-    getArea: function() {return this.side * this.height / 2}
-}
-
-//// result a
-var a = multi(shape, shape2d, triangle);
-console.log(a.name); 
-console.log(a.toString()); 
-console.log(a.size); 
+var a = parasite(5, 10);
+console.log(a.name);
+console.log(a.toString());
+console.log(a.size);
 console.log(a.getArea());
-console.log('\n');
 
-//// result b
-var b = multi(shape, shape2d, triangle, {side: 8, height: 8});
-console.log(b.toString());
-console.log(b.getArea());
-console.log('\n');
+// checking if object values are overwritten --> ////// values from origin object are overwritten
 
-// check if parent's values overwritten ---> ///// no, paren't values are not overwritten
 console.log(shape.name);
-console.log(triangle.getArea());
+console.log(shape.toString());
 
-// Page 198 next --> 10. Parasitic inheritance
+// Page 198 next --> 11. Borrowing of constructors
