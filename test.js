@@ -9,55 +9,55 @@
 
 //// Summary
 
-////// 8. The combination of prototypical inheritance with field duplication
-// function inheritAndCopy()
-function inheritAndCopy(o, addition) {
-    var n;
-    function F() {};
-    F.prototype = o;
-    n = new F();
-    n.uber = o;
-    for(var i in addition) {
-        n[i] = addition[i];
+////// 9. Multiple inheritance
+// function multi()
+function multi() {
+    var n = {}, stuff, j, len = arguments.length;
+    for(j = 0; j < len; j++) {
+        stuff = arguments[j];
+        for(i in stuff) {
+            n[i] = stuff[i]
+        }
     }
     return n;
 }
-
-// object shape
+//// objects
+// shape
 var shape = {
     name: 'shape',
     toString: function() {return this.name}
 }
 
-// object shappe2d
-var shape2d = inheritAndCopy(shape, {
+// shape2d
+var shape2d = {
     name: 'shape2d',
-    toString: function() {return this.uber.toString() + ', ' + this.name},
     size: 4
-})
+}
 
-// object triangle
-var triangle = inheritAndCopy(shape2d, {
+// triangle
+var triangle = {
     name: 'triangle',
+    side: 0,
+    height: 0,
     getArea: function() {return this.side * this.height / 2}
-})
+}
 
-// call object a
-var a = inheritAndCopy(triangle, {
-    side: 4,
-    height: 8,
-    name: 'a'
-})
-
-console.log(a.getArea()); // result: 16
-console.log(a.toString()); // result: shape, shape2d, triangle, a
+//// result a
+var a = multi(shape, shape2d, triangle);
+console.log(a.name); 
+console.log(a.toString()); 
+console.log(a.size); 
+console.log(a.getArea());
 console.log('\n');
 
-// check if not overwritten parent's values --> /////// parent's valuies are not overwritten
+//// result b
+var b = multi(shape, shape2d, triangle, {side: 8, height: 8});
+console.log(b.toString());
+console.log(b.getArea());
+console.log('\n');
+
+// check if parent's values overwritten ---> ///// no, paren't values are not overwritten
 console.log(shape.name);
-console.log(shape.toString());
-console.log(shape2d.name);
-console.log(shape2d.toString());
+console.log(triangle.getArea());
 
-
-// Page 198 next --> 9. Multiple inheritance
+// Page 198 next --> 10. Parasitic inheritance
