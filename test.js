@@ -9,34 +9,26 @@
 
 //// Summary
 
-////// 10. Parasitic inheritance
-// object
-var shape = {
-    name: 'shape',
-    toString: function() {return this.name}
+////// 11. Borrowing of constructors - without prototypes
+// contructor Shape
+function Shape(id) {
+    this.id = id;
 }
+Shape.prototype.name = 'shape';
+Shape.prototype.toString = function() {return this.name};
 
-
-// function parasite()
-function parasite(s, h) {
-    var that = Object(shape);
-    that.name = 'parasite';
-    that.size = 4;
-    that.side = s;
-    that.height = h;
-    that.getArea = function() {return this.side * this.height / 2};
-    return that;
+// constructor Triangle --> borrowing the constructor from Shape
+function Triangle() {
+    Shape.apply(this, arguments);
 }
+Triangle.prototype.name = 'triangle';
 
-var a = parasite(5, 10);
+// call
+var a = new Triangle(44);
+console.log(a.id);
 console.log(a.name);
-console.log(a.toString());
-console.log(a.size);
-console.log(a.getArea());
+console.log(a.toString());  // "a" can't see toString because it was not borrowed from Triangle. 
+                            // In this method we borrowing constructors but without prototypes
+                            
 
-// checking if object values are overwritten --> ////// values from origin object are overwritten
-
-console.log(shape.name);
-console.log(shape.toString());
-
-// Page 198 next --> 11. Borrowing of constructors
+// Page 198 next --> 12. Borrowing a constructor and copying his prototype
