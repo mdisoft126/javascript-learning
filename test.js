@@ -9,7 +9,7 @@
 
 //// Summary
 
-////// 11. Borrowing of constructors - without prototypes
+////// 11. Borrowing of constructors - with prototypes
 // contructor Shape
 function Shape(id) {
     this.id = id;
@@ -21,14 +21,15 @@ Shape.prototype.toString = function() {return this.name};
 function Triangle() {
     Shape.apply(this, arguments);
 }
+Triangle.prototype = new Shape(); //////////// --> a change compared to version without prototypes
 Triangle.prototype.name = 'triangle';
 
 // call
 var a = new Triangle(44);
 console.log(a.id);
 console.log(a.name);
-console.log(a.toString());  // "a" can't see toString because it was not borrowed from Triangle. 
-                            // In this method we borrowing constructors but without prototypes
+console.log(a.toString());  // this time "a" can see toString because the prototypes are also borrowed from Triangle. 
+                            // In this method we borrowing constructors with prototypes
                             
 
 // Page 198 next --> 12. Borrowing a constructor and copying his prototype
