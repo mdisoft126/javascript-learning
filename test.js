@@ -9,27 +9,45 @@
 
 //// Summary
 
-////// 11. Borrowing of constructors - with prototypes
-// contructor Shape
+////// 12. Borrowing a constructor and copying his prototype
+// function copyPrototypes()
+function copyPrototypes(Child, Parent) {
+    var c = Child.prototype;
+    var p = Parent.prototype;
+    for(var i in p) {
+        c[i] = p[i];
+    }
+    c.uber = p;
+}
+
+// constructor Shape
 function Shape(id) {
     this.id = id;
 }
 Shape.prototype.name = 'shape';
 Shape.prototype.toString = function() {return this.name};
 
-// constructor Triangle --> borrowing the constructor from Shape
+// constructor Triangle
 function Triangle() {
     Shape.apply(this, arguments);
 }
-Triangle.prototype = new Shape(); //////////// --> a change compared to version without prototypes
+copyPrototypes(Triangle, Shape);
 Triangle.prototype.name = 'triangle';
 
 // call
-var a = new Triangle(44);
+var a = new Triangle();
 console.log(a.id);
 console.log(a.name);
-console.log(a.toString());  // this time "a" can see toString because the prototypes are also borrowed from Triangle. 
-                            // In this method we borrowing constructors with prototypes
-                            
+console.log(a.toString());
 
-// Page 198 next --> 12. Borrowing a constructor and copying his prototype
+// check if paren't value overwritten
+console.log(Shape.prototype.name);  // not, it is not overwritten
+
+// check if double inheritance
+console.log(typeof a.__proto__.id); // no, there is no double inheritance
+
+// additionally tere is an access to parent's value by uber
+console.log(a.uber.name);
+
+
+// Page 200 next --> Case study: we draw shapes
