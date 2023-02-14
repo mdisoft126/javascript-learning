@@ -25,7 +25,14 @@ function Line(p1, p2) {
     this.length = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p1.y, 2));
 }
 
-//
+// Constructor Shape
+function Shape() {
+    this.points = [];
+    this.lines = [];
+    this.init();
+}
+
+
 
 
 // Page 202 next --> Case study: we draw shapes --> Shaoe constructor
