@@ -32,6 +32,63 @@ function Shape() {
     this.init();
 }
 
+// Methods of Shape prototype
+Shape.prototype = {
+    // set indicator for constructor
+    constructor: Shape,
+    // initialization - set indicator this.context for canvas object
+    init: function() {
+        if (typeof this.context === 'undefined') {
+            var canvas = document.getElementById('canvas');
+            Shape.prototype.context = canvas.getContext('2d');
+        }
+    },
+    // a method that draws a figure using a loop through points
+    draw: function() {
+        var ctx = this.context;
+        ctx.strokeStyle = this.getColor();
+        ctx.beginPath();
+        ctx.moveTo(this.points[0].x, this.points[0].y);
+        for (var i = 1; i < this.points.length; i++) {
+            ctx.lineTo(this.points[i].x, this.points[i].y);
+        }
+        ctx.closePath();
+        ctx.stroke();
+    },
+    // a method that generate a random color
+    getColor: function() {
+        var rgb = [];
+        for (var i = 0; i < 3; i++) {
+            rgb[i] = Math.round(255 * Math.random());
+        }
+        return 'rgb(' + rgb.join(',') + ')';
+    },
+    // method which goes through the table of points
+    // it creates Line instances and add them to this.line
+    getLines: function() {
+        if (this.lines.length > 0) {
+            return this.lines;
+        }
+        var lines = [];
+        for (var i = 0; i < this.points.length; i++) {
+            lines[i] = new Line(this.points[i], (this.points[i+1]) ? this.points[i+1] : this.points[0]);
+        }
+        this.lines = lines;
+        return lines;
+    },
+    // a method that calcuate an area - it is implemented by particular children
+    getArea: function() {},
+    // a method that calculate circumference by summing all sides lengths
+    getPerimeter: function() {
+        var lines = this.getLines();
+        var perim = 0;
+        for (var i = 0; i < lines.length; i++) {
+            perim += lines[i].length;
+        }
+        return perim;
+    }
+}
+
 
 
 
