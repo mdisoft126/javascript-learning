@@ -89,6 +89,33 @@ Shape.prototype = {
     }
 }
 
+//// Children constructors
+// Triangle
+function Triangle(a, b, c) {
+    this.points = [a, b, c];
+    this.getArea = function() {
+        var p = this.getPerimeter();
+        var s = p / 2;
+        return Math.sqrt(s 
+            * (s - this.lines[0].length)
+            * (s - this.lines[1].length)
+            * (s - this.lines[2].length)
+        );
+    };
+}
+
+// Rectangle
+function Rectangle(p, side_a, side_b) {
+    this.points = [
+        p,                                      // top left
+        new Point(p.x + side_a, p.y),           // top right
+        new Point(p.x + side_a, p.y + side_b),  // down right
+        new Point(p.x, p.y + side_b)            // down left
+    ];
+    this.getArea = function() {return side_a * side_b};
+}
+
+/////// next --> square constructor
 
 
 
