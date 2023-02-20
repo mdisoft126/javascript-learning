@@ -115,8 +115,35 @@ function Rectangle(p, side_a, side_b) {
     this.getArea = function() {return side_a * side_b};
 }
 
-/////// next --> square constructor
+// Square
+function Square(p, side) {
+    Rectangle.call(this, p, side, side);
+}
 
+//// Inheritance
+(function () {
+    var s = new Shape();
+    Triangle.prototype = s;
+    Rectangle.prototype = s;
+    Square.prototype = s;
+})();
+
+/////////////// Testing
+
+// define points
+var p1 = new Point(100, 100);
+var p2 = new Point(300, 100);
+var p3 = new Point(200, 0);
+
+// define triangle and give points
+var t = new Triangle(p1, p2, p3);
+
+// call methods
+t.draw();
+console.log(t.getPerimeter());
+console.log(t.getArea());
+
+/// next --> continue testing
 
 
 // Page 202 next --> Case study: we draw shapes --> Shaoe constructor
