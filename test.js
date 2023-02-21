@@ -22,7 +22,7 @@ function Point(x, y) {
 function Line(p1, p2) {
     this.p1 = p1;
     this.p2 = p2;
-    this.length = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p1.y, 2));
+    this.length = Math.sqrt(Math.pow(p1.x - p2.x, 2) + Math.pow(p1.y - p2.y, 2));
 }
 
 // Constructor Shape
@@ -135,15 +135,26 @@ var p1 = new Point(100, 100);
 var p2 = new Point(300, 100);
 var p3 = new Point(200, 0);
 
-// define triangle and give points
-var t = new Triangle(p1, p2, p3);
+//// define shapes
+var roof = new Triangle(p1, p2, p3);
+var walls = new Square(p1, 200);
+var winTL = new Square(new Point(110, 120), 50);
+var winTR = new Square(new Point(240, 120), 50);
+var winDL = new Square(new Point(110, 210), 50);
+var winDR = new Square(new Point(240, 210), 50);
+var door = new Rectangle(new Point(175, 210), 50, 90);
 
 // call methods
-t.draw();
-console.log(t.getPerimeter());
-console.log(t.getArea());
+roof.draw();
+walls.draw();
+winTL.draw();
+winTR.draw();
+winDL.draw();
+winDR.draw();
+door.draw();
+console.log(roof.getPerimeter());
+console.log(roof.getArea());
+console.log(roof.points);
 
-/// next --> continue testing
 
-
-// Page 202 next --> Case study: we draw shapes --> Shaoe constructor
+// Page 205 next --> Exercises
