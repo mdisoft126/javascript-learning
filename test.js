@@ -128,33 +128,27 @@ function Square(p, side) {
     Square.prototype = s;
 })();
 
-/////////////// Testing
+///////// Exercise 1
 
-// define points
-var p1 = new Point(100, 100);
-var p2 = new Point(300, 100);
-var p3 = new Point(200, 0);
+//// define points
+// Triangle
+var t1 = new Point(100, 100);
+var t2 = new Point(100, 400);
+var t3 = new Point(400, 400);
+// Rectangle
+var r = new Point(100, 500);
+// Square
+var s = new Point(500, 100);
 
 //// define shapes
-var roof = new Triangle(p1, p2, p3);
-var walls = new Square(p1, 200);
-var winTL = new Square(new Point(110, 120), 50);
-var winTR = new Square(new Point(240, 120), 50);
-var winDL = new Square(new Point(110, 210), 50);
-var winDR = new Square(new Point(240, 210), 50);
-var door = new Rectangle(new Point(175, 210), 50, 90);
+var triangle = new Triangle(t1, t2, t3);
+var rectangle = new Rectangle(r, 700, 300);
+var square = new Square(s, 300);
 
 // call methods
-roof.draw();
-walls.draw();
-winTL.draw();
-winTR.draw();
-winDL.draw();
-winDR.draw();
-door.draw();
-console.log(roof.getPerimeter());
-console.log(roof.getArea());
-console.log(roof.points);
+triangle.draw();
+rectangle.draw();
+square.draw();
 
 
-// Page 205 next --> Exercises
+// Page 205 next --> Exercise 2
