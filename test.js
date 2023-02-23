@@ -120,35 +120,51 @@ function Square(p, side) {
     Rectangle.call(this, p, side, side);
 }
 
+// isosceles trapezoid
+function Trapezoid(p, side_t, side_d, h) {
+    this.points = [
+        p,                                                          // top left
+        new Point(p.x + side_t, p.y),                                   // top right
+        new Point((p.x + side_t) + ((side_d-side_t)/2), p.y + h),   // down right
+        new Point(p.x - ((side_d-side_t)/2), p.y + h)               // down left
+    ]
+}
+
+
 //// Inheritance
 (function () {
     var s = new Shape();
     Triangle.prototype = s;
     Rectangle.prototype = s;
     Square.prototype = s;
+    Trapezoid.prototype = s;
 })();
 
-///////// Exercise 1
+///////// Exercise 2
 
 //// define points
-// Triangle
-var t1 = new Point(100, 100);
-var t2 = new Point(100, 400);
-var t3 = new Point(400, 400);
-// Rectangle
-var r = new Point(100, 500);
-// Square
-var s = new Point(500, 100);
+// // Triangle
+// var t1 = new Point(100, 100);
+// var t2 = new Point(100, 400);
+// var t3 = new Point(400, 400);
+// // Rectangle
+// var r = new Point(100, 500);
+// // Square
+// var s = new Point(500, 100);
+// Trapezoid
+var t = new Point (200, 100);
 
 //// define shapes
-var triangle = new Triangle(t1, t2, t3);
-var rectangle = new Rectangle(r, 700, 300);
-var square = new Square(s, 300);
+// var triangle = new Triangle(t1, t2, t3);
+// var rectangle = new Rectangle(r, 700, 300);
+// var square = new Square(s, 300);
+var trapezoid = new Trapezoid(t, 300, 500, 200);
 
 // call methods
-triangle.draw();
-rectangle.draw();
-square.draw();
+// triangle.draw();
+// rectangle.draw();
+// square.draw();
+trapezoid.draw();
 
 
-// Page 205 next --> Exercise 2
+// Page 205 next --> Exercise 3
