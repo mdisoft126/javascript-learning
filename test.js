@@ -124,9 +124,19 @@ function Square(p, side) {
 function Trapezoid(p, side_t, side_d, h) {
     this.points = [
         p,                                                          // top left
-        new Point(p.x + side_t, p.y),                                   // top right
+        new Point(p.x + side_t, p.y),                               // top right
         new Point((p.x + side_t) + ((side_d-side_t)/2), p.y + h),   // down right
         new Point(p.x - ((side_d-side_t)/2), p.y + h)               // down left
+    ]
+}
+
+// rhombus
+function Rhombus(p, d1, d2) {
+    this.points = [
+        p,                                      // top
+        new Point(p.x + (d2/2), p.y +(d1/2)),   // right
+        new Point(p.x, p.y + d1),               // bottom
+        new Point(p.x - (d2/2), p.y + (d1/2))   // left
     ]
 }
 
@@ -138,6 +148,7 @@ function Trapezoid(p, side_t, side_d, h) {
     Rectangle.prototype = s;
     Square.prototype = s;
     Trapezoid.prototype = s;
+    Rhombus.prototype = s;
 })();
 
 ///////// Exercise 2
@@ -153,18 +164,22 @@ function Trapezoid(p, side_t, side_d, h) {
 // var s = new Point(500, 100);
 // Trapezoid
 var t = new Point (200, 100);
+// Rhombus
+var rh = new Point (350, 400);
 
 //// define shapes
 // var triangle = new Triangle(t1, t2, t3);
 // var rectangle = new Rectangle(r, 700, 300);
 // var square = new Square(s, 300);
 var trapezoid = new Trapezoid(t, 300, 500, 200);
+var rhombus = new Rhombus(rh, 400, 300);
 
 // call methods
 // triangle.draw();
 // rectangle.draw();
 // square.draw();
 trapezoid.draw();
+rhombus.draw();
 
 
 // Page 205 next --> Exercise 3
