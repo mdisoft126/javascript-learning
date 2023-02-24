@@ -140,18 +140,31 @@ function Rhombus(p, d1, d2) {
     ]
 }
 
+///////// Exercise 3
+//// Inheritance old
+// (function () {
+//     var s = new Shape();
+//     Triangle.prototype = s;
+//     Rectangle.prototype = s;
+//     Square.prototype = s;
+//     Trapezoid.prototype = s;
+//     Rhombus.prototype = s;
+// })();
 
-//// Inheritance
-(function () {
-    var s = new Shape();
-    Triangle.prototype = s;
-    Rectangle.prototype = s;
-    Square.prototype = s;
-    Trapezoid.prototype = s;
-    Rhombus.prototype = s;
-})();
+//// Inheritance new
+function inherit (child, parent) {
+    var c = child.prototype;
+    var p = parent.prototype;
+    for(var i in p) {
+        c[i] = p[i];
+    };
+    c.uber = p;
+    // p.chilren.push(String(child));
+};
 
-///////// Exercise 2
+inherit(Trapezoid, Shape);
+inherit(Rhombus, Shape);
+
 
 //// define points
 // // Triangle
