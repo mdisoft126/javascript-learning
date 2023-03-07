@@ -26,14 +26,27 @@ function Line(p1, p2) {
 }
 
 // Constructor Shape
+// function Shape() {
+//     this.points = [];
+//     this.lines = [];
+//     this.init();
+// }
+
+//// create Shape witt propotypes!!!!!!!!!
 function Shape() {
     this.points = [];
     this.lines = [];
     this.init();
 }
+// Shape.prototype.points = [];
+// Shape.prototype.lines = [];
+// Shape.prototype.init = function() {};
+
 
 // Methods of Shape prototype
 Shape.prototype = {
+    // points: [],
+    // lines: [],
     // set indicator for constructor
     constructor: Shape,
     // initialization - set indicator this.context for canvas object
@@ -144,14 +157,15 @@ function Rhombus(p, d1, d2) {
 //// Inheritance old
 (function () {
     var s = new Shape();
-    Triangle.prototype = s;
-    Rectangle.prototype = s;
-    Square.prototype = s;
+    // Triangle.prototype = s;
+    // Rectangle.prototype = s;
+    // Square.prototype = s;
     Trapezoid.prototype = s;
-    Rhombus.prototype = s;
+    // Rhombus.prototype = s;
 })();
 
 // //// Inheritance new
+// Shape();
 // function inherit (child, parent) {
 //     var c = child.prototype;
 //     var p = parent.prototype;
@@ -178,21 +192,23 @@ function Rhombus(p, d1, d2) {
 // Trapezoid
 var t = new Point (200, 100);
 // Rhombus
-var rh = new Point (350, 400);
+// var rh = new Point (350, 400);
 
 //// define shapes
 // var triangle = new Triangle(t1, t2, t3);
 // var rectangle = new Rectangle(r, 700, 300);
 // var square = new Square(s, 300);
 var trapezoid = new Trapezoid(t, 300, 500, 200);
-var rhombus = new Rhombus(rh, 400, 300);
+// var rhombus = new Rhombus(rh, 400, 300);
 
 // call methods
 // triangle.draw();
 // rectangle.draw();
 // square.draw();
+// console.log(trapezoid.points);
+
 trapezoid.draw();
-rhombus.draw();
+// rhombus.draw();
 
 
 // Page 205 next --> Exercise 4 --> check how to initiate canvas things, It looks liek they are not initiated using second method
