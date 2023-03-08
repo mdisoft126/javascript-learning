@@ -56,6 +56,7 @@ Shape.prototype = {
             Shape.prototype.context = canvas.getContext('2d');
         }
     },
+
     // a method that draws a figure using a loop through points
     draw: function() {
         var ctx = this.context;
@@ -155,28 +156,29 @@ function Rhombus(p, d1, d2) {
 
 ///////// Exercise 3
 //// Inheritance old
-(function () {
-    var s = new Shape();
-    // Triangle.prototype = s;
-    // Rectangle.prototype = s;
-    // Square.prototype = s;
-    Trapezoid.prototype = s;
-    // Rhombus.prototype = s;
-})();
+// (function () {
+//     var s = new Shape();
+//     // Triangle.prototype = s;
+//     // Rectangle.prototype = s;
+//     // Square.prototype = s;
+//     Trapezoid.prototype = s;
+//     // Rhombus.prototype = s;
+// })();
 
-// //// Inheritance new
-// Shape();
-// function inherit (child, parent) {
-//     var c = child.prototype;
-//     var p = parent.prototype;
-//     for(var i in p) {
-//         c[i] = p[i];
-//     };
-//     c.uber = p;
-//     // p.chilren.push(String(child));
-// };
+//// Inheritance new
+function inherit (child, parent) {
+    var c = child.prototype;
+    var p = parent.prototype;
+    for(var i in p) {
+        c[i] = p[i];
+    };
+    c.uber = p;
+    // p.chilren.push(String(child));
+};
 
-// inherit(Trapezoid, Shape);
+inherit(Trapezoid, Shape);
+Shape.prototype.constructor;
+Shape.prototype.init();
 // inherit(Rhombus, Shape);
 
 
