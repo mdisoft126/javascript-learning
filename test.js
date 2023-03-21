@@ -7,26 +7,27 @@
 
 ////
 
-//// Chapter 5 from new book and then continue from 8
-//// ES6 Iterators and Generators
+////////// Chapter 5 from new book and then continue from 8
 
-const iter = ['a', 'b'];
+////// ES6 Iterators and Generators
+//// Iterators and iterables
+// Iterators
 
-// new loop for..of
-for (const i of iter) {
-    console.log(i);
+// map()
+function myNum() {
+    var n = 0;
+    return {
+        next: function() {
+            if (n < 110) {
+                n += 10;
+                return {value: n, done: false};
+            }
+        }
+    }
 }
 
-// // old loop for..in
-// for (var i in iter) {
-//     console.log(iter[i]);
-// }
+// create iterator:
+var m = myNum();
+console.log(m.next()); 
 
-// new loop for..of for Strings
-for (let s of "String") {
-    console.log(s);
-}
-
-//
-
-// Page
+// Next // chaeck this! something is wrong
