@@ -13,21 +13,26 @@
 //// Iterators and iterables
 // Iterators
 
-// map()
-function myNum() {
+// Take and array and return an iterator
+function iter(array) {
     var n = 0;
     return {
         next: function() {
-            if (n < 110) {
-                n += 10;
-                return {value: n, done: false};
+            if (n < array.length) {
+                return {value: array[n++], done: false};
+            } else {
+                return {done: true};
             }
         }
     }
 }
 
 // create iterator:
-var m = myNum();
-console.log(m.next()); 
 
-// Next // chaeck this! something is wrong
+var m = iter(["hello", "bye bye"]);
+console.log(m.next().value);
+console.log(m.next().value);
+console.log(m.next().done);
+console.log(m.next().value);
+
+// Next // 
