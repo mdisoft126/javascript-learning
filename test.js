@@ -11,28 +11,29 @@
 
 ////// ES6 Iterators and Generators
 //// Iterators and iterables
-// Iterators
+// Iterables
 
-// Take and array and return an iterator
-function iter(array) {
-    var n = 0;
+// create an object
+var myNum = {};
+
+// make it iterable:
+myNum[Symbol.iterator] = function() {
+    let n = 0;
+    done = false;
     return {
-        next: function() {
-            if (n < array.length) {
-                return {value: array[n++], done: false};
-            } else {
-                return {done: true};
-            }
+        next() {
+            n += 10;
+            if (n == 100) {done = true};
+            return {value: n, done: done};
         }
     }
 }
 
-// create iterator:
+// use for..of loop
 
-var m = iter(["hello", "bye bye"]);
-console.log(m.next().value);
-console.log(m.next().value);
-console.log(m.next().done);
-console.log(m.next().value);
+for (var num of myNum) {
+    console.log(num);
+}
 
-// Next // 
+
+// Next // Iterables, page 189
