@@ -13,27 +13,27 @@
 //// Iterators and iterables
 // Iterables
 
-// create an object
-var myNum = {};
-
-// make it iterable:
-myNum[Symbol.iterator] = function() {
-    let n = 0;
-    done = false;
-    return {
-        next() {
-            n += 10;
-            if (n == 100) {done = true};
-            return {value: n, done: done};
+// create an iterable object
+var iter = {
+    0: "hello ",
+    1: "world of ",
+    2: "iterators ",
+    length: 3,
+    [Symbol.iterator] () {
+        let index = 0;
+        return {
+            next: () => {
+                let value = this[index];
+                let done = index >= this.length;
+                index++;
+                return{value, done};
+            }
         }
     }
 }
-
-// use for..of loop
-
-for (var num of myNum) {
-    console.log(num);
+// for..of loop
+for (var n of iter) {
+    console.log(n);
 }
 
-
-// Next // Iterables, page 189
+// Next // Generators, page 190
