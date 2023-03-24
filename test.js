@@ -13,17 +13,21 @@
 //// Iterators and iterables
 // Generators
 
-// create function
-function* generate() {
-    yield 1;
-    yield 2;
-    return 3;
+// create function logger
+function* logger() {
+    console.log("start");
+    console.log(yield 1);
+    console.log(yield);
+    console.log(yield);
+    return("end");
 }
 
-// call function
-var generator = generate();
-console.log(generator.next());
-console.log(generator.next());
-console.log(generator.next());
+// call the functioin
+var log = logger();
+console.log(log.next());
+console.log(log.next("save"));
+console.log(log.next("our"));
+console.log(log.next("souls"));
 
-// Next // Iterating over generators190
+
+// Next // Iterating over generators 194
