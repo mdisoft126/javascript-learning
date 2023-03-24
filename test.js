@@ -11,29 +11,19 @@
 
 ////// ES6 Iterators and Generators
 //// Iterators and iterables
-// Iterables
+// Generators
 
-// create an iterable object
-var iter = {
-    0: "hello ",
-    1: "world of ",
-    2: "iterators ",
-    length: 3,
-    [Symbol.iterator] () {
-        let index = 0;
-        return {
-            next: () => {
-                let value = this[index];
-                let done = index >= this.length;
-                index++;
-                return{value, done};
-            }
-        }
-    }
-}
-// for..of loop
-for (var n of iter) {
-    console.log(n);
+// create function
+function* generate() {
+    yield 1;
+    yield 2;
+    return 3;
 }
 
-// Next // Generators, page 190
+// call function
+var generator = generate();
+console.log(generator.next());
+console.log(generator.next());
+console.log(generator.next());
+
+// Next // Iterating over generators190
