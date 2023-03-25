@@ -14,39 +14,20 @@
 // Collections
 
 // Map
-// Iterating over maps
-
-// iterable over keys
-var m1 = new Map([
-    [1, "hello"],
-    [2, "how are"],
-    [3, "you?"]
+// Converting maps to arrays
+var m = new Map([
+    [1, "one"],
+    [2, "two"],
+    [3, "three"]
 ]);
 
-for (var i of m1.keys()) {
-    console.log(i);
-};
+const arr = [...m.keys()];
+console.log(arr);
 
-// iterable over values
-for (var j of m1.values()) {
-    console.log(j);
-};
+const arr2 = [...m];
+console.log(arr2);
+console.log(arr2[1]);
 
-// iterable by returning entries
-for (var k of m1.entries()) {
-    // console.log(k);
-    console.log(k[0], k[1]);
-}
-
-// use destructuring to make it concise
-for (var [l, m] of m1.entries()) {
-    console.log(l, m);
-}
-
-// and event more succinct
-for (var [n, o] of m1) {
-    console.log(n, o);
-}
 
 
 
