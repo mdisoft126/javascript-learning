@@ -14,47 +14,40 @@
 // Collections
 
 // Map
+// Iterating over maps
 
-//create simple map
-const m = new Map();
-m.set("first", 1);
-console.log(m.get("first"));
-
-// other examples of map
-console.log(m.has("first"));
-m.delete("first");
-console.log(m.has("first"));
-
-m.set("foo", 1);
-m.set("bar", 2);
-console.log(m.size);
-
-m.clear();
-console.log(m.size);
-
-// creating by using iterable pairs
-const m2 = new Map([
-    [1, "hey"],
-    [2, "co"],
-    [3, "tam?"]
+// iterable over keys
+var m1 = new Map([
+    [1, "hello"],
+    [2, "how are"],
+    [3, "you?"]
 ]);
-console.log(m2);
-console.log(m2.get(1));
-console.log(m2.get(2));
-console.log(m2.get(3));
 
-// creating by chain
-const m3 = new Map().set(1, "hhjd").set(2, "hhgfds").set(3, "whgd");
-console.log(m3);
+for (var i of m1.keys()) {
+    console.log(i);
+};
 
-// can include any type of key, even objec
-var obj = {};
-const m4 = new Map([
-    [1, "hey"],
-    [2, "co"],
-    [obj, "tam?"]
-]);
-console.log(m4);
-console.log(m4.has(obj));
+// iterable over values
+for (var j of m1.values()) {
+    console.log(j);
+};
 
-// Next // Collections 195
+// iterable by returning entries
+for (var k of m1.entries()) {
+    // console.log(k);
+    console.log(k[0], k[1]);
+}
+
+// use destructuring to make it concise
+for (var [l, m] of m1.entries()) {
+    console.log(l, m);
+}
+
+// and event more succinct
+for (var [n, o] of m1) {
+    console.log(n, o);
+}
+
+
+
+// Next Chaper 8 - Classes and modules page 262
