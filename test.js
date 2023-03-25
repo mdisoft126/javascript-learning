@@ -13,22 +13,17 @@
 //// Iterators and iterables
 // Generators
 
-// create function logger - checking
+// Iterating over generators
+
+// use for..of loop
 function* logger() {
     yield 'a'
     yield 'b'
-    return 'end'
 }
 
-//// checking if generator functions conforms to the iterables contract
-var log = logger();
-// the generator object is build using generator function
-console.log(typeof log[Symbol.iterator] === "function");
-// it is an iterable
-console.log(typeof log.next === "function");
-// and an iterator (has a next() method)
-console.log(log[Symbol.iterator]() === log);
+for (var i of logger()) {
+    console.log(i);
+}
 
 
-
-// Next // Iterating over generators 194
+// Next // Collections 195
