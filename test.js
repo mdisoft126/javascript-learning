@@ -15,15 +15,14 @@
 
 // Iterating over generators
 
-// use for..of loop
+// turn iterables into array
 function* logger() {
     yield 'a'
     yield 'b'
 }
 
-for (var i of logger()) {
-    console.log(i);
-}
+var arr = [...logger()];
+console.log(arr);
 
 
 // Next // Collections 195
