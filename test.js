@@ -13,22 +13,23 @@
 //// Iterators and iterables
 // Collections
 
-// Map
+// Set
 // Converting maps to arrays
-var m = new Map([
-    [1, "one"],
-    [2, "two"],
-    [3, "three"]
+var s = new Set();
+s.add("one");
+console.log(s);
+console.log(s.has("one"));
+s.add("two");
+console.log(s);
+s.add("one")
+console.log(s);
+s.delete("one");
+console.log(s);
+
+var c = new Set([
+    'red', "blue", "yellow", "red", "green", "orange", "blue"
 ]);
-
-const arr = [...m.keys()];
-console.log(arr);
-
-const arr2 = [...m];
-console.log(arr2);
-console.log(arr2[1]);
-
-
+console.log(c);
 
 
 // Next Chaper 8 - Classes and modules page 262
