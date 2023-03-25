@@ -15,14 +15,14 @@
 
 // Iterating over generators
 
-// turn iterables into array
+// use destructuring syntax
 function* logger() {
     yield 'a'
     yield 'b'
 }
 
-var arr = [...logger()];
-console.log(arr);
+var [x,y,z] = logger();
+console.log(x,y,z);
 
 
 // Next // Collections 195
