@@ -13,21 +13,22 @@
 //// Iterators and iterables
 // Generators
 
-// create function logger
+// create function logger - checking
 function* logger() {
-    console.log("start");
-    console.log(yield 1);
-    console.log(yield);
-    console.log(yield);
-    return("end");
+    yield 'a'
+    yield 'b'
+    return 'end'
 }
 
-// call the functioin
+//// checking if generator functions conforms to the iterables contract
 var log = logger();
-console.log(log.next());
-console.log(log.next("save"));
-console.log(log.next("our"));
-console.log(log.next("souls"));
+// the generator object is build using generator function
+console.log(typeof log[Symbol.iterator] === "function");
+// it is an iterable
+console.log(typeof log.next === "function");
+// and an iterator (has a next() method)
+console.log(log[Symbol.iterator]() === log);
+
 
 
 // Next // Iterating over generators 194
