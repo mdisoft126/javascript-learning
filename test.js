@@ -12,33 +12,32 @@
 ////// Classes and Modules
 //// Defining Classes
 
-class Car {
+// Define usin class expression
+var Car = class {
     constructor(model, year) {
         this.model = model;
         this.year = year;
     }
 }
 
-console.log(typeof Car);
+var car = new Car("honda", 1991);
+console.log(car.model);
+console.log(car.year);
 
-//// classes are not hoisted. functions are hoisted
-// example from function
-test();
-function test() {
-    console.log("test");
-}
-
-//example from class
-var house = new House("nice", 150); // error that House is not defined
-house.getSize();
-class House {
-    constructor(building, size) {
-        this.building = building;
-        this.size = size;
+// we can name the class but it is only locally visible
+var NamedCar = class Car2 {
+    constructor(model, year) {
+        this.model = model;
+        this.year = year;
     }
-    getSize() {
-        console.log(this.size);
+    getName() {
+        return Car2.name;
     }
 }
+
+var ford = new NamedCar("Ford", 2015);
+console.log(ford.model);
+console.log(ford.getName());
+console.log(ford.name); // Reference is not defined
 
 // Next Chaper 8 - Constructor page 266
