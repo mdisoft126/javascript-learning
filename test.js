@@ -12,32 +12,23 @@
 ////// Classes and Modules
 //// Defining Classes
 
-// Define usin class expression
-var Car = class {
+// cannot use comma
+class NoCommas {
+    method1() {}
+    member1;
+    // member2, // comma is not allowed. There is an error.
+    member3;
+}
+
+// using classes via "new" keyword
+class Car {
     constructor(model, year) {
         this.model = model;
         this.year = year;
     }
 }
-
-var car = new Car("honda", 1991);
-console.log(car.model);
-console.log(car.year);
-
-// we can name the class but it is only locally visible
-var NamedCar = class Car2 {
-    constructor(model, year) {
-        this.model = model;
-        this.year = year;
-    }
-    getName() {
-        return Car2.name;
-    }
-}
-
-var ford = new NamedCar("Ford", 2015);
+const ford = new Car("focus", 2015);
 console.log(ford.model);
-console.log(ford.getName());
-console.log(ford.name); // Reference is not defined
+console.log(ford.year);
 
 // Next Chaper 8 - Constructor page 266
