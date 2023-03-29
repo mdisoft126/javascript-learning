@@ -12,7 +12,7 @@
 ////// Classes and Modules
 //// Defining Classes
 
-//// Subclassing
+//// Subclassing with super expression
 class Animal {
     constructor(name) {
         this.name = name;
@@ -28,9 +28,15 @@ class Cat extends Animal {
     }
 }
 
-var c = new Cat("Grace");
-c.speak();
-console.log(c.name);
+class Lion extends Cat {
+    speak() {
+        super.speak();
+        console.log(`${this.name} roars...`);
+    }
+}
+
+var lion = new Lion("Lenny");
+lion.speak();
 
 
-// Next Chaper 8 - Static properties page 268
+// Next Chaper 8 - Mixins 270
