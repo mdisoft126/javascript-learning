@@ -10,36 +10,28 @@
 ////////// Chapter 5 from new book and then continue from 8
 
 ////// Classes and Modules
-//// Defining Classes
+//// Subclassing
 
-//// Subclassing with super expression
-class Animal {
-    constructor(name) {
-        this.name = name;
-    }
-    speak() {
-        console.log(`${this.name} generic noise.`);
-    }
+//// Mixins using object (not in book)
+
+// define a mixin object
+const myMixin = {
+    doSomething() {
+        console.log("Doing something..");
+    },
+    name: "Marcin"
 }
 
-class Cat extends Animal {
-    constructor(name, species) {
-        super(name);                // we must call super() in derived class before this keyword in next row.
-        this.species = species;
-    }
-    speak() {
-        console.log(`${this.name} says meow.`);
-    }
-}
+// define a class that uses the mixin
+class MyClass {};
 
-class Lion extends Cat {
-    speak() {
-        super.speak();
-        console.log(`${this.name} roars...`);
-    }
-}
+// Mixin the functionality into the class
+Object.assign(MyClass.prototype, myMixin);
 
-var lion = new Lion("Lenny");
-lion.speak();
+// create an instance of the class and call the mixed-in method and field
+const obj = new MyClass();
+console.log(obj.name);
+obj.doSomething();
 
-// Next Chaper 8 - Mixins 270
+
+// Next Chaper 8 - Modules 272
