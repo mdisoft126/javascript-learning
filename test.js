@@ -12,19 +12,20 @@
 ////// Classes and Modules
 //// Defining Classes
 
-//// Static methods
-class Logger {
-    static log(level, message) {
-        console.log(`${level} : ${message}.`);
+//// Generator methods
+class iterableArg {
+    constructor(...args) {
+        this.args = args;
+    }
+    * [Symbol.iterator]() {
+        for (const arg of this.args) {
+            yield arg;
+        }
     }
 }
 
-// invoke static method on the Class
-Logger.log("ERROR", "The end is near");
-
-// static method cannot be called by instance of the class
-const logger = new Logger();
-logger.log("Error", "End"); // logger.log is not a function
-
+for (const x of new iterableArg("ES6", "wins")) {
+    console.log(x);
+}
 
 // Next Chaper 8 - Static properties page 268
