@@ -23,6 +23,10 @@ class Animal {
 }
 
 class Cat extends Animal {
+    constructor(name, species) {
+        super(name);                // we must call super() in derived class before this keyword in next row.
+        this.species = species;
+    }
     speak() {
         console.log(`${this.name} says meow.`);
     }
@@ -37,6 +41,5 @@ class Lion extends Cat {
 
 var lion = new Lion("Lenny");
 lion.speak();
-
 
 // Next Chaper 8 - Mixins 270
