@@ -12,26 +12,34 @@
 ////// Classes and Modules
 //// Subclassing
 
-//// Mixins using object (not in book)
-
-// define a mixin object
-const myMixin = {
-    doSomething() {
-        console.log("Doing something..");
-    },
-    name: "Marcin"
+//// Mixins (based on book)
+//
+class Person {
+    saying() {
+        console.log("I am person");
+    }
 }
 
-// define a class that uses the mixin
-class MyClass {};
+const Check = (Tools) => class extends Tools {  // a parameter can be with or without brackets (). In this case we have (Tools) be we can have also Tools like below
+    check() {
+        console.log("checking");
+    }
+}
 
-// Mixin the functionality into the class
-Object.assign(MyClass.prototype, myMixin);
+const Onboard = Tools => class extends Tools {
+    onboarding() {
+        console.log("onboarding");
+    }
+}
 
-// create an instance of the class and call the mixed-in method and field
-const obj = new MyClass();
-console.log(obj.name);
-obj.doSomething();
+class Employee extends Check(Onboard(Person)) {}    // it means that Employee is a subclass of Check, which in turn is a subclass of Onboardm
+                                                    // which in turn is a subclass of Person
+// create an instance and call the methods
+const p = new Employee();
+p.saying();
+p.check();
+p.onboarding(); 
+
 
 
 // Next Chaper 8 - Modules 272
