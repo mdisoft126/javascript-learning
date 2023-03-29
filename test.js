@@ -12,23 +12,27 @@
 ////// Classes and Modules
 //// Defining Classes
 
-// cannot use comma
-class NoCommas {
-    method1() {}
-    member1;
-    // member2, // comma is not allowed. There is an error.
-    member3;
-}
-
-// using classes via "new" keyword
-class Car {
-    constructor(model, year) {
-        this.model = model;
-        this.year = year;
+//// Proptotype methods
+class Person {
+    constructor(name) {
+        this.name = name;
+    }
+    sayHello() {
+        console.log(`Hello, my name is ${this.name}.`);
     }
 }
-const ford = new Car("focus", 2015);
-console.log(ford.model);
-console.log(ford.year);
+// define propotype
+Person.prototype.sayGoodbye = function() {
+    console.log(`Goodbye ${this.name}.`);
+}
 
-// Next Chaper 8 - Constructor page 266
+// create a person object
+const person = new Person("Marcin");
+
+// call sayHello method
+person.sayHello();
+
+// call sayGoodbyew method --> defined on the proptotype
+person.sayGoodbye();
+
+// Next Chaper 8 - Static methods page 267
