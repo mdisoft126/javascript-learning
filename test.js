@@ -12,27 +12,29 @@
 ////// Classes and Modules
 //// Defining Classes
 
-//// Proptotype methods
-class Person {
-    constructor(name) {
-        this.name = name;
-    }
-    sayHello() {
-        console.log(`Hello, my name is ${this.name}.`);
-    }
-}
-// define propotype
-Person.prototype.sayGoodbye = function() {
-    console.log(`Goodbye ${this.name}.`);
+//// Define using expression
+// 1st example
+class CarOne {
+    driveCar() {console.log("1st")};
 }
 
-// create a person object
-const person = new Person("Marcin");
+// 2nd example
+class CarTwo {
+    ['drive' + 'Car'] () {console.log("2nd")};
+}
+// 3rd example
+const methodName = 'driveCar';
+class CarThree {
+    [methodName] () {console.log("3rd");}
+}
 
-// call sayHello method
-person.sayHello();
+// define classes and call metods
+var car1 = new CarOne;
+var car2 = new CarTwo;
+var car3 = new CarThree;
 
-// call sayGoodbyew method --> defined on the proptotype
-person.sayGoodbye();
+car1.driveCar();
+car2.driveCar();
+car3.driveCar();
 
 // Next Chaper 8 - Static methods page 267
