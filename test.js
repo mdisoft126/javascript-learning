@@ -12,29 +12,19 @@
 ////// Classes and Modules
 //// Defining Classes
 
-//// Define using expression
-// 1st example
-class CarOne {
-    driveCar() {console.log("1st")};
+//// Static methods
+class Logger {
+    static log(level, message) {
+        console.log(`${level} : ${message}.`);
+    }
 }
 
-// 2nd example
-class CarTwo {
-    ['drive' + 'Car'] () {console.log("2nd")};
-}
-// 3rd example
-const methodName = 'driveCar';
-class CarThree {
-    [methodName] () {console.log("3rd");}
-}
+// invoke static method on the Class
+Logger.log("ERROR", "The end is near");
 
-// define classes and call metods
-var car1 = new CarOne;
-var car2 = new CarTwo;
-var car3 = new CarThree;
+// static method cannot be called by instance of the class
+const logger = new Logger();
+logger.log("Error", "End"); // logger.log is not a function
 
-car1.driveCar();
-car2.driveCar();
-car3.driveCar();
 
-// Next Chaper 8 - Static methods page 267
+// Next Chaper 8 - Static properties page 268
