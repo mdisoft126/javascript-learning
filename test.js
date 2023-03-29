@@ -12,20 +12,25 @@
 ////// Classes and Modules
 //// Defining Classes
 
-//// Generator methods
-class iterableArg {
-    constructor(...args) {
-        this.args = args;
+//// Subclassing
+class Animal {
+    constructor(name) {
+        this.name = name;
     }
-    * [Symbol.iterator]() {
-        for (const arg of this.args) {
-            yield arg;
-        }
+    speak() {
+        console.log(`${this.name} generic noise.`);
     }
 }
 
-for (const x of new iterableArg("ES6", "wins")) {
-    console.log(x);
+class Cat extends Animal {
+    speak() {
+        console.log(`${this.name} says meow.`);
+    }
 }
+
+var c = new Cat("Grace");
+c.speak();
+console.log(c.name);
+
 
 // Next Chaper 8 - Static properties page 268
