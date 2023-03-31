@@ -9,28 +9,50 @@
 
 ////////// Chapter 9 Promises and proxies
 ////// Proxy
-// handler using set method - age validator
-let ageValidator = {
-    set: function(obj, prop, value) {
-        if (prop === 'age') {
-            if (!Number.isInteger(value)) {
-                throw new TypeError("The age is not a number");
-            }
-            if (value > 100) {
-                throw new RangeError("You can't be older than 100");
-            }
-        }
-        // if no error - just store the value in the property
-        obj[prop] = value;
-    }
+//// Set
+// object
+const obj = {
+    foo: 'bar',
+    baz: 'qux'
 };
 
-// initiate object
-let p = new Proxy({}, ageValidator);
-p.age = 100;
-p.age = 90;
-p.gender = 'man';
-console.log(p);
+// 1. Preventing certain properties from being set
+const proxy = new Proxy(obj, {
+    set(target, property, value) {
+        if (property === 'baz') {
+            throw new Error('Setting "baz" is not allowed.');
+        }
+        target[property] = value;
+    }
+});
 
+proxy.foo = 'hello';
+// proxy.baz = 'yoy'; // error
+console.log(obj);
+
+// 2. Logging property changes
+const proxy2 = new Proxy(obj, {
+    set(target, property, value) {
+        console.log(`Setting ${property} to ${value}`);
+        target[property] = value
+    }
+})
+
+proxy2.foo = 'hej hello';
+console.log(obj);
+
+// 3.Preventing new properties from being added
+const proxy3 = new Proxy(obj, {
+    set(target, property, value) {
+        if (!(property in target)) {
+            throw new Error("Can't add new property. You can only change values on the existing ones.")
+        }
+        target[property] = value;
+    }
+})
+
+proxy3.foo = "helo elo hey";
+// proxy3.age = 10; // error
+console.log(obj);
 
 // Next Chaper 10 - The browser environment, page 294
