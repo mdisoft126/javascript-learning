@@ -8,64 +8,21 @@
 ////
 
 ////////// Chapter 9 Promises and proxies
+////// Promise.all
+// const promise1 = Promise.resolve(3);
+const promise1 = Promise.reject(3); // rejection for test purpose
+const promise2 = 42;
+const promise3 = new Promise((resolve, reject) => {
+    setTimeout(resolve, 100, "foo");
+});
 
-////// callback
-// array with numbers
-const myNumbers = [1,4,-2,5,4,-10,-7,3];
+Promise.all([promise1, promise2, promise3])
+.then((values) => {
+    console.log(values);
+})
+.catch(err => {
+    console.log("at least one of the promises failed");
+});
 
-// removing function
-function removeNeg(numbers, callback) {
-    const myArray = [];
-    for (const x of numbers) {
-        if (callback(x)) {
-            myArray.push(x);
-        }
-    }
-    console.log(myArray);
-}
-
-// calling removing function
-removeNeg(myNumbers, (x) => x >= 0);
-
-////// propmise // the same exercise but using promise
-// array with numbers
-const myNumbers2 = [-4,-6,-7];
-
-// removing function
-function myRemovingPromise(numbers) {
-    return new Promise(
-        function (resolve, reject) {
-            const myArray = [];
-            for (const x of numbers) {
-                if (x >= 0) {
-                    myArray.push(x);
-                }
-            }
-            if (myArray.length > 0) {
-                resolve(myArray)
-            } else {
-                reject("No values above or equal 0");
-            }
-
-            // // 2nd version
-            // if (myArray.length > 0) {
-            //     resolve(myArray)
-            // } else {
-            //     reject("No values above or equal 0");
-            // }
-        }
-    )
-}
-
-myRemovingPromise(myNumbers2).then(
-    function(value) {console.log(value);},
-    function(error) {console.log(error);}
-);
-
-// // 2nd version
-// myRemovingPromise(myNumbers2)
-// .then(function(value) {console.log(value);})
-// .catch(function(error) {console.log(error);})
-// ;
 
 // Next Chaper 10 - The browser environment, page 294
