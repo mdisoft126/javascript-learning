@@ -46,6 +46,13 @@ function myRemovingPromise(numbers) {
             } else {
                 reject("No values above or equal 0");
             }
+
+            // // 2nd version
+            // if (myArray.length > 0) {
+            //     resolve(myArray)
+            // } else {
+            //     reject("No values above or equal 0");
+            // }
         }
     )
 }
@@ -54,5 +61,11 @@ myRemovingPromise(myNumbers2).then(
     function(value) {console.log(value);},
     function(error) {console.log(error);}
 );
+
+// // 2nd version
+// myRemovingPromise(myNumbers2)
+// .then(function(value) {console.log(value);})
+// .catch(function(error) {console.log(error);})
+// ;
 
 // Next Chaper 10 - The browser environment, page 294
