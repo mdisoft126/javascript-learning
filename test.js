@@ -8,21 +8,18 @@
 ////
 
 ////////// Chapter 9 Promises and proxies
-////// Promise.all
-// const promise1 = Promise.resolve(3);
-const promise1 = Promise.reject(3); // rejection for test purpose
-const promise2 = 42;
-const promise3 = new Promise((resolve, reject) => {
-    setTimeout(resolve, 100, "foo");
-});
+////// Metaprogramming
+// Object.key() as an example of introspection
+const obj = {
+    name: "John",
+    myfun() {
+        console.log("check message");
+    }
+}
 
-Promise.all([promise1, promise2, promise3])
-.then((values) => {
-    console.log(values);
-})
-.catch(err => {
-    console.log("at least one of the promises failed");
-});
+for (const key of Object.keys(obj)) {
+    console.log(key);
+}
 
 
 // Next Chaper 10 - The browser environment, page 294
