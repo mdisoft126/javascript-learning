@@ -10,20 +10,24 @@
 ////////// Chapter 9 Promises and proxies
 
 ////// javascript call stack
-function c(z2) {
-    console.log("c: finished");
-    console.log(new Error().stack);
-}
-function b(z1) {
-    console.log("b: " + z1 + 1);
-    c(z1 + 1);
-}
-function a(z) {
-    console.log("a: " + z + 1);
-    b(z + 1);
+// array with numbers
+const myNumbers = [1,4,-2,5,4,-10,-7,3];
+
+// removing function
+function removeNeg(numbers, callback) {
+    const myArray = [];
+    for (const x of numbers) {
+        if (callback(x)) {
+            myArray.push(x);
+        }
+    }
+    console.log(myArray);
 }
 
-a(1);
+// calling removing function
+removeNeg(myNumbers, (x) => x >= 0);
+
+
 
 
 // Next Chaper 10 - The browser environment, page 294
