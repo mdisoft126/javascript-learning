@@ -9,53 +9,28 @@
 
 ////////// Chapter 9 Promises and proxies
 ////// Proxy
-// handler
-var handler = {
-    get: function(target, name) {
-        return name in target ? target[name] : 42;
+// handler using set method - age validator
+let ageValidator = {
+    set: function(obj, prop, value) {
+        if (prop === 'age') {
+            if (!Number.isInteger(value)) {
+                throw new TypeError("The age is not a number");
+            }
+            if (value > 100) {
+                throw new RangeError("You can't be older than 100");
+            }
+        }
+        // if no error - just store the value in the property
+        obj[prop] = value;
     }
-}
+};
 
-//// example 1 - using handler with an object literal
-var obj = {a:1, b:2};
-
-let proxy = new Proxy(obj, handler);
-
-console.log(proxy.a);   // 1
-console.log(proxy.c);   // should be deafault value = 42 because propery c doesn't exist
-
-//// example 2 - using handler with a class
-class myClass {
-    constructor(a, b) {
-        this.a = a;
-        this.b = b;
-    }
-}
-
-let obj2 = new myClass(3, 5);
-
-let proxy2 = new Proxy(obj2, handler);
-
-console.log(proxy2.a);
-console.log(proxy2.c);
-
-//// example 3 - using handler with an array
-let myArray = [2, 5, 7];
-
-let proxy3 = new Proxy(myArray, handler);
-
-console.log(proxy3[0]);
-console.log(proxy3[3]);
-
-//// example 4 - empty target
-var p = new Proxy({}, handler);
-p.a = 100;
-p.b = "hello";
-
+// initiate object
+let p = new Proxy({}, ageValidator);
+p.age = 100;
+p.age = 90;
+p.gender = 'man';
 console.log(p);
-
-console.log(p.a);
-console.log(p.c);
 
 
 // Next Chaper 10 - The browser environment, page 294
