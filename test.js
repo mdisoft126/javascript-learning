@@ -7,39 +7,23 @@
 
 ////
 
-////////// Chapter 5 from new book and then continue from 8
+////////// Chapter 9 Promises and proxies
 
-////// Classes and Modules
-//// Subclassing
-
-//// Mixins (based on book)
-//
-class Person {
-    saying() {
-        console.log("I am person");
-    }
+////// javascript call stack
+function c(z2) {
+    console.log("c: finished");
+    console.log(new Error().stack);
+}
+function b(z1) {
+    console.log("b: " + z1 + 1);
+    c(z1 + 1);
+}
+function a(z) {
+    console.log("a: " + z + 1);
+    b(z + 1);
 }
 
-const Check = (Tools) => class extends Tools {  // a parameter can be with or without brackets (). In this case we have (Tools) be we can have also Tools like below
-    check() {
-        console.log("checking");
-    }
-}
-
-const Onboard = Tools => class extends Tools {
-    onboarding() {
-        console.log("onboarding");
-    }
-}
-
-class Employee extends Check(Onboard(Person)) {}    // it means that Employee is a subclass of Check, which in turn is a subclass of Onboardm
-                                                    // which in turn is a subclass of Person
-// create an instance and call the methods
-const p = new Employee();
-p.saying();
-p.check();
-p.onboarding(); 
+a(1);
 
 
-
-// Next Chaper 8 - Modules 272
+// Next Chaper 10 - The browser environment, page 294
