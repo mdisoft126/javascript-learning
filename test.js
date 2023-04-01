@@ -7,32 +7,15 @@
 
 ////
 
-////////// Chapter 9 Promises and proxies
-////// Proxy
-//// Function traps
-var car = {
-    name: "Ford",
-    method_1: function(text) {
-        console.log("Method_1 called with " + text);
+////////// Chapter 10 The browser environment
+////// BOM
+//// window.location property
+for (var i in location) {
+    if (typeof location[i] === "string") {
+    console.log(i + ' = "' + location[i] + '"');
     }
 }
 
-var methodInterceptorProxy = new Proxy(car, {
-    get: function(target, propKey, receiver) {
-        // I only want to intercept mathod calls, not property access
-        var propValue = target[propKey];
-        if (typeof propValue != 'function') {
-            return propValue;
-        } else {
-            return function() {
-                console.log("intercepting call to " + propKey + " in car " + target.name);
-                // target is the object being proxied
-                return propValue.apply(target, arguments);
-            }
-        }
-    }
-});
+// next window.frames property page 301
 
-methodInterceptorProxy.method_1("Mercedes");
-
-// Next Chaper 10 - The browser environment, page 294
+// Next Chaper 11 - Coding and design patterns 357
