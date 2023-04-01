@@ -9,13 +9,8 @@
 
 ////////// Chapter 10 The browser environment
 ////// BOM
-//// window.location property
-for (var i in location) {
-    if (typeof location[i] === "string") {
-    console.log(i + ' = "' + location[i] + '"');
-    }
-}
 
-// next window.frames property page 301
+
+// next window.alert page 305
 
 // Next Chaper 11 - Coding and design patterns 357
