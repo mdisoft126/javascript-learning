@@ -8,9 +8,9 @@
 ////
 
 ////////// Chapter 10 The browser environment
-////// BOM
+////// DOM
 
 
-// next window.alert page 305
+// next documentElement page 316
 
 // Next Chaper 11 - Coding and design patterns 357
