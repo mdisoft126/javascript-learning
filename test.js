@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next documentElement page 316
+// next Accessing the content inside a tag 319
 
 // Next Chaper 11 - Coding and design patterns 357
