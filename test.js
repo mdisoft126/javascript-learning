@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next Accessing the content inside a tag 319
+// next Creating new nodes 327
 
 // Next Chaper 11 - Coding and design patterns 357
