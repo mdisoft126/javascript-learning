@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next Creating new nodes 327
+// next Using document.write() method 334
 
 // Next Chaper 11 - Coding and design patterns 357
