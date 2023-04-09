@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next Events 336
+// next Capturing and bubbling 338
 
 // Next Chaper 11 - Coding and design patterns 357
