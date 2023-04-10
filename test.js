@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next Capturing and bubbling 338
+// next XML Http Request 345
 
 // Next Chaper 11 - Coding and design patterns 357
