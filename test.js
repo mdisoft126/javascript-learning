@@ -11,6 +11,6 @@
 ////// DOM
 
 
-// next X is for XML 350
+//
 
 // Next Chaper 11 - Coding and design patterns 357
