@@ -9,20 +9,50 @@
 
 ////////// Chapter 11 Coding and Design Patterns
 ////// Coding patterns
-//// Namespaces
+//// Namespaced constructors
 
-// var MyVariables = "hello"; // commented for testing purpose
-// console.log(MyVariables);
+// function for creating elements in the document
+// var MYAPP = MYAPP || {};                             // version for browser environment
+// MYAPP.dom = {};
+// MYAPP.dom.Element = function (type, properties) {
+// 	var tmp = document.createElement(type);
+// 	for (var i in properties) {
+// 		if (properties.hasOwnProperty(i)) {
+// 			tmp.setAttribute(i, properties[i]);
+// 		}
+// 	}
+// 	return tmp;
+// };
 
-// if the variable exists before then it is not overwrited. But if no, there is created object.
-var MyVariables = MyVariables || {};
+// function for creating elements in the document
+var MYAPP = MYAPP || {};                                // version for non browser environment. return string
 
-MyVariables.name = "Marcin";
-MyVariables.myFunction = function() {
-    console.log("say hello!");
-}
+MYAPP.dom = {};
 
-console.log(MyVariables.name);
-MyVariables.myFunction();
+MYAPP.dom.Element = function(type, properties) {
+  var tmp = '<' + type;
 
-// Next
+  for (var i in properties) {
+    if (properties.hasOwnProperty(i)) {
+      tmp += ' ' + i + '="' + properties[i] + '"';
+    }
+  }
+
+  tmp += '>' + (properties.innerHTML || '') + '</' + type + '>';
+
+  return tmp;
+};
+
+
+// initialization
+var myElement = MYAPP.dom.Element('div', {
+    'class': 'my-class',
+    'data-id': '12345',
+    'innerHTML': 'Hello, world!'
+  });
+//   document.body.appendChild(myElement);          // for browser environment
+  
+  console.log(myElement);
+
+
+// Next A namespace() method page 363
