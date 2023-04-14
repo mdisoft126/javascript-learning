@@ -55,4 +55,4 @@ var myElement = MYAPP.dom.Element('div', {
   console.log(myElement);
 
 
-// Next A namespace() method page 363
+// Next Configuration object 366
