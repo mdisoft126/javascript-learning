@@ -9,7 +9,7 @@
 
 ////////// Chapter 11 Coding and Design Patterns
 ////// Coding patterns
-//// Private properties and methods
+//// 
 
 
-// Next Privileged methods 370
+// Next Design patterns 377
