@@ -10,47 +10,49 @@
 ////////// Chapter 11 Coding and Design Patterns
 ////// Desing patterns
 //// Decorator pattern
-// Decorating a christmas tree
+// Decorating a christmas tree v2
 
-// Define the base object
-class Component {
-  operation() {
-    console.log("I am a component.");
+// object tree and deorator method
+var tree = {};
+tree.decorate = function() {
+  console.log("Make sure that the tree don't fall");
+}
+
+// created getDecorator method
+tree.getDecorator = function(deco) {
+  tree[deco].prototype = this;
+  return new tree[deco];
+}
+
+// Red Balls decorator
+tree.RedBalls = function() {
+  this.decorate = function() {
+    this.RedBalls.prototype.decorate();
+    console.log("Put on some red balls");
   }
 }
 
-// Define the decorator class
-class Decorator {
-  constructor(component) {
-    this.component = component;
-  }
-
-  operation() {
-    this.component.operation();
+// Blue Balls decorator
+tree.BlueBalls = function() {
+  this.decorate = function() {
+    this.BlueBalls.prototype.decorate();
+    console.log("Add blue balls");
   }
 }
 
-// Define the concrete decorators
-class ConcreteDecoratorA extends Decorator {
-  operation() {
-    super.operation();
-    console.log('Adding behavior from ConcreteDecoratorA.');
+// Angel decorator
+tree.Angel = function() {
+  this.decorate = function() {
+    this.Angel.prototype.decorate();
+    console.log("An Angel on the top");
   }
 }
 
-class ConcreteDecoratorB extends Decorator {
-  operation() {
-    super.operation();
-    console.log('Adding behavior from ConcreteDecoratorB.');
-  }
-}
+tree = tree.getDecorator("BlueBalls");
+tree = tree.getDecorator("Angel");
+tree = tree.getDecorator("RedBalls");
 
-// Usage
-const component = new Component();
-const decoratorA = new ConcreteDecoratorA(component);
-const decoratorB = new ConcreteDecoratorB(decoratorA);
-
-decoratorB.operation();
+tree.decorate();
 
 
-// Next - continue decorating a christmas tree 383
+// Next - Observer pattern 384
