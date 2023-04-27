@@ -9,50 +9,40 @@
 
 ////////// Chapter 11 Coding and Design Patterns
 ////// Desing patterns
-//// Decorator pattern
-// Decorating a christmas tree v2
+//// Observer pattern
+// observer v1
 
-// object tree and deorator method
-var tree = {};
-tree.decorate = function() {
-  console.log("Make sure that the tree don't fall");
-}
-
-// created getDecorator method
-tree.getDecorator = function(deco) {
-  tree[deco].prototype = this;
-  return new tree[deco];
-}
-
-// Red Balls decorator
-tree.RedBalls = function() {
-  this.decorate = function() {
-    this.RedBalls.prototype.decorate();
-    console.log("Put on some red balls");
+// observer mix-in object that contains all the subscription-related methods
+// and can be used to turn any object into a publisher
+var observer = {
+  addSubscriber: function(callback) {
+    if (typeof callback === 'function') {
+      this.subscribers[this.subscribers.length] = callback;
+    }
+  },
+  removeSubscriber: function(callback) {
+    for (var i = 0; i < this.subscribers.length; i++) {
+      if (this.subscribers[i] === callback) {
+        delete this.subscribers[i];
+      }
+    }
+  },
+  publish: function(what) {
+    for (var i = 0; i < this.subscribers.length; i++) {
+      if (typeof this.subscribers[i] === 'function') {
+        this.subscribers[i](what);
+      }
+    }
+  },
+  make: function(o) { // turns an object into publisher
+    for (var i in this) {
+      if (this.hasOwnProperty(i)) {
+        o[i] = this[i];
+        o.subscribers = [];
+      }
+    }
   }
 }
 
-// Blue Balls decorator
-tree.BlueBalls = function() {
-  this.decorate = function() {
-    this.BlueBalls.prototype.decorate();
-    console.log("Add blue balls");
-  }
-}
 
-// Angel decorator
-tree.Angel = function() {
-  this.decorate = function() {
-    this.Angel.prototype.decorate();
-    console.log("An Angel on the top");
-  }
-}
-
-tree = tree.getDecorator("BlueBalls");
-tree = tree.getDecorator("Angel");
-tree = tree.getDecorator("RedBalls");
-
-tree.decorate();
-
-
-// Next - Observer pattern 384
+// Next - Finish observer pattern based on example implemantation from GTP. Next do the same but with implementation from the book 386
