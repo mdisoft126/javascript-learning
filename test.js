@@ -44,5 +44,34 @@ var observer = {
   }
 }
 
+//// implementation
+
+// create a publisher
+var publisher = {};
+observer.make(publisher);
+console.log(publisher);
+
+// Create some subscriber functions
+function logMessage(message) {
+  console.log("log: " + message);
+}
+
+function showAlert(message) {
+  console.log("alert: " + message);
+}
+
+// Add the subscribers to the publisher
+publisher.addSubscriber(logMessage);
+publisher.addSubscriber(showAlert);
+
+// Publish a message
+publisher.publish("Hello");
+
+// Remove one of the subscribers
+publisher.removeSubscriber(showAlert);
+
+// Publish another message
+publisher.publish("Hello elo");
+
 
 // Next - Finish observer pattern based on example implemantation from GTP. Next do the same but with implementation from the book 386
