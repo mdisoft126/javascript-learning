@@ -10,7 +10,7 @@
 ////////// Chapter 11 Coding and Design Patterns
 ////// Desing patterns
 //// Observer pattern
-// observer v1
+// observer v2 (from book)
 
 // observer mix-in object that contains all the subscription-related methods
 // and can be used to turn any object into a publisher
@@ -46,32 +46,54 @@ var observer = {
 
 //// implementation
 
-// create a publisher
-var publisher = {};
-observer.make(publisher);
-console.log(publisher);
-
-// Create some subscriber functions
-function logMessage(message) {
-  console.log("log: " + message);
+// create objects
+var blogger = {
+  writeBlogPost: function() {
+    var content = 'Today is ' + new Date();
+    this.publish(content);
+  }
 }
 
-function showAlert(message) {
-  console.log("alert: " + message);
+var la_times = {
+  newIssue: function() {
+    var paper = 'Martians have landed on Earth!';
+    this.publish(paper);
+  }
 }
 
-// Add the subscribers to the publisher
-publisher.addSubscriber(logMessage);
-publisher.addSubscriber(showAlert);
+// turn objects into publisher
+observer.make(blogger);
+observer.make(la_times);
 
-// Publish a message
-publisher.publish("Hello");
+console.log(blogger);
 
-// Remove one of the subscribers
-publisher.removeSubscriber(showAlert);
+// create another two simple objects (potential subscribers)
+var jack = {
+  read: function(what) {
+    console.log("I just read that " + what);
+  }
+};
 
-// Publish another message
-publisher.publish("Hello elo");
+var jill = {
+  gossip: function(what) {
+    console.log("You didn't hear it from me, but " + what);
+  }
+};
+
+// add subscribers to blogger
+blogger.addSubscriber(jack.read);
+blogger.addSubscriber(jill.gossip);
+
+// blogger wrote a post
+blogger.writeBlogPost();
+
+// jill remove subscribtion from blogger
+blogger.removeSubscriber(jill.gossip);
+blogger.writeBlogPost();
+
+// jill subscribe la_times
+la_times.addSubscriber(jill.gossip);
+la_times.newIssue();
 
 
-// Next - Finish observer pattern based on example implemantation from GTP. Next do the same but with implementation from the book 386
+// Next - Chapter 12: Testing and Debugging 389
