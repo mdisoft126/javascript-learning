@@ -1,3 +1,5 @@
 function capitalizeName(name) {
-    return name.toUpperCase();
+    if(name) {
+        return name.toUpperCase();
+    }
 }
