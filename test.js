@@ -8,11 +8,10 @@
 ////
 
 ////////// Chapter 12 Testing and Debugging
-////// Unit testing
-//// Behavior Driven Development
-
-// jasmine is not working!!!!!!
-
+////// JavaScript debugging
+//// Runtime exeptions
+// Chrome Developer Tools
 
 
-// Next - Behavior Driven Development - last example to finish (gtp) 397
+
+// Next - Chrome Developer Tools 401
