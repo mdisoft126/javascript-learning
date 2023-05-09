@@ -7,10 +7,10 @@
 
 ////
 
-////////// Chapter 13 - Reactive promgraming and React
-////// Reactive promgraming, React, Virtual DOM
+////////// Appendix
 
 
 
 
-// Next - Life cycle events 421
+
+// Next - Build-in object 430
