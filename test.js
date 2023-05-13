@@ -11,33 +11,42 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-// ES5 data descriptor
-var person = {};
-Object.defineProperty(person, "legs", {
-    value: 2,
-    writable: true,
-    configurable: true,
-    enumerable: true
+// ES5 data descriptor and accessor description in more practical example
+// First code block - fixed value
+var person1 = {};
+Object.defineProperty(person1, "legs", {
+  value: 2,
+  writable: true,
+  configurable: true,
+  enumerable: true
 });
 
-console.log(person.legs);
-person.legs = 3;
-console.log(person.legs);
+// Set legs to 4
+person1.legs = 4;
 
-// ES5 accessor descriptor
+// Output the value of legs
+console.log(person1.legs); // 2 - fixed value is not overwritten
+
+// Second code block - custom logic
 var person2 = {};
-Object.defineProperty(person2, "legs2", {
-    set: function(v) {this.value = v;},
-    get: function() {return this.value;},
-    configurable: true,
-    enumerable: true
+Object.defineProperty(person2, "legs", {
+  set: function(v) {
+    if (v >= 0 && v <= 4) {
+      this._legs = v;
+    }
+  },
+  get: function() {
+    return this._legs || 2;
+  },
+  configurable: true,
+  enumerable: true
 });
 
-console.log(person2.legs2);
-person2.legs2 = 5;
-console.log(person2.legs2);
-person2.legs2 = 6;
-console.log(person2.legs2);
+// Set legs to 3
+person2.legs = 5;
+
+// Output the value of legs
+console.log(person2.legs); // 3 - custom logic is applied
 
 
 // Next - ECMAScript 5 additions to objects page 433
