@@ -11,21 +11,21 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.defineProperties(obj,descriptors)
+////// Object.preventExtensions(obj)
+////// Object.isExtensible(obj)
 
-var glass = Object.defineProperties({}, {
-    "color": {
-        value: "blue",
-        writable: true
-    },
-    "fullness": {
-        value: "half",
-        writable: false
-    }
-});
+var deadline = {};
+console.log(Object.isExtensible(deadline));
+deadline.date = "yesterday";
+console.log(deadline.date);
+Object.preventExtensions(deadline);
+console.log(Object.isExtensible(deadline));
+deadline.date = "today";
+console.log(deadline.date);
 
-console.log(glass.fullness);
-console.log(glass.color);
+// but adding new property doeasn't work
+deadline.report = true;
+console.log(deadline.report);
 
 
-// Next 
+// Next Object.seal(obj) and Object.isSealed(obj) page 437
