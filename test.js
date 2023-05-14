@@ -11,12 +11,23 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.create(obj, descr)
+////// Object.getOwnPropertyDescriptor(obj, property)
 
-var parent = {hi: "hello"};
-var o = Object.create(parent, {prop: {value: 1}});
-console.log(o.hi);
-console.log(o.prop);
+var person = {};
+Object.defineProperty(person, "legs", {
+    value: 2,
+    writable: true,
+    configurable: true,
+    enumerable: true
+});
+
+console.log(person.legs);
+
+// use Object.getOwnPropertyDescriptor on created person object
+console.log(Object.getOwnPropertyDescriptor(person, "legs"));
+
+// use Object.getOwnPropertyDescriptor on build in object
+console.log(Object.getOwnPropertyDescriptor(Object.prototype, "toString"));
 
 
-// Next - Object.getOwnPropertyDescriptor(obj, property) page 436
+// Next 
