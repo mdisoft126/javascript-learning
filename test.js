@@ -11,23 +11,18 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.getOwnPropertyDescriptor(obj, property)
+////// Object.getOwnPropertyNames(obj)
 
-var person = {};
-Object.defineProperty(person, "legs", {
-    value: 2,
-    writable: true,
-    configurable: true,
-    enumerable: true
-});
+console.log(Object.getOwnPropertyNames(Object.prototype));
+console.log(Object.keys(Object.prototype)); // Object.prototype has no enumerables properties so the array is empty
 
-console.log(person.legs);
+// create object with enumerables properties
+var obj = {
+    foo: 1,
+    bar: 2
+}
 
-// use Object.getOwnPropertyDescriptor on created person object
-console.log(Object.getOwnPropertyDescriptor(person, "legs"));
-
-// use Object.getOwnPropertyDescriptor on build in object
-console.log(Object.getOwnPropertyDescriptor(Object.prototype, "toString"));
+console.log(Object.keys(obj));
 
 
 // Next 
