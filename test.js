@@ -11,18 +11,21 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.getOwnPropertyNames(obj)
+////// Object.defineProperties(obj,descriptors)
 
-console.log(Object.getOwnPropertyNames(Object.prototype));
-console.log(Object.keys(Object.prototype)); // Object.prototype has no enumerables properties so the array is empty
+var glass = Object.defineProperties({}, {
+    "color": {
+        value: "blue",
+        writable: true
+    },
+    "fullness": {
+        value: "half",
+        writable: false
+    }
+});
 
-// create object with enumerables properties
-var obj = {
-    foo: 1,
-    bar: 2
-}
-
-console.log(Object.keys(obj));
+console.log(glass.fullness);
+console.log(glass.color);
 
 
 // Next 
