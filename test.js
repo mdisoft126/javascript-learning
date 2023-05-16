@@ -11,21 +11,22 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.preventExtensions(obj)
-////// Object.isExtensible(obj)
+////// Object.seal(obj) and Object.isSealed(obj)
 
 var deadline = {};
-console.log(Object.isExtensible(deadline));
+console.log(Object.isSealed(deadline));
 deadline.date = "yesterday";
 console.log(deadline.date);
-Object.preventExtensions(deadline);
-console.log(Object.isExtensible(deadline));
+Object.seal(deadline);
+console.log(Object.isSealed(deadline));
 deadline.date = "today";
 console.log(deadline.date);
 
-// but adding new property doeasn't work
+// adding new properties doesn't work
 deadline.report = true;
 console.log(deadline.report);
+
+// and changing values of description also doesn't work (so redefine property date doen't work. there is an error)
 console.log(Object.getOwnPropertyDescriptors(deadline));
 
 Object.defineProperty(deadline, "date", {
@@ -34,4 +35,5 @@ Object.defineProperty(deadline, "date", {
 
 console.log(Object.getOwnPropertyDescriptors(deadline));
 
-// Next Object.seal(obj) and Object.isSealed(obj) page 437
+
+// Next
