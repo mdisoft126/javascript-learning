@@ -11,14 +11,16 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.seal(obj) and Object.isSealed(obj)
+////// Object.freeze(obj) and Object.isFrozen(obj)
 
 var deadline = {};
-console.log(Object.isSealed(deadline));
+console.log(Object.isFrozen(deadline));
 deadline.date = "yesterday";
 console.log(deadline.date);
-Object.seal(deadline);
-console.log(Object.isSealed(deadline));
+Object.freeze(deadline);
+console.log(Object.isFrozen(deadline));
+
+// changing value doesn't work 
 deadline.date = "today";
 console.log(deadline.date);
 
@@ -29,11 +31,11 @@ console.log(deadline.report);
 // and changing values of description also doesn't work (so redefine property date doen't work. there is an error)
 console.log(Object.getOwnPropertyDescriptors(deadline));
 
-Object.defineProperty(deadline, "date", {
-    enumerable: false
-});
+// Object.defineProperty(deadline, "date", {
+//     enumerable: false
+// });
 
-console.log(Object.getOwnPropertyDescriptors(deadline));
+// console.log(Object.getOwnPropertyDescriptors(deadline));
 
 
-// Next
+// Next Object.keys(obj) page 438
