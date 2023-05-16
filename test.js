@@ -26,6 +26,12 @@ console.log(deadline.date);
 // but adding new property doeasn't work
 deadline.report = true;
 console.log(deadline.report);
+console.log(Object.getOwnPropertyDescriptors(deadline));
 
+Object.defineProperty(deadline, "date", {
+    enumerable: false
+});
+
+console.log(Object.getOwnPropertyDescriptors(deadline));
 
 // Next Object.seal(obj) and Object.isSealed(obj) page 437
