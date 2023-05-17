@@ -11,31 +11,18 @@
 ////// Object
 //// ECMAScript 5 additions to objects
 
-////// Object.freeze(obj) and Object.isFrozen(obj)
+////// Object.keys(obj)
 
-var deadline = {};
-console.log(Object.isFrozen(deadline));
-deadline.date = "yesterday";
-console.log(deadline.date);
-Object.freeze(deadline);
-console.log(Object.isFrozen(deadline));
+Object.prototype.customProto = 101;
+console.log(Object.getOwnPropertyNames(Object.prototype));
+console.log(Object.keys(Object.prototype));
 
-// changing value doesn't work 
-deadline.date = "today";
-console.log(deadline.date);
-
-// adding new properties doesn't work
-deadline.report = true;
-console.log(deadline.report);
-
-// and changing values of description also doesn't work (so redefine property date doen't work. there is an error)
-console.log(Object.getOwnPropertyDescriptors(deadline));
-
-// Object.defineProperty(deadline, "date", {
-//     enumerable: false
-// });
-
-// console.log(Object.getOwnPropertyDescriptors(deadline));
+var o = {own: 202};
+console.log(o.customProto);
+console.log(o.own);
+// console.log(Object.getOwnPropertyNames(Object.prototype));
+console.log(Object.keys(o));
 
 
-// Next Object.keys(obj) page 438
+
+// Next ES6 addition to objects page 438
