@@ -9,24 +9,62 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Array
-//// 
+//// The Array.prototype members
 
-var a = new Array(1, 2, 3);
-var b = [1, 2, 3]; // recommended
+// length
 
-var un = new Array(3);
-console.log(un);
-console.log(un.length);
+// concat(i1,i2,i3..)
+var a = [1,2,3];
+var b = [4];
+var c = [5,6,7];
 
-console.log("0" in un);
-console.log("0" in a);
+console.log(a.concat(b, c));
 
-console.log(un[0]);
+// join(separator)
+console.log(a.join());
+console.log(a.join('|'));
+console.log(a.join(' is less than '));
 
-var c = [3.14];
+// pop()
+console.log(c);
+console.log(c.pop());
 console.log(c);
 
-// var d = new Array(3.14); // error
-// console.log(d);
+// push(i1,i2,i3..)
+console.log(b.push('hello', 1,2,3));
+console.log(b);
 
-// Next The Array.prototype members 440
+// reverse()
+console.log(a.reverse());
+
+// shift()
+console.log(b);
+console.log(b.shift());
+console.log(b);
+
+// slice(start_index, end_index)
+console.log(b.slice(0,2));
+console.log(b);
+
+// sort(callback)
+function customSort(a, b) {
+    if (a > b) {return 1};
+    if (a < b) {return -1};
+    return 0;
+}
+
+var a = [101, 99, 1, 5];
+console.log(a.sort());
+console.log(a.sort(customSort));
+
+// splice(start_index, delete_count, i1,i2,i3...)
+var a = [1,2,3,4,5];
+console.log(a.splice(2,2,'hello', 'elo', 'semanelo'));
+console.log(a);
+
+// unshift(i1,i2,i3..)
+var a = [1,2,3];
+console.log(a.unshift("hello", "ziom"));
+console.log(a);
+
+// Next ECMAScript 5 additions to Array 443
