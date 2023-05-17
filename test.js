@@ -9,20 +9,21 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Object
-//// ECMAScript 5 additions to objects
+//// ECMAScript 6 additions to objects
 
-////// Object.keys(obj)
+////// Computed property names
 
-Object.prototype.customProto = 101;
-console.log(Object.getOwnPropertyNames(Object.prototype));
-console.log(Object.keys(Object.prototype));
+var obj = {
+    foo: "bar",
+    ["baz" + q()]:42
+}
 
-var o = {own: 202};
-console.log(o.customProto);
-console.log(o.own);
-// console.log(Object.getOwnPropertyNames(Object.prototype));
-console.log(Object.keys(o));
+function q() {
+    return "hello";
+}
+
+console.log(obj);
 
 
 
-// Next ES6 addition to objects page 438
+// Next Object.assign 439
