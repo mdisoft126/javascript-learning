@@ -11,19 +11,22 @@
 ////// Object
 //// ECMAScript 6 additions to objects
 
-////// Computed property names
+////// Object.assign
 
-var obj = {
-    foo: "bar",
-    ["baz" + q()]:42
-}
+// console.log(Object.getOwnPropertyNames(Object.prototype));
 
-function q() {
-    return "hello";
-}
+var dest = {quux: 0};
+var src1 = {foo: 1, bar: 2};
+var src2 = {foo: 3, baz: 4};
 
-console.log(obj);
+console.log(Object.getOwnPropertyNames(dest));
+
+Object.assign(dest, src1, src2);
+
+console.log(Object.getOwnPropertyNames(dest));
+
+console.log(dest.foo);
 
 
 
-// Next Object.assign 439
+// Next Array 439
