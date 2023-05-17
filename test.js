@@ -8,25 +8,25 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// Object
-//// ECMAScript 6 additions to objects
+////// Array
+//// 
 
-////// Object.assign
+var a = new Array(1, 2, 3);
+var b = [1, 2, 3]; // recommended
 
-// console.log(Object.getOwnPropertyNames(Object.prototype));
+var un = new Array(3);
+console.log(un);
+console.log(un.length);
 
-var dest = {quux: 0};
-var src1 = {foo: 1, bar: 2};
-var src2 = {foo: 3, baz: 4};
+console.log("0" in un);
+console.log("0" in a);
 
-console.log(Object.getOwnPropertyNames(dest));
+console.log(un[0]);
 
-Object.assign(dest, src1, src2);
+var c = [3.14];
+console.log(c);
 
-console.log(Object.getOwnPropertyNames(dest));
+// var d = new Array(3.14); // error
+// console.log(d);
 
-console.log(dest.foo);
-
-
-
-// Next Array 439
+// Next The Array.prototype members 440
