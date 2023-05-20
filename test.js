@@ -9,62 +9,34 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Array
-//// The Array.prototype members
+//// TECMAScript 5 additions to Array
 
-// length
+//// Logger
 
-// concat(i1,i2,i3..)
-var a = [1,2,3];
-var b = [4];
-var c = [5,6,7];
+var logger = console.log.bind(console);
 
-console.log(a.concat(b, c));
+//// forEach
+// var car = ["audi", "ford", "volvo"];
 
-// join(separator)
-console.log(a.join());
-console.log(a.join('|'));
-console.log(a.join(' is less than '));
+// car.forEach(logger);
 
-// pop()
-console.log(c);
-console.log(c.pop());
-console.log(c);
 
-// push(i1,i2,i3..)
-console.log(b.push('hello', 1,2,3));
-console.log(b);
+//// normal function
+carNames(logger);
 
-// reverse()
-console.log(a.reverse());
+function carNames(logger) {
+    var car = ["audi", "ford", "volvo"];
+    var result = "";
 
-// shift()
-console.log(b);
-console.log(b.shift());
-console.log(b);
-
-// slice(start_index, end_index)
-console.log(b.slice(0,2));
-console.log(b);
-
-// sort(callback)
-function customSort(a, b) {
-    if (a > b) {return 1};
-    if (a < b) {return -1};
-    return 0;
+    for (var i = 0; i < car.length; i++) {
+        if (i === car.length-1) {
+            result += car[i];
+        } else {
+            result += car[i] + "\n";
+        }
+    }
+    // return result;
+    logger(result);
 }
 
-var a = [101, 99, 1, 5];
-console.log(a.sort());
-console.log(a.sort(customSort));
-
-// splice(start_index, delete_count, i1,i2,i3...)
-var a = [1,2,3,4,5];
-console.log(a.splice(2,2,'hello', 'elo', 'semanelo'));
-console.log(a);
-
-// unshift(i1,i2,i3..)
-var a = [1,2,3];
-console.log(a.unshift("hello", "ziom"));
-console.log(a);
-
-// Next ECMAScript 5 additions to Array 443
+// Next ES6 addition to arrays 447
