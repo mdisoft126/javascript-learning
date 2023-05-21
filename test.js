@@ -9,15 +9,15 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Array
-//// Array.prototype.map(callback, this_obj)
+//// Array.prototype.reduceRight(callback, start)
 
-function cap(el) {
-    return el.toUpperCase();
+function concat(result_so_far, el) {
+    return result_so_far + el;
 }
 
-var array = ["ency", "pency", "dudu"];
+var a = ["hehe", "aaa", "bbb"];
 
-console.log(array.map(cap));
+console.log(a.reduceRight(concat));
 
 
-// Next Array.prototype.reduce(callback, start) 446
+// Next ES6 addition to arrays 447
