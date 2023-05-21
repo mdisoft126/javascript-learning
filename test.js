@@ -9,21 +9,15 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Array
-//// Array.prototype.filter(callback,this_obj)
+//// Array.prototype.map(callback, this_obj)
 
-function hasEye(el) {
-    return el.indexOf('a') !== -1;
+function cap(el) {
+    return el.toUpperCase();
 }
 
-var a = ["itsya", "bitsy", "spidera"];
+var array = ["ency", "pency", "dudu"];
 
-console.log(a.filter(hasEye));
-
-/////
-// a.some(function (e) {
-//     console.log(e);
-//     return false;
-// });
+console.log(array.map(cap));
 
 
-// Next Array.prototype.map(callback, this_obj) 446
+// Next Array.prototype.reduce(callback, start) 446
