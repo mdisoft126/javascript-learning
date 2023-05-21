@@ -10,19 +10,25 @@
 ////////// Appendix C: Built-in Objects
 ////// Array
 //// ES6 addition to arrays
-//// Array.prototype.findIndex(predicate, thisArg?)
+//// Array.prototype.fill(value : any, start=0, end=this.length) : This
 
-function cond(x) {
-    return x < 0;
+var a = ["a","b","c"];
+console.log(a);
+
+// copy array
+function copyArr(el) {
+    return el;
 }
 
-// console.log(cond(-2));
+var b = a.map(copyArr);
 
-var a = [1,-2,3];
+console.log(b);
 
-console.log(a.findIndex(cond));
 
-// arrow function
-console.log(a.findIndex(y => y < 0));
+a.fill(1);
+console.log(a);
 
-// Next Array.prototype.findIndex(predicate, thisArg?) 448
+b.fill(7, 1, 2);
+console.log(b);
+
+// Next Function 449
