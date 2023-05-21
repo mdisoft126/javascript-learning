@@ -10,19 +10,10 @@
 ////////// Appendix C: Built-in Objects
 ////// Array
 //// ES6 addition to arrays
-//// Array.from(arrayLike, mapFunc?, thisArg?)
+//// Array.of(...items)
 
-var arr_like = {length: 4, 0: "a", 1: "b", 2: "c"}
-console.log(arr_like);
-
-var a = Array.from(arr_like);
-console.log(a);
-
-////
-
-for (const x of a) {
-    console.log(x);
-}
+var arr = Array.of(1,2,3, "foo");
+console.log(arr);
 
 
-// Next ES6 addition to arrays 447
+// Next Array.prototype.entries() Array.prototype.keys() Array.prototype.values() 448
