@@ -10,25 +10,19 @@
 ////////// Appendix C: Built-in Objects
 ////// Array
 //// ES6 addition to arrays
-//// Array.prototype.entries() Array.prototype.keys() Array.prototype.values()
+//// Array.prototype.find(predicate, thisArg?)
 
-let a = Array.of(1,2,3,"foo");
-
-let k,v,e;
-
-console.log("// keys:");
-for (k of a.keys()) {
-    console.log(k);
+function cond(x) {
+    return x < 0;
 }
 
-console.log("// values:");
-for (v of a.values()) {
-    console.log(v);
-}
+// console.log(cond(-2));
 
-console.log("// entries:");
-for (e of a.entries()) {
-    console.log(e);
-}
+var a = [1,-2,3];
 
-// Next Array.prototype.find(predicate, thisArg?) 448
+console.log(a.find(cond));
+
+// arrow function
+console.log(a.find(y => y < 0));
+
+// Next Array.prototype.findIndex(predicate, thisArg?) 448
