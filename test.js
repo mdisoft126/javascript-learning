@@ -10,7 +10,7 @@
 ////////// Appendix C: Built-in Objects
 ////// Array
 //// ES6 addition to arrays
-//// Array.prototype.find(predicate, thisArg?)
+//// Array.prototype.findIndex(predicate, thisArg?)
 
 function cond(x) {
     return x < 0;
@@ -20,9 +20,9 @@ function cond(x) {
 
 var a = [1,-2,3];
 
-console.log(a.find(cond));
+console.log(a.findIndex(cond));
 
 // arrow function
-console.log(a.find(y => y < 0));
+console.log(a.findIndex(y => y < 0));
 
 // Next Array.prototype.findIndex(predicate, thisArg?) 448
