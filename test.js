@@ -9,15 +9,20 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Array
-//// Array.prototype.reduceRight(callback, start)
+//// ES6 addition to arrays
+//// Array.from(arrayLike, mapFunc?, thisArg?)
 
-function concat(result_so_far, el) {
-    return result_so_far + el;
+var arr_like = {length: 4, 0: "a", 1: "b", 2: "c"}
+console.log(arr_like);
+
+var a = Array.from(arr_like);
+console.log(a);
+
+////
+
+for (const x of a) {
+    console.log(x);
 }
-
-var a = ["hehe", "aaa", "bbb"];
-
-console.log(a.reduceRight(concat));
 
 
 // Next ES6 addition to arrays 447
