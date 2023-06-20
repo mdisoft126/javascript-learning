@@ -8,27 +8,32 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// Array
-//// ES6 addition to arrays
-//// Array.prototype.fill(value : any, start=0, end=this.length) : This
+////// Function
+//// The Function.prototype members
+//// apply(this_obj,params_array)
 
-var a = ["a","b","c"];
-console.log(a);
-
-// copy array
-function copyArr(el) {
-    return el;
+function whatIsIt(a, b) {
+    return console.log(this.toString() + a + b);
 }
 
-var b = a.map(copyArr);
+var myObj = {};
+var myArr = [];
+var a = 5;
 
-console.log(b);
+whatIsIt.apply(myObj, [2, 3]);
+whatIsIt.apply(myArr, [3, 4]);
+whatIsIt.apply(a, [4, 5]);
+console.log(myObj.toString());
 
+//// call(this_obj, p1, p2, p3..)
 
-a.fill(1);
-console.log(a);
+var b = 6;
+whatIsIt.call(b, 4, 5);
 
-b.fill(7, 1, 2);
-console.log(b);
+//// length - the number of parameters the function expects
 
-// Next Function 449
+console.log(parseInt.length);
+console.log(Function.prototype.apply.length);
+console.log(Function.prototype.call.length);
+
+// Next ECMAScript 5 additions to a Function page 450
