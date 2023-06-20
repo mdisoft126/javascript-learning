@@ -9,31 +9,22 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Function
-//// The Function.prototype members
-//// apply(this_obj,params_array)
+//// ECMAScript 5 additions to a Function
+//// bind
 
-function whatIsIt(a, b) {
-    return console.log(this.toString() + a + b);
-}
+const myModule = {
+    x: 42,
+    getX: function() {
+        return this.x;
+    }
+};
 
-var myObj = {};
-var myArr = [];
-var a = 5;
+const unboundedGetX = myModule.getX;
+console.log(unboundedGetX());
 
-whatIsIt.apply(myObj, [2, 3]);
-whatIsIt.apply(myArr, [3, 4]);
-whatIsIt.apply(a, [4, 5]);
-console.log(myObj.toString());
+// using bind
+const boundedGetX = myModule.getX.bind(myModule);
+console.log(boundedGetX());
 
-//// call(this_obj, p1, p2, p3..)
-
-var b = 6;
-whatIsIt.call(b, 4, 5);
-
-//// length - the number of parameters the function expects
-
-console.log(parseInt.length);
-console.log(Function.prototype.apply.length);
-console.log(Function.prototype.call.length);
-
-// Next ECMAScript 5 additions to a Function page 450
+// Next Continue with bind example from the page:
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind?retiredLocale=pl
