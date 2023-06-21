@@ -37,6 +37,20 @@ boundLog();
 const boundLog2 = boundLog.bind("this value 2", 3,4);
 boundLog2(5, 6);
 
+// checking if the function is called with a "new" keyword
+class Base {
+    constructor(...args) {
+        console.log(new.target === Base);
+        console.log(args);
+    }
+}
 
-// Next Continue with bind example from the page:
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Function/bind?retiredLocale=pl
+const BoundBase = Base.bind("this", 1,2,3);
+new BoundBase();
+
+
+// Next ECMAScript 6 additions to a Function page 451
+
+
+// Must be done after Command line and python!
+// https://developer.mozilla.org/en-US/docs/Web/JavaScript
