@@ -9,44 +9,32 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Function
-//// ECMAScript 5 additions to a Function
-//// bind
+//// ECMAScript 6 additions to a Function
+//// arrow functions
 
-const myModule = {
-    x: 42,
-    getX: function() {
-        return this.x;
-    }
-};
+// example
+const materials = ['hydrogen', 'helium', 'glass'];
+console.log(materials.map(material => material.length));
 
-const unboundedGetX = myModule.getX;
-console.log(unboundedGetX());
+// An empty arrow function returns undefined
+const empty = () => {};
+console.log(empty);
 
-// using bind
-const boundedGetX = myModule.getX.bind(myModule);
-console.log(boundedGetX());
+// Immediately invoked function expression
+(() => console.log("hello"))();
 
-// creating new bound function
-function myLog(...args) {
-    console.log(this, ...args);
-}
+// example 2
+const simple = (a) => (a > 15 ? 15 : a);
+console.log(simple(17));
+console.log(simple(10));
 
-myLog(0, 0);
-const boundLog = myLog.bind("this value", 1,2);
-boundLog();
-const boundLog2 = boundLog.bind("this value 2", 3,4);
-boundLog2(5, 6);
+// easy array filtering, mapping and ect
+const arr = [5, 6, 13, 0, 1, 18, 23];
 
-// checking if the function is called with a "new" keyword
-class Base {
-    constructor(...args) {
-        console.log(new.target === Base);
-        console.log(args);
-    }
-}
+const sum = arr.reduce(console.log((a, b) => a + b)); ////// check this and repair
 
-const BoundBase = Base.bind("this", 1,2,3);
-new BoundBase();
+// next continue above
+// from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions?retiredLocale=pl
 
 
 // Next ECMAScript 6 additions to a Function page 451
