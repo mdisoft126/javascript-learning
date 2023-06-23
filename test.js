@@ -30,12 +30,18 @@ console.log(simple(10));
 
 // easy array filtering, mapping and ect
 const arr = [5, 6, 13, 0, 1, 18, 23];
+const sum = console.log(arr.reduce((a, b) => a + b));
+const even = console.log(arr.filter((v) => v % 2 === 0));
+const double = console.log(arr.map((v) => v * 2));
 
-const sum = arr.reduce(console.log((a, b) => a + b)); ////// check this and repair
-
-// next continue above
-// from https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/Arrow_functions?retiredLocale=pl
-
+// parameterless arrow functions that are visually easier to parse
+setTimeout(function () {return console.log("hello")}, 4000);
+setTimeout(() => {
+    console.log("I happen sooner");
+    setTimeout(() => {
+        console.log("I happen later");
+    }, 1500);
+}, 1500);
 
 // Next ECMAScript 6 additions to a Function page 451
 
