@@ -8,43 +8,25 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// Function
-//// ECMAScript 6 additions to a Function
-//// arrow functions
+////// Number
+//// Members of the Number constructor
 
-// example
-const materials = ['hydrogen', 'helium', 'glass'];
-console.log(materials.map(material => material.length));
+// max/min value
+console.log(Number.MAX_VALUE);
+console.log(Number.MIN_VALUE);
 
-// An empty arrow function returns undefined
-const empty = () => {};
-console.log(empty);
+// NAN
+console.log(Number.NaN);
+console.log(Number.NaN === Number.NaN);
 
-// Immediately invoked function expression
-(() => console.log("hello"))();
+// Infinity
+console.log(Number.POSITIVE_INFINITY);
+console.log(Number.NEGATIVE_INFINITY);
 
-// example 2
-const simple = (a) => (a > 15 ? 15 : a);
-console.log(simple(17));
-console.log(simple(10));
 
-// easy array filtering, mapping and ect
-const arr = [5, 6, 13, 0, 1, 18, 23];
-const sum = console.log(arr.reduce((a, b) => a + b));
-const even = console.log(arr.filter((v) => v % 2 === 0));
-const double = console.log(arr.map((v) => v * 2));
 
-// parameterless arrow functions that are visually easier to parse
-setTimeout(function () {return console.log("hello")}, 4000);
-setTimeout(() => {
-    console.log("I happen sooner");
-    setTimeout(() => {
-        console.log("I happen later");
-    }, 1500);
-}, 1500);
 
-// Next ECMAScript 6 additions to a Function page 451
-
+// Next
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
