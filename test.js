@@ -8,41 +8,18 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// Number
-//// The Number.prototype members
+////// String
+//// Members of the String contructor
 
-// toFixed
-var n = new Number(Math.PI);
-var n2 = Math.PI;
-console.log(n.valueOf());
-console.log(n2.valueOf());
-console.log(typeof n);
-console.log(typeof n2);
-console.log(n.toFixed(3));
-console.log(n2.toFixed(3));
-var m = n.toFixed(3);
-var m2 = n2.toFixed(3);
-console.log(typeof m);
-console.log(typeof m2);
+// String.fromCharCode
+var a = String.fromCharCode(3, 4, 1991);
+console.log(a);
 
-// toExponantial
-var n = new Number(56789);
-var ex = n.toExponential(2);
-console.log(ex);
-var originalNumber = parseFloat(ex);
-console.log(originalNumber); // it is not original because it is 56800 instead of 56789
-
-// to Precision
-var p = new Number(56789);
-console.log(p.toPrecision(2));
-console.log(p.toPrecision(3));
-console.log(p.toPrecision(4));
-console.log(p.toPrecision(5));
-var piVal = new     Number(Math.PI);
-console.log(piVal.toPrecision(4));
+var b = String.fromCharCode(110, 115, 108, 113, 100, 123);
+console.log(b);
 
 
-// Next String page 454
+// Next String page 456
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
