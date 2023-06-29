@@ -11,38 +11,48 @@
 ////// String
 //// The String.prototype members
 
-// length
+// replace(needle,replacement)
+console.log("R2-D2".replace(/2/g, "-two"));
+console.log("R22-D2".replace(/(2)/g, "$1$1"));
+console.log("R22-D2".replace(/(2)/g, "$1$1"));
 
-// charAt
-var a = "script";
-console.log(a.charAt(0));
-console.log(a[0]);
+// regex example
+var myRegex = /(\w+)\s(\w+)/;
+var myString = "Hello World";
+var matches = myString.match(myRegex);
+console.log(matches);
 
-// charCodeAt
-console.log(a.charCodeAt(0));
+console.log(myString.replace(myRegex, "$1 $2"));
+console.log(myString.replace(myRegex, "$2 $1"));
+console.log(myString.replace(myRegex, "$2$1"));
+console.log(myString.replace(myRegex, "$2, $1"));
 
-// concat
-console.log(a.concat(" ", "hello", " ło"));
+// search(regexp)
+console.log("P-123".search(/[0-9]/));
 
-// indexOf
-console.log("javascript".indexOf("scr"));
-console.log("javascript".indexOf("scr", 5));
-console.log("javascript".indexOf("a"));
+// slice(start, end)
+console.log("hello, how is life".slice(4, 13));
+console.log("hello, how is life".slice(4, -1));
+console.log("hello, how is life".slice(-7, -1));
+console.log("hello, how is life".slice(-4));
 
-// lastIndexOf
-console.log("javascript".lastIndexOf("a"));
+// split(separator, limit)
+console.log("1,2,3,4".split(/,/));
+console.log("1,2,3,4".split(",", 2));
+console.log("1,2,3,4".split(/[0-9]/));
 
-// localeCompare
-console.log("cicle".localeCompare("script"));
-console.log("wave".localeCompare("script"));
-console.log("script".localeCompare("script"));
-
-// match(regexp)
-console.log("R2R-D2 and C-3PO".match(/[0-9](R)/g));
+// substring(start, end)
+console.log("hello, how is life".substring(4, 13));
+console.log("hello, how is life".substring(13, 4));
+console.log("hello, how is life".substring(-3, 13));
+console.log("hello, how is life".substring(3, -6));
+console.log("hello, how is life".substring(5));
+console.log("hello, how is life".substring(5, -7));
+console.log("hello, how is life".substring(5, 30));
 
 // 
 
-// Next replace(needle,replacement) page 457
+// Next ECMAScript 5 additions to String page 458
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
