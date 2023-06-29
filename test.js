@@ -9,17 +9,40 @@
 
 ////////// Appendix C: Built-in Objects
 ////// String
-//// Members of the String contructor
+//// The String.prototype members
 
-// String.fromCharCode
-var a = String.fromCharCode(3, 4, 1991);
-console.log(a);
+// length
 
-var b = String.fromCharCode(110, 115, 108, 113, 100, 123);
-console.log(b);
+// charAt
+var a = "script";
+console.log(a.charAt(0));
+console.log(a[0]);
 
+// charCodeAt
+console.log(a.charCodeAt(0));
 
-// Next String page 456
+// concat
+console.log(a.concat(" ", "hello", " ło"));
+
+// indexOf
+console.log("javascript".indexOf("scr"));
+console.log("javascript".indexOf("scr", 5));
+console.log("javascript".indexOf("a"));
+
+// lastIndexOf
+console.log("javascript".lastIndexOf("a"));
+
+// localeCompare
+console.log("cicle".localeCompare("script"));
+console.log("wave".localeCompare("script"));
+console.log("script".localeCompare("script"));
+
+// match(regexp)
+console.log("R2R-D2 and C-3PO".match(/[0-9](R)/g));
+
+// 
+
+// Next replace(needle,replacement) page 457
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
