@@ -8,38 +8,20 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// String
-//// ECMAScript 6 additions to String
+////// Date
+//// 
 
-// Template Literals
-var a = 3;
-var b = 5;
-console.log(`My number is ${a + b}.`);
+console.log(new Date(2022, 0, 1, 13, 30, 25, 500));
+console.log(new Date(20194798786));
+console.log(new Date(2019479878698766));
+console.log(new Date(2019479878698));
 
-// String.prototype.repeat
-console.log("foo".repeat(3));
-var x = 5;
-console.log("a".repeat(2 * x));
-
-// String.prototype.startsWith
-console.log("hello".startsWith("ello", 0));
-console.log("hello".startsWith("ello", 1));
-console.log("hello".startsWith("ello", 2));
-
-// String.prototype.endsWith
-console.log("hello".endsWith("he",2));
-console.log("hello".endsWith("lo",5));
-console.log("hello".endsWith("ell",4));
-
-// String.prototype.includes
-console.log("hello".includes("l"));
-console.log("hello".includes("l", 0));
-console.log("hello".includes("l", 3));
-console.log("hello".includes("l", 4));
+console.log(new Date());
+console.log(new Date('May 4, 2015'));
 
 // 
 
-// Next Date page 459
+// Next Members of the Date constructor page 460
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
