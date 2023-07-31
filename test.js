@@ -9,19 +9,19 @@
 
 ////////// Appendix C: Built-in Objects
 ////// Date
-//// 
+//// Members of the Date constructor
 
-console.log(new Date(2022, 0, 1, 13, 30, 25, 500));
-console.log(new Date(20194798786));
-console.log(new Date(2019479878698766));
-console.log(new Date(2019479878698));
+// Date.parse(string)
+console.log(Date.parse('May 5, 2015'));
+console.log(Date.parse('03,04,2015'));
+console.log(Date.parse('04-03-2015'));
 
-console.log(new Date());
-console.log(new Date('May 4, 2015'));
+// Date.UTC(year, month...)
+console.log(Date.UTC(2015,04,03));
 
 // 
 
-// Next Members of the Date constructor page 460
+// Next  page 460
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
