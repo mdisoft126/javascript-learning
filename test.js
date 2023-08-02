@@ -8,23 +8,14 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// Date
-//// ECMAScript 5 additions to Date
+////// Math
+//// 
 
-// Date.now()
-console.log(Date.now() === new Date().getTime());
-console.log(Date.now());
-console.log(new Date().getTime());
-
-// Date.prototype.toISOString()
-var d = new Date(2015, 0, 1);
-console.log(d.toString());
-console.log(d.toUTCString());
-console.log(d.toISOString());
-
-// Date.prototype.toJSON()
-console.log(d.toJSON() === d.toISOString());
-console.log(d.toJSON());
+// 
+console.log(typeof Date.prototype);
+console.log(typeof Math.prototype);
+console.log(typeof String);
+console.log(typeof Math);
 
 // 
 
