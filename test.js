@@ -11,31 +11,44 @@
 ////// Math
 //// Members of the Math object
 
-// some constants
-console.log(Math.E);
-console.log(Math.PI);
-console.log(Math.SQRT2);
-console.log(Math.SQRT1_2);
-console.log(Math.LN10);
-console.log(Math.LN2);
-console.log(Math.LOG10E);
-console.log(Math.LOG2E);
+// round
+var a = 5.4;
+console.log(Math.round(a));
+console.log(Math.ceil(a));
+console.log(Math.floor(a));
 
-// Trigonometric functions
-// sin vs asin explanation
-console.log("triginomic");
+// max min
+console.log(Math.max(1,52, Math.PI));
+console.log(Math.min(5, 60, Math.PI));
 
-const angleInRadians = Math.PI / 6; // 30 degrees in radians
-const sinValue = Math.sin(angleInRadians);
-console.log(sinValue);
+// abs
+console.log(Math.abs(-100));
 
-const sinValue2 = 0.5;
-const angleInRadians2 = Math.asin(sinValue2); // Returns Math.PI / 6 (30 degrees in radians)
-console.log(angleInRadians2);
-// 
+// exp
+console.log(Math.exp(1));
+
+// log
+console.log(Math.log(10));
+
+// sqrt
+console.log(Math.sqrt(9));
+
+// pow
+console.log(Math.pow(3,2));
+
+// random
+console.log(Math.random());
+
+// random 0-99
+console.log(Math.random()*100);
+
+// random 0-100
+console.log(Math.random()*101);
+// random 1-100
+console.log((Math.random()*100)+1);
 
 
-// Next Trigonometric functions page 465
+// Next RegExp page 466
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
