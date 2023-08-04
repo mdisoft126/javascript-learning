@@ -8,41 +8,24 @@
 ////
 
 ////////// Appendix C: Built-in Objects
-////// RegExp
-//// The RegExp.prototype members
+////// Error objects
+////
 
-// global, ignoreCase, multiline
+var e = new Error("error test");
+console.log(e);
+console.log(typeof e);
 
-var re = /[do]o+dle/gmi;
+//// The Error.prototype members
+// name
+console.log(e.name);
 
-console.log(re);
-console.log(re.global);
-
-// last index
-console.log(re.lastIndex);
-console.log(re.exec("noodle doodle"));
-console.log(re);
-console.log(re.lastIndex);
-var result = re.exec("noodle doodle");
-console.log(result);
-console.log(re.exec("noodle doodle"));
-console.log(re.lastIndex);
-
-// source
-console.log(re.source);
-
-// exec
-var re2 = /([dn])(o+)dle/g;
-var re3 = /[dn]o+dle/g;
-console.log(re2.exec("noodle doodle"));
-console.log(re3.exec("noodle doodle"));
-
-// test
-console.log(re.test("noodle"));
-console.log(re.test("test"));
+// message
+console.log(e.message);
 
 
-// Next Error objects page 468
+
+
+// Next JSON page 469
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
