@@ -7,31 +7,29 @@
 
 ////
 
-////////// Appendix C: Built-in Objects
-////// JSON
-//// Members of the JSON object
+////////// Appendix D: Regular Expressions
+//////
+////
 
-// stringify(value, callback, white)
+console.log("some text".match(/me/));
 
-var o = {
-    hello: 1,
-    hi: 2,
-    when: new Date(2015, 0, 1)
-};
+// [abc]
+console.log("some text".match(/[otx]/g));
 
-console.log(JSON.stringify(o));
+// [a-z]
+console.log("Some Text".match(/[a-z]/g));
+console.log("Some Text".match(/[a-zA-Z]/g));
 
-console.log(JSON.stringify(o, ['hello', 'hi']));
-console.log(JSON.stringify(o, ['when']));
+// [^abc]
+console.log("Some Text".match(/[^a-z]/g));
+console.log("SomeText".match(/[^a-z]/g));
 
-console.log(JSON.stringify(o, null, 0));
-console.log(JSON.stringify(o, null, 1));
-console.log(JSON.stringify(o, null, 2));
-console.log(JSON.stringify(o, null, 3));
-console.log(JSON.stringify(o, null, 4));
-console.log(JSON.stringify(o, null, 10));
+// a|b
+console.log("Some Text".match(/Some|T|t|p/g));
 
-// Next Appendix D: Regular Expressions page 472
+
+
+// Next Appendix D: Regular Expressions - // a(?=b) page 473
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
