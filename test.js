@@ -11,25 +11,44 @@
 //////
 ////
 
-console.log("some text".match(/me/));
+// a(?=b)
+console.log("Some Text".match(/Some(?=Tex)/g));
+console.log("Some Text".match(/Some(?=\s*Tex)/g));
 
-// [abc]
-console.log("some text".match(/[otx]/g));
+// a(?!)
+console.log("Some Text".match(/Some(?!Text)/g));
+console.log("Some Text".match(/Some(?!\s*Text)/g));
 
-// [a-z]
-console.log("Some Text".match(/[a-z]/g));
-console.log("Some Text".match(/[a-zA-Z]/g));
+// \
+console.log("R2-D2".match(/[2-3]/g));
+console.log("R2-D2".match(/[2\-3]/g));
 
-// [^abc]
-console.log("Some Text".match(/[^a-z]/g));
-console.log("SomeText".match(/[^a-z]/g));
+// \n
+console.log("Hello \nWorld");
 
-// a|b
-console.log("Some Text".match(/Some|T|t|p/g));
+// \r
+console.log("Hello \rWorld");
+
+// \f
+console.log("Hello \fWorld");
+
+// \t
+console.log("Hello \tWorld");
+
+// \v
+console.log("Hello \vWorld");
+
+// \s
+console.log("R2\n -D2".match(/\s/g));
+
+// \S
+console.log("R2\n -D2".match(/\S/g));
+
+// [ ]
+console.log("Hello World".match(/[ ]/g));
 
 
-
-// Next Appendix D: Regular Expressions - // a(?=b) page 473
+// Next Appendix D: Regular Expressions - // \w page 473
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
