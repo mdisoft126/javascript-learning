@@ -11,44 +11,53 @@
 //////
 ////
 
-// a(?=b)
-console.log("Some Text".match(/Some(?=Tex)/g));
-console.log("Some Text".match(/Some(?=\s*Tex)/g));
+// \w
+console.log("S0m_t text!".match(/\w/g));
 
-// a(?!)
-console.log("Some Text".match(/Some(?!Text)/g));
-console.log("Some Text".match(/Some(?!\s*Text)/g));
+// \W
+console.log("S0m_t text!".match(/\W/g));
 
-// \
-console.log("R2-D2".match(/[2-3]/g));
-console.log("R2-D2".match(/[2\-3]/g));
+// \d
+console.log("R2-D2 and T34".match(/\d/g));
 
-// \n
-console.log("Hello \nWorld");
+// \D
+console.log("R2-D2 and T34".match(/\D/g));
 
-// \r
-console.log("Hello \rWorld");
+// \b
+console.log("R2D2 and C-3PO".match(/[RD]2/g));
+console.log("R2D2 and C-3PO".match(/[RD]2\b/g));
+console.log("R2-D2 and C-3PO".match(/[RD]2\b/g));
+console.log("R2_D2 and C-3PO".match(/[RD]2\b/g));
+console.log("R2 D2 and C-3PO".match(/[RD]2\b/g));
+console.log("R2.D2 and C-3PO".match(/[RD]2\b/g));
 
-// \f
-console.log("Hello \fWorld");
+console.log("-----------");
 
-// \t
-console.log("Hello \tWorld");
+// \B
+console.log("R2D2 and C-3PO".match(/[RD]2/g));
+console.log("R2D2 and C-3PO".match(/[RD]2\B/g));
+console.log("R2-D2 and C-3PO".match(/[RD]2\B/g));
+console.log("R2_D2 and C-3PO".match(/[RD]2\B/g));
+console.log("R2 D2 and C-3PO".match(/[RD]2\B/g));
+console.log("R2.D2 and C-3PO".match(/[RD]2\B/g));
 
-// \v
-console.log("Hello \vWorld");
+// [\b]
+console.log("Hello\bWorld".match(/[\b]/g));
 
-// \s
-console.log("R2\n -D2".match(/\s/g));
+// \0
+console.log("Hello\0World".match(/\0/g));
+// console.log("Hey\x00Men");
 
-// \S
-console.log("R2\n -D2".match(/\S/g));
+// \u0000
+console.log("\u0441\u0442\u043E");
+console.log("сто".match(/\u0441/g));
 
-// [ ]
-console.log("Hello World".match(/[ ]/g));
+// x00
+console.log("\x64");
+console.log("dude".match(/\x64/g));
 
 
-// Next Appendix D: Regular Expressions - // \w page 473
+// Next Appendix D: Regular Expressions // ^ page 475
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
