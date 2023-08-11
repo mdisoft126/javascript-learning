@@ -11,53 +11,43 @@
 //////
 ////
 
-// \w
-console.log("S0m_t text!".match(/\w/g));
+// ^
+console.log("regular\nregular\nexpression".match(/r/g));
+console.log("regular\nregular\nexpression".match(/^r/g));
+console.log("regular\nregular\nexpression".match(/^r/mg));
 
-// \W
-console.log("S0m_t text!".match(/\W/g));
+// $
+console.log("regular\nregular\nexpression".match(/r$/g));
+console.log("regular\nregular\nexpression".match(/r$/mg));
 
-// \d
-console.log("R2-D2 and T34".match(/\d/g));
+// .
+console.log("expression".match(/s./g));
+console.log("regular".match(/r./g));
+console.log("regular".match(/r.../g));
 
-// \D
-console.log("R2-D2 and T34".match(/\D/g));
+// *
+console.log("expression".match(/s.*/g));
+console.log("expression".match(/e.*/g));
+console.log("export sessionp".match(/e.*p/g));
+console.log("".match(/.*/));
+console.log("anything".match(/.*/));
 
-// \b
-console.log("R2D2 and C-3PO".match(/[RD]2/g));
-console.log("R2D2 and C-3PO".match(/[RD]2\b/g));
-console.log("R2-D2 and C-3PO".match(/[RD]2\b/g));
-console.log("R2_D2 and C-3PO".match(/[RD]2\b/g));
-console.log("R2 D2 and C-3PO".match(/[RD]2\b/g));
-console.log("R2.D2 and C-3PO".match(/[RD]2\b/g));
+// ?
+console.log("anything".match(/ny?/g));
+console.log("yaynthying".match(/yn?/g));
+console.log("color".match(/colou?r/));
+console.log("colour".match(/colou?r/));
+console.log("copour".match(/colou?r/));
+console.log("copour".match(/colou?r/));
+console.log("colour".match(/colou?s/));
 
-console.log("-----------");
-
-// \B
-console.log("R2D2 and C-3PO".match(/[RD]2/g));
-console.log("R2D2 and C-3PO".match(/[RD]2\B/g));
-console.log("R2-D2 and C-3PO".match(/[RD]2\B/g));
-console.log("R2_D2 and C-3PO".match(/[RD]2\B/g));
-console.log("R2 D2 and C-3PO".match(/[RD]2\B/g));
-console.log("R2.D2 and C-3PO".match(/[RD]2\B/g));
-
-// [\b]
-console.log("Hello\bWorld".match(/[\b]/g));
-
-// \0
-console.log("Hello\0World".match(/\0/g));
-// console.log("Hey\x00Men");
-
-// \u0000
-console.log("\u0441\u0442\u043E");
-console.log("сто".match(/\u0441/g));
-
-// x00
-console.log("\x64");
-console.log("dude".match(/\x64/g));
+// +
+console.log("anything".match(/ny+/g));
+console.log("R2-D2 and C-3PO".match(/[a-z]/gi));
+console.log("R2-D2 and C-3PO".match(/[a-z]+/gi));
 
 
-// Next Appendix D: Regular Expressions // ^ page 475
+// Next Appendix D: Regular Expressions // {n} page 476
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScript
