@@ -9,27 +9,26 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 2, Primitive Data Types, Arrays, Loops, and Conditions
-//// 2
+//// 3
 
-// var v = v || 10
-var v = v || 10;
-console.log(v);
+// multiplication table
+for (i = 1; i < 11; i++) {
+    for (j = 1; j < 11; j++) {
+        console.log(i + " * " + j + " = " + i*j);
+    }
+}
 
-var v1 = 100;
-var v1 = v1 || 10;
-console.log(v1);
-
-var v2 = null;
-var v2 = v2 || 10;
-console.log(v2);
-
-var v3 = 0;
-var v3 = v3 || 10;
-console.log(v3);
-
-var v4 = undefined;
-var v4 = v4 || 10;
-console.log(v4);
+// multiplication table 2nd version
+console.log("2nd version");
+var k = 1, l = 1;
+while (k < 11) {
+    while (l < 11) {
+        console.log(k + " * " + l + " = " + k*l);
+        l++;
+    }
+    k++;
+    l = 1;
+}
 
 // Next Appendix E: Answers to Exercise Questions //
 
