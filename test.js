@@ -9,46 +9,29 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 3, Functions
-//// 3
+//// 4
 
-//
-// var a = 1;
-// function f() {
-//     function n() {
-//         console.log(a);
-//     }
-//     a = 2;
-//     n();
-// }
+// example 1
+var x = 5, y = 7;
+eval('x + y');
+console.log(eval('x + y'));
+var f = console.log;
+eval('f("Boo!")');
 
-// f();
+// example 2
+var f2 = console.log;
+var e2;
+eval('e2=f2')('Boo!');
 
-//
-// var a = 1;
-// function f() {
-//     function n() {
-//         console.log(a);
-//     }
-//     n();
-//     a = 2;
-//     n();
-// }
+// example 3
+(function() {
+    return console.log;
+})()("Boo!");
 
-// f();
-
-//
-var a = 1;
-function f() {
-    var a;
-    function n() {
-        console.log(a);
-    }
-    n();
-    a = 2;
-    n();
-}
-
-f();
+// or
+(function(x) {
+    return console.log(x);
+})("Boo!");
 
 
 // Next Appendix E: Answers to Exercise Questions //
