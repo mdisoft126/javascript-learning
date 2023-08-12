@@ -11,43 +11,35 @@
 //////
 ////
 
-// ^
-console.log("regular\nregular\nexpression".match(/r/g));
-console.log("regular\nregular\nexpression".match(/^r/g));
-console.log("regular\nregular\nexpression".match(/^r/mg));
+// {n}
+console.log("regular expression".match(/s/g));
+console.log("regular expression".match(/s{2}/g));
+console.log("regular expression".match(/s{3}/g));
+console.log("regular expression".match(/\w{3}/g));
+console.log("regular expression".match(/\b\w{3}/g));
+console.log("regular expression".match(/\b\w{4}/g));
+console.log("regular expression".match(/\b\w{8}/g));
 
-// $
-console.log("regular\nregular\nexpression".match(/r$/g));
-console.log("regular\nregular\nexpression".match(/r$/mg));
+// {min,max}
+console.log("doooooooooooodle".match(/o/g));
+console.log("doooooooooodle".match(/o/g).length);
+console.log("doooooooooodle".match(/o{2}/g));
+console.log("doooooooooodle".match(/o{2,}/g));
+console.log("doooooooooodle".match(/o{2,6}/g));
 
-// .
-console.log("expression".match(/s./g));
-console.log("regular".match(/r./g));
-console.log("regular".match(/r.../g));
+// (pattern)
+console.log("regular expression".replace(/(s)/g, '$1$1'));
+console.log("regular expression".replace(/(r)/g, ''));
+console.log("regular expression".replace(/(r)(e)/g, '$2$1'));
+console.log("regular expression".replace(/(r)/g, '$1$1$1'));
+console.log("regular expression".replace(/(r)(e)/g, '$1$1$1$2$2$2'));
+console.log("regular expression".replace(/(r)(e)/g, '$2$1$1$2'));
 
-// *
-console.log("expression".match(/s.*/g));
-console.log("expression".match(/e.*/g));
-console.log("export sessionp".match(/e.*p/g));
-console.log("".match(/.*/));
-console.log("anything".match(/.*/));
+// (?:pattern)
+console.log("regular expression".replace(/(?:r)/g, ''));
+console.log("regular expression".replace(/(?:r)(e)/g, '$1$1$1'));
 
-// ?
-console.log("anything".match(/ny?/g));
-console.log("yaynthying".match(/yn?/g));
-console.log("color".match(/colou?r/));
-console.log("colour".match(/colou?r/));
-console.log("copour".match(/colou?r/));
-console.log("copour".match(/colou?r/));
-console.log("colour".match(/colou?s/));
-
-// +
-console.log("anything".match(/ny+/g));
-console.log("R2-D2 and C-3PO".match(/[a-z]/gi));
-console.log("R2-D2 and C-3PO".match(/[a-z]+/gi));
-
-
-// Next Appendix D: Regular Expressions // {n} page 476
+// Next Appendix E: Answers to Exercise Questions // page 477
 
 // Must be done after Command line and python!
-// https://developer.mozilla.org/en-US/docs/Web/JavaScript
+// https://developer.mozilla.org/en-US/docs/Web/JavaScrip
