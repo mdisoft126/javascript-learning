@@ -9,36 +9,46 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 3, Functions
-//// 2
+//// 3
 
-// parseInt(1e1)
-console.log(1e1);
-console.log(2e1);
-console.log(2e0);
+//
+// var a = 1;
+// function f() {
+//     function n() {
+//         console.log(a);
+//     }
+//     a = 2;
+//     n();
+// }
 
-console.log(parseInt(1e1));
-console.log(parseInt(2e1));
-console.log(parseInt(2e0));
+// f();
 
-// parseInt("1e1")
-console.log("1e1");
-console.log(parseInt("1e1"));
+//
+// var a = 1;
+// function f() {
+//     function n() {
+//         console.log(a);
+//     }
+//     n();
+//     a = 2;
+//     n();
+// }
 
-// parseFloat("1e1")
-console.log(parseFloat("1e1"));
-console.log(1e3);
-console.log(parseFloat("1e3"));
-console.log("--------");
+// f();
 
-// isFinite
-console.log(0/10);
-console.log(10/0);
-console.log(isFinite(0/10));
-console.log(isFinite(20/0));
+//
+var a = 1;
+function f() {
+    var a;
+    function n() {
+        console.log(a);
+    }
+    n();
+    a = 2;
+    n();
+}
 
-// isNaN(parseInt(NaN))
-console.log(parseInt(NaN));
-console.log(isNaN(parseInt(NaN)));
+f();
 
 
 // Next Appendix E: Answers to Exercise Questions //
