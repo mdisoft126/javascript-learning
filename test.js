@@ -9,52 +9,27 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 2, Primitive Data Types, Arrays, Loops, and Conditions
-//// 1
+//// 2
 
-// !!"false"
-console.log(!"false");
-console.log(!!"false");
-console.log(!false);
-console.log(!!false);
-console.log(!"");
-console.log("--------");
+// var v = v || 10
+var v = v || 10;
+console.log(v);
 
-// !!undefined
-console.log(!!undefined);
-console.log(!!NaN);
-console.log(!!0);
-console.log(!!"");
+var v1 = 100;
+var v1 = v1 || 10;
+console.log(v1);
 
-// typeof -Infinity
-console.log(typeof -Infinity);
-console.log(typeof Infinity);
-console.log(typeof NaN);
-console.log("-------");
+var v2 = null;
+var v2 = v2 || 10;
+console.log(v2);
 
-// 10 % "0"
-console.log(10 % "0");
-console.log(10 % "3");
+var v3 = 0;
+var v3 = v3 || 10;
+console.log(v3);
 
-// undefined == null
-console.log(undefined == null);
-console.log(undefined === null);
-
-// false == ""
-console.log(false == "");
-console.log(false === "");
-
-// typeof "2E+2"
-console.log(typeof "2E+2");
-console.log("2E+2");
-console.log(typeof 2E+2);
-console.log(2E+2);
-
-// a = 3e+3; a++
-a = 3e+3
-console.log(a);
-console.log(a++);
-console.log(a);
-
+var v4 = undefined;
+var v4 = v4 || 10;
+console.log(v4);
 
 // Next Appendix E: Answers to Exercise Questions //
 
