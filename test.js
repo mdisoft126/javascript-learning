@@ -7,39 +7,56 @@
 
 ////
 
-////////// Appendix D: Regular Expressions
-//////
-////
+////////// Appendix E: Answers to Exercise Questions
+////// Chapter 2, Primitive Data Types, Arrays, Loops, and Conditions
+//// 1
 
-// {n}
-console.log("regular expression".match(/s/g));
-console.log("regular expression".match(/s{2}/g));
-console.log("regular expression".match(/s{3}/g));
-console.log("regular expression".match(/\w{3}/g));
-console.log("regular expression".match(/\b\w{3}/g));
-console.log("regular expression".match(/\b\w{4}/g));
-console.log("regular expression".match(/\b\w{8}/g));
+// !!"false"
+console.log(!"false");
+console.log(!!"false");
+console.log(!false);
+console.log(!!false);
+console.log(!"");
+console.log("--------");
 
-// {min,max}
-console.log("doooooooooooodle".match(/o/g));
-console.log("doooooooooodle".match(/o/g).length);
-console.log("doooooooooodle".match(/o{2}/g));
-console.log("doooooooooodle".match(/o{2,}/g));
-console.log("doooooooooodle".match(/o{2,6}/g));
+// !!undefined
+console.log(!!undefined);
+console.log(!!NaN);
+console.log(!!0);
+console.log(!!"");
 
-// (pattern)
-console.log("regular expression".replace(/(s)/g, '$1$1'));
-console.log("regular expression".replace(/(r)/g, ''));
-console.log("regular expression".replace(/(r)(e)/g, '$2$1'));
-console.log("regular expression".replace(/(r)/g, '$1$1$1'));
-console.log("regular expression".replace(/(r)(e)/g, '$1$1$1$2$2$2'));
-console.log("regular expression".replace(/(r)(e)/g, '$2$1$1$2'));
+// typeof -Infinity
+console.log(typeof -Infinity);
+console.log(typeof Infinity);
+console.log(typeof NaN);
+console.log("-------");
 
-// (?:pattern)
-console.log("regular expression".replace(/(?:r)/g, ''));
-console.log("regular expression".replace(/(?:r)(e)/g, '$1$1$1'));
+// 10 % "0"
+console.log(10 % "0");
+console.log(10 % "3");
 
-// Next Appendix E: Answers to Exercise Questions // page 477
+// undefined == null
+console.log(undefined == null);
+console.log(undefined === null);
+
+// false == ""
+console.log(false == "");
+console.log(false === "");
+
+// typeof "2E+2"
+console.log(typeof "2E+2");
+console.log("2E+2");
+console.log(typeof 2E+2);
+console.log(2E+2);
+
+// a = 3e+3; a++
+a = 3e+3
+console.log(a);
+console.log(a++);
+console.log(a);
+
+
+// Next Appendix E: Answers to Exercise Questions //
 
 // Must be done after Command line and python!
 // https://developer.mozilla.org/en-US/docs/Web/JavaScrip
