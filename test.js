@@ -9,44 +9,22 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 4, Objects
-//// 1
+//// 2
 
 //
-function F() {
-    "use strict";
-    this.name = "I am F()";
-    function C() {
-        return this;
-    }
-    return C();
+function C() {
+    this.a = 1;
+    return false;
 }
 
-var o = new F();
-// console.log(o.constructor.name);
-console.log(o.name);
-console.log(o.this);
-
-// function F2() {
-//     function C2() {
-//         return this;
-//     }
-//     return new C2();
-// }
-
-// var o2 = new F2();
-// console.log(o2.constructor.name);
-// console.log(o2.this);
-
-// function F3() {
-//     "use strict";
-//     function C3() {
-//         return this;
-//     }
-//     return C3();
-// }
-
-// var o3 = new F3();
-// console.log(o3.constructor.name);
+// var o = new C();
+// console.log(o.a);
+// console.log(o.this);
+console.log(new C());
+console.log(new C().a);
+console.log(C());
+var b = new C();
+console.log(b);
 
 // Next Appendix E: Answers to Exercise Questions //
 
