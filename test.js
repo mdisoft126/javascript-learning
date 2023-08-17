@@ -8,31 +8,45 @@
 ////
 
 ////////// Appendix E: Answers to Exercise Questions
-////// Chapter 3, Functions
-//// 4
+////// Chapter 4, Objects
+//// 1
 
-// example 1
-var x = 5, y = 7;
-eval('x + y');
-console.log(eval('x + y'));
-var f = console.log;
-eval('f("Boo!")');
+//
+function F() {
+    "use strict";
+    this.name = "I am F()";
+    function C() {
+        return this;
+    }
+    return C();
+}
 
-// example 2
-var f2 = console.log;
-var e2;
-eval('e2=f2')('Boo!');
+var o = new F();
+// console.log(o.constructor.name);
+console.log(o.name);
+console.log(o.this);
 
-// example 3
-(function() {
-    return console.log;
-})()("Boo!");
+// function F2() {
+//     function C2() {
+//         return this;
+//     }
+//     return new C2();
+// }
 
-// or
-(function(x) {
-    return console.log(x);
-})("Boo!");
+// var o2 = new F2();
+// console.log(o2.constructor.name);
+// console.log(o2.this);
 
+// function F3() {
+//     "use strict";
+//     function C3() {
+//         return this;
+//     }
+//     return C3();
+// }
+
+// var o3 = new F3();
+// console.log(o3.constructor.name);
 
 // Next Appendix E: Answers to Exercise Questions //
 
