@@ -9,22 +9,16 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 4, Objects
-//// 2
+//// 3
 
 //
-function C() {
-    this.a = 1;
-    return false;
-}
+var c = [1, 2, [1, 2]];
+console.log(c);
+console.log(c.join('--'));
+console.log(c.sort());
+console.log(c);
+console.log(c.join('--'));
 
-// var o = new C();
-// console.log(o.a);
-// console.log(o.this);
-console.log(new C());
-console.log(new C().a);
-console.log(C());
-var b = new C();
-console.log(b);
 
 // Next Appendix E: Answers to Exercise Questions //
 
