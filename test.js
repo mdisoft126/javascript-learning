@@ -36,33 +36,44 @@ function MyString(input) {
 
 MyString.prototype = {
     constructor: MyString,
-    valueOf: function valueOf() {
+    _valueOf: function _valueOf() {
         return this._value;
     },
-    toString: function toString() {
-        return this.valueOf();
+    _toString: function _toString() {
+        return this._valueOf();
     },
-    charAt: function charAt(index) {
-        // return this[parseInt(index, 10) || 0];
-        if (this[parseInt(index, 10)]) {
-            return this[parseInt(index, 10)];
+    _charAt: function _charAt(index) {
+        return this[parseInt(index, 10) || 0];
+        // if (this[parseInt(index, 10)]) {
+        //     return this[parseInt(index, 10)];
+        // }
+        // else {
+        //     return "Wrong input data type. Give a number";
+        // }
+    },
+    _concat: function _concat() {
+        var prim = this._valueOf();
+        for (var i = 0; i < arguments.length; i++) {
+            prim += arguments[i];
         }
-        else {
-            return "Wrong data type. Give a number";
-        }
+        return prim;
+    },
+    _slice: function slice() {
+        
     }
 }
 
 
-var a = new MyString(123);
+var a = new MyString("hello");
 console.log(a._value);
 console.log(typeof a._value);
 console.log(a[1]);
 console.log(a._length);
 console.log(typeof a);
-console.log(typeof a.valueOf());
-console.log(typeof a.toString());
-console.log(a.charAt('l'));
+console.log(typeof a._valueOf());
+console.log(typeof a._toString());
+console.log(a._charAt(1));
+console.log(a._concat(' world'));
 
 // Next Appendix E: Answers to Exercise Questions // page 487
 
