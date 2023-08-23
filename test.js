@@ -58,22 +58,44 @@ MyString.prototype = {
         }
         return prim;
     },
-    _slice: function slice() {
-        
-    }
+    _slice: function _slice(from, to) {
+        var result = '', original = this._valueOf();
+        if (from === undefined) {
+            return original;
+        }
+        if (from > this._length) {
+            return result;
+        }
+        if (from < 0) {
+            from = this._length + from;
+        }
+        if (to == undefined || to > this._length) {
+            to = this._length;
+        }
+        if (to < 0) {
+            to = this._length + to;
+        }
+        // slicing loop
+        for (var i = from; i < to; i++) {
+            result += original[i];
+        }
+        return result;
+    },
+    _split:
 }
 
 
 var a = new MyString("hello");
-console.log(a._value);
-console.log(typeof a._value);
-console.log(a[1]);
-console.log(a._length);
-console.log(typeof a);
-console.log(typeof a._valueOf());
-console.log(typeof a._toString());
-console.log(a._charAt(1));
-console.log(a._concat(' world'));
+// console.log(a._value);
+// console.log(typeof a._value);
+// console.log(a[1]);
+// console.log(a._length);
+// console.log(typeof a);
+// console.log(typeof a._valueOf());
+// console.log(typeof a._toString());
+// console.log(a._charAt(1));
+// console.log(a._concat(' world'));
+console.log(a._slice(-5,-2));
 
 // Next Appendix E: Answers to Exercise Questions // page 487
 
