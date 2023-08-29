@@ -81,11 +81,30 @@ MyString.prototype = {
         }
         return result;
     },
-    _split:
+    _split: function _split(sep, lim) {
+        var result = [], original = this._valueOf();
+        if (sep === undefined) {
+            result[0] = original;
+            return result;
+        }
+        if (lim < 1 && lim > -1) {
+            return result;
+        }
+        if (sep === " ") {
+            var j = 0;
+            var str = '';
+            for (var i = 0; i < this._length; i++) {
+                if (this._charAt(i) !== " ") {
+                    str += this._charAt(i);
+                }
+                else
+            }
+        }
+    }
 }
 
 
-var a = new MyString("hello");
+var a = new MyString("Hello, how are you Today?");
 // console.log(a._value);
 // console.log(typeof a._value);
 // console.log(a[1]);
@@ -95,7 +114,8 @@ var a = new MyString("hello");
 // console.log(typeof a._toString());
 // console.log(a._charAt(1));
 // console.log(a._concat(' world'));
-console.log(a._slice(-5,-2));
+// console.log(a._slice(-5,-2));
+console.log(a._split(" ", -0.5));
 
 // Next Appendix E: Answers to Exercise Questions // page 487
 
