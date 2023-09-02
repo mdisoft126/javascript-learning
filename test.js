@@ -136,7 +136,12 @@ MyString.prototype = {
             pattern = '', 
             modifiers = 'g';
         
-        if (re instanceof RegExp) {
+        if (re === '') {
+            for (index = 0; index < this._length; index++) {
+                result.push(this._charAt[index]);
+            }
+            return result;
+        } else if (re instanceof RegExp) {
             // split with regex but always set g
             pattern = re.source;
             modifiers += re.multiline ? 'm' : '';
@@ -169,7 +174,7 @@ var a = new MyString("Hello, how are you Today?");
 // console.log(a._charAt(1));
 // console.log(a._concat(' world'));
 // console.log(a._slice(-5,-2));
-console.log(a._split("o"));
+console.log(a._split(""));
 
 // Next Appendix E: Answers to Exercise Questions // page 487
 
