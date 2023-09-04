@@ -128,17 +128,36 @@ MyString.prototype = {
     //         }
     //     }
     // }
-    _split: function split(re) {
+    _split: function split(re, l) {
         var index = 0,
+            len,
             result = [], 
             original = this._valueOf(), 
             match, 
             pattern = '', 
             modifiers = 'g';
+
+        try {
+            if (l !== undefined && Number.isInteger(l)) {
+                len = l;
+                console.log("1");
+            } else {
+                len = this._length;
+                console.log("2");
+            }
+        } catch {
+            len = this._length;
+            console.log("3");
+        }
+
+        console.log("4");
         
-        if (re === '') {
+        if (re === undefined) {
+            result.push(original);
+            return result;
+        } else if (re === '') {
             for (index = 0; index < this._length; index++) {
-                result.push(this._charAt[index]);
+                result.push(this._charAt(index));
             }
             return result;
         } else if (re instanceof RegExp) {
@@ -163,7 +182,7 @@ MyString.prototype = {
 }
 
 
-var a = new MyString("Hello, how are you Today?");
+var a = new MyString("Hello, how are you doing Today?");
 // console.log(a._value);
 // console.log(typeof a._value);
 // console.log(a[1]);
@@ -174,7 +193,16 @@ var a = new MyString("Hello, how are you Today?");
 // console.log(a._charAt(1));
 // console.log(a._concat(' world'));
 // console.log(a._slice(-5,-2));
-console.log(a._split(""));
+
+var limiter = g;
+
+if (Number.isInteger(limiter)){
+} else {
+    limiter = ''; 
+}
+
+console.log(a._split('', limiter));
+
 
 // Next Appendix E: Answers to Exercise Questions // page 487
 
