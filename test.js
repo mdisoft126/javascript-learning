@@ -81,7 +81,7 @@ MyString.prototype = {
         }
         return result;
     },
-    _split: function split(re, l) {
+    _split: function _split(re, l) {
         var index = 0,
             len,
             result = [], 
@@ -135,21 +135,41 @@ MyString.prototype = {
 
 
 var a = new MyString("Hello, how are you doing Today?");
-// console.log(a._value);
-// console.log(typeof a._value);
-// console.log(a[1]);
-// console.log(a._length);
-// console.log(typeof a);
-// console.log(typeof a._valueOf());
-// console.log(typeof a._toString());
-// console.log(a._charAt(1));
-// console.log(a._concat(' world'));
-// console.log(a._slice(-5,-2));
+var b = a._split('o', 4);
+console.log(b);
 
-console.log(a._split(''));
-console.log(a._split('', 5));
-console.log(a._split('o'));
-console.log(a._split('o', 3));
+MyString.prototype._join = function _join(d) {
+    var result = '';
+    var len = this._length;
+
+    if(d === undefined) {
+        for (var i = 0; i < len; i++) {
+            result += this[i]; 
+        }
+    } else if (d === '') {
+        for (var i = 0; i < len; i++) {
+            result += this[i];
+            if(i < len -1) {
+                result += ",";
+            }
+        }
+    } else {
+        for (var i = 0; i < len; i++) {
+            result += this[i];
+            if(i < len -1) {
+                result += d;
+            }
+        }
+    }
+    return result;
+}
+
+var c = b.join('o');
+console.log(c);
+
+// MyString.prototype._reverse =  function _reverse() {
+
+// }
 
 
 // Next Appendix E: Answers to Exercise Questions // page 487
