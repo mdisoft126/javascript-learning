@@ -81,53 +81,6 @@ MyString.prototype = {
         }
         return result;
     },
-    // _split: function _split(sep, lim) {
-    //     var result = [], original = this._valueOf();
-    //     if (sep === undefined) {
-    //         result[0] = original;
-    //         console.log("1");
-    //         return result;
-    //     }
-    //     if (lim < 1 && lim > -1) {
-    //         console.log("2");
-    //         return result;
-    //     }
-    //     if (sep === " ") {
-    //         var j = 0;
-    //         var str = '';
-    //         console.log("3");
-    //         for (var i = 0; i < this._length; i++) {
-    //             console.log("4");
-    //             if (this._charAt(i) !== " " && i !== this._length -1) {
-    //                 str += this._charAt(i);
-    //                 console.log("5");
-    //             }
-    //             else if (i === this._length -1 && this._charAt(i) === " ") {
-    //                 result[j] = str;
-    //                 j++;
-    //                 str = this._charAt(i);
-    //                 result[j] = str;
-    //                 console.log("6");
-    //                 return result
-    //             }
-    //             else if (i === this._length -1 && this._charAt(i) !== " ") {
-    //                 str = this._charAt(i);
-    //                 result[j] = str;
-    //                 console.log("7");
-    //                 return result
-    //             }
-    //             else {
-    //                 result[j] = str;
-    //                 j++;
-    //                 str = this._charAt(i);
-    //                 result[j] = str;
-    //                 j++;
-    //                 str = ''
-    //                 console.log("8");
-    //             }
-    //         }
-    //     }
-    // }
     _split: function split(re, l) {
         var index = 0,
             len,
@@ -140,23 +93,18 @@ MyString.prototype = {
         try {
             if (l !== undefined && Number.isInteger(l)) {
                 len = l;
-                console.log("1");
             } else {
                 len = this._length;
-                console.log("2");
             }
         } catch {
             len = this._length;
-            console.log("3");
         }
-
-        console.log("4");
         
         if (re === undefined) {
             result.push(original);
             return result;
         } else if (re === '') {
-            for (index = 0; index < this._length; index++) {
+            for (index = 0; index < len; index++) {
                 result.push(this._charAt(index));
             }
             return result;
@@ -171,12 +119,16 @@ MyString.prototype = {
         }
         re = RegExp(pattern, modifiers);
 
-        while (match = re.exec(original)) {
+        var j = 0;
+
+        while ((match = re.exec(original)) && j < len) {
             result.push(this._slice(index, match.index));
-            // result.push(original._slice(index, match.index));
             index = match.index + new MyString(match[0])._length;
+            j++;
         }
-        result.push(this._slice(index));
+        if (j < len) {
+            result.push(this._slice(index));
+        }
         return result;
     }
 }
@@ -194,14 +146,10 @@ var a = new MyString("Hello, how are you doing Today?");
 // console.log(a._concat(' world'));
 // console.log(a._slice(-5,-2));
 
-var limiter = g;
-
-if (Number.isInteger(limiter)){
-} else {
-    limiter = ''; 
-}
-
-console.log(a._split('', limiter));
+console.log(a._split(''));
+console.log(a._split('', 5));
+console.log(a._split('o'));
+console.log(a._split('o', 3));
 
 
 // Next Appendix E: Answers to Exercise Questions // page 487
