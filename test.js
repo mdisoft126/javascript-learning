@@ -167,9 +167,21 @@ MyString.prototype._join = function _join(d) {
 var c = b.join('o');
 console.log(c);
 
-// MyString.prototype._reverse =  function _reverse() {
+MyString.prototype._reverse =  function _reverse() {
+    strResult = ''
+    var result = this._split('')
+    result = result.reverse();
+    for (var i = 0; i < result.length; i++) {
+        strResult += result[i];
+    }
 
-// }
+    return strResult;
+}
+
+//////// it is not finished! try to build the reverse logic ourselves 
+
+var d = a._reverse();
+console.log(d);
 
 
 // Next Appendix E: Answers to Exercise Questions // page 487
