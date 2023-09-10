@@ -136,7 +136,7 @@ MyString.prototype = {
 
 var a = new MyString("Hello, how are you doing Today?");
 var b = a._split('o', 4);
-console.log(b);
+// console.log(b);
 
 MyString.prototype._join = function _join(d) {
     var result = '';
@@ -165,20 +165,39 @@ MyString.prototype._join = function _join(d) {
 }
 
 var c = b.join('o');
-console.log(c);
+// console.log(c);
 
+//// version with built-in reverse logic
+// MyString.prototype._reverse =  function _reverse() {
+//     strResult = ''
+//     var result = this._split('')
+//     result = result.reverse();
+//     for (var i = 0; i < result.length; i++) {
+//         strResult += result[i];
+//     }
+
+//     return strResult;
+// }
+
+//// version with my own reverse logic
 MyString.prototype._reverse =  function _reverse() {
-    strResult = ''
-    var result = this._split('')
-    result = result.reverse();
-    for (var i = 0; i < result.length; i++) {
-        strResult += result[i];
+    var strResult = '';
+    var revResult = [];
+    var result = this._split('');
+    var revLen = result.length -1;
+    var i = 0;
+
+    for (revLen; revLen >= 0; revLen--) {
+        revResult[i] = result[revLen];
+        i++;
+    }
+
+    for (var i = 0; i < revResult.length; i++) {
+        strResult += revResult[i];
     }
 
     return strResult;
 }
-
-//////// it is not finished! try to build the reverse logic ourselves 
 
 var d = a._reverse();
 console.log(d);
