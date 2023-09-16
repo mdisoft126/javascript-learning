@@ -13,11 +13,20 @@
 
 // MyMath()
 
-// explanation how works call()
-var arr = [1,2,3];
-console.log(Object.prototype.toString());
-console.log(Object.prototype.toString.call(arr));
+// comparison function
 
+function sort(numbers) {
+    return Array.prototype.sort.call(numbers, function(a, b) {
+        if (a === b) {
+            return 0;
+        }
+        return 1 * (a > b) - 0.5;
+    })
+}
+
+var arr = [1,5,2,3,4,18,8,7,5,9,2,56,-10,99];
+
+console.log(sort(arr));
 
 // Next Appendix E: Answers to Exercise Questions
 
