@@ -13,20 +13,22 @@
 
 // MyMath()
 
-// comparison function
-
-function sort(numbers) {
-    return Array.prototype.sort.call(numbers, function(a, b) {
-        if (a === b) {
-            return 0;
-        }
-        return 1 * (a > b) - 0.5;
-    })
+function isArray(ar) {
+    return Object.prototype.toString.call(ar) === '[object Array]';
 }
 
-var arr = [1,5,2,3,4,18,8,7,5,9,2,56,-10,99];
+function max() {
+    var numbers = arguments;
+    console.log(numbers);
+    console.log(numbers[0]);
+}
 
-console.log(sort(arr));
+// console.log(isArray([1,2,3]));
+// console.log(isArray(1,2,3));
+
+var a = max(1,2,3);
+var b = max([1,2,3]);
+
 
 // Next Appendix E: Answers to Exercise Questions
 
