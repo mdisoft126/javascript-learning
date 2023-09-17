@@ -11,6 +11,25 @@
 ////// Chapter 5, Prototype
 //// 1
 
+// var shape = {
+//     type: 'shape',
+//     getType: function() {
+//         return this.type;
+//     }
+// }
+
+// function Triangle(a, b, c) {
+//     this.a = a;
+//     this.b = b;
+//     this.c = c;
+// }
+
+// Triangle.prototype = shape;
+// Triangle.prototype.constructor = Triangle;
+// Triangle.prototype.type = 'triangle';
+
+// console.log(shape);
+
 var shape = {
     type: 'shape',
     getType: function() {
@@ -18,8 +37,27 @@ var shape = {
     }
 }
 
-console.log(shape.type);
-console.log(shape.getType());
+function Triangle(a, b, c) {
+    this.a = a;
+    this.b = b;
+    this.c = c;
+}
+
+Triangle.prototype = shape;
+Triangle.prototype.constructor = Triangle;
+
+// Set a separate getType method for the shape object
+shape.getType = function() {
+    return this.type;
+};
+
+Triangle.prototype.type = 'triangle';
+
+console.log(shape.getType()); // Output: 'shape'
+console.log(new Triangle(3, 4, 5).getType()); // Output: 'triangle'
+
+
+//////////// it is not clear so I came back to the description. page 205
 
 
 // Next
