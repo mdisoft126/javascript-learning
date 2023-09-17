@@ -13,21 +13,12 @@
 
 // MyMath()
 
-function isArray(ar) {
-    return Object.prototype.toString.call(ar) === '[object Array]';
+// rand not inclusive
+function rand(min, max) {
+    return Math.floor(Math.random() * (max - min -1) + min + 1);
 }
 
-function max() {
-    var numbers = arguments;
-    console.log(numbers);
-    console.log(numbers[0]);
-}
-
-// console.log(isArray([1,2,3]));
-// console.log(isArray(1,2,3));
-
-var a = max(1,2,3);
-var b = max([1,2,3]);
+console.log(rand(50, 60));
 
 
 // Next Appendix E: Answers to Exercise Questions
