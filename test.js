@@ -11,25 +11,7 @@
 ////// Chapter 5, Prototype
 //// 1
 
-// var shape = {
-//     type: 'shape',
-//     getType: function() {
-//         return this.type;
-//     }
-// }
-
-// function Triangle(a, b, c) {
-//     this.a = a;
-//     this.b = b;
-//     this.c = c;
-// }
-
-// Triangle.prototype = shape;
-// Triangle.prototype.constructor = Triangle;
-// Triangle.prototype.type = 'triangle';
-
-// console.log(shape);
-
+// object shape
 var shape = {
     type: 'shape',
     getType: function() {
@@ -37,24 +19,31 @@ var shape = {
     }
 }
 
+// constructor Triangle
 function Triangle(a, b, c) {
     this.a = a;
     this.b = b;
     this.c = c;
 }
 
-Triangle.prototype = shape;
+// set the prototype of Triangle to shape
+Triangle.prototype = Object.create(shape);  // in this case we are creating a seperate object and we are not overwriting the shape properties
+// Triangle.prototype = shape;              // in this case we directly assign shape as a prototype of Triangle. It means that from Triangle level we can change properties on shape.
 Triangle.prototype.constructor = Triangle;
-
-// Set a separate getType method for the shape object
-shape.getType = function() {
-    return this.type;
-};
-
 Triangle.prototype.type = 'triangle';
 
-console.log(shape.getType()); // Output: 'shape'
-console.log(new Triangle(3, 4, 5).getType()); // Output: 'triangle'
+// create instances of Triangle
+var triangle1 = new Triangle(1,2,3);
+var triangle2 = new Triangle(4,5,6);
+
+// test
+console.log(shape);
+console.log(triangle1);
+console.log(triangle2);
+console.log(triangle2.constructor);
+console.log(triangle2.type);
+console.log(triangle2.getType());
+console.log(shape.type); // output: 'shape' if creating a seperate object and 'triangle' if only assigning prototype
 
 
 //////////// it is not clear so I came back to the description. page 205
