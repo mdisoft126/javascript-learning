@@ -8,17 +8,12 @@
 ////
 
 ////////// Appendix E: Answers to Exercise Questions
-////// Chapter 5, Prototype
-//// 6 -  randomize array elements
+////// Chapter 6, Inheritance
+//// 1 -  multiple inheritance with prototypal inheritance pattern
 
-Array.prototype.shuffle = function() {
-    return this.sort(function () {
-        return Math.random() - 0.5;
-    })
-}
 
-var a = [1,2,3,4,5,6,7,8,9,10];
-console.log(a.shuffle());
+// page 495
+
 
 
 // Next
