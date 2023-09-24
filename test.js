@@ -38,12 +38,26 @@ var triangle2 = new Triangle(4,5,6);
 
 // test
 console.log(shape);
+console.log(Triangle.prototype);
 console.log(triangle1);
 console.log(triangle2);
 console.log(triangle2.constructor);
 console.log(triangle2.type);
 console.log(triangle2.getType());
 console.log(shape.type); // output: 'shape' if creating a seperate object and 'triangle' if only assigning prototype
+
+// ex3 - add getPerimeter method
+Triangle.prototype.getPerimeter = function() {
+    return this.a + this.b + this.c;
+}
+
+// ex4 - test
+console.log(triangle1.getPerimeter());
+console.log(shape);
+console.log(Triangle.prototype);
+
+console.log(triangle1.constructor === Triangle);
+console.log(shape.isPrototypeOf(triangle1));
 
 
 //////////// it is not clear so I came back to the description. page 205
