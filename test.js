@@ -9,74 +9,16 @@
 
 ////////// Appendix E: Answers to Exercise Questions
 ////// Chapter 5, Prototype
-//// 1
+//// 6 -  randomize array elements
 
-// object shape
-var shape = {
-    type: 'shape',
-    getType: function() {
-        return this.type;
-    }
+Array.prototype.shuffle = function() {
+    return this.sort(function () {
+        return Math.random() - 0.5;
+    })
 }
 
-// constructor Triangle
-function Triangle(a, b, c) {
-    this.a = a;
-    this.b = b;
-    this.c = c;
-}
-
-// set the prototype of Triangle to shape
-Triangle.prototype = Object.create(shape);  // in this case we are creating a seperate object and we are not overwriting the shape properties
-// Triangle.prototype = shape;              // in this case we directly assign shape as a prototype of Triangle. It means that from Triangle level we can change properties on shape.
-Triangle.prototype.constructor = Triangle;
-Triangle.prototype.type = 'triangle';
-
-// create instances of Triangle
-var triangle1 = new Triangle(1,2,3);
-var triangle2 = new Triangle(4,5,6);
-
-// test
-console.log(shape);
-console.log(Triangle.prototype);
-console.log(triangle1);
-console.log(triangle2);
-console.log(triangle2.constructor);
-console.log(triangle2.type);
-console.log(triangle2.getType());
-console.log(shape.type); // output: 'shape' if creating a seperate object and 'triangle' if only assigning prototype
-
-// ex3 - add getPerimeter method
-Triangle.prototype.getPerimeter = function() {
-    return this.a + this.b + this.c;
-}
-
-// ex4 - test
-console.log(triangle1.getPerimeter());
-console.log(shape);
-console.log(Triangle.prototype);
-
-console.log(triangle1.constructor === Triangle);
-console.log(shape.isPrototypeOf(triangle1));
-
-// ex5 - showing only own properties
-console.log('///// exercise 5');
-triangle1.multiplicate = function() {
-    return this.a * this.b * this.c;
-}
-
-for(var i in triangle1) {
-    if(triangle1.hasOwnProperty(i)) {
-        console.log(i, ' = ', triangle1[i]);
-        // console.log(i);
-    }
-    // console.log('other');
-    // console.log(i);
-}
-
-
-
-//////////// it is not clear so I came back to the description. page 205
+var a = [1,2,3,4,5,6,7,8,9,10];
+console.log(a.shuffle());
 
 
 // Next
