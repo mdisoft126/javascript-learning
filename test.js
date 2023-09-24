@@ -59,6 +59,22 @@ console.log(Triangle.prototype);
 console.log(triangle1.constructor === Triangle);
 console.log(shape.isPrototypeOf(triangle1));
 
+// ex5 - showing only own properties
+console.log('///// exercise 5');
+triangle1.multiplicate = function() {
+    return this.a * this.b * this.c;
+}
+
+for(var i in triangle1) {
+    if(triangle1.hasOwnProperty(i)) {
+        console.log(i, ' = ', triangle1[i]);
+        // console.log(i);
+    }
+    // console.log('other');
+    // console.log(i);
+}
+
+
 
 //////////// it is not clear so I came back to the description. page 205
 
