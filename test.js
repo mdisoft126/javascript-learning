@@ -11,83 +11,44 @@
 ////// Chapter 6, Inheritance
 //// 1 -  multiple inheritance with prototypal inheritance pattern
 
+// version 2 (from book)
 function objectMulti() {
-    // craete an empty object to serve as a prototype
-    var prototype = {};
+    var Constr, i, prop, mixme;
 
-    // loop throught the arguments (objects) passed to the function
-    for (var i = 0; i < arguments.length; i++) {
-        var obj = arguments[i];
-
-        // copy properties from each object's prototype to te prototype object
-        for (var prop in obj.prototype) {
-            if (obj.prototype.hasOwnProperty(prop)) {
-                prototype[prop] = obj.prototype[prop];
-            }
+    // Constructor that sets own properties
+    var Constr = function(props) {
+        for (var prop in props) {
+            this[prop] = props[prop];
         }
     }
 
-    // create a constructor function for the new object
-    function Constructor() {}
-
-    // Set the prototype of the constructor to the combined prototype
-    Constructor.prototype = prototype;
-
-    // Create an instance of the constructor
-    var instance = new Constructor();
-
-    // Add any additional properties to the instance
-    if (arguments.length > 0 && typeof arguments[arguments.length -1] === 'object') {
-        var additionalProps = arguments[arguments.length-1];
-        for (var prop in additionalProps) {
-            if (additionalProps.hasOwnProperty(prop)) {
-                instance[prop] = additionalProps[prop];
-            }
+    // Mix into the proptotype
+    for (var i = 0; i < arguments.length - 1; i++) {
+        var mixme =  arguments[i];
+        for (var prop in mixme) {
+            Constr.prototype[prop] = mixme[prop];
         }
     }
 
-    // Return the instance
-    return instance;
+    return new Constr(arguments[arguments.length - 1]);
 }
 
-// Example usage
-var obj1 = {
-    prototype: {
-        method1: function() {
-            console.log("Method 1 from obj1");
-        }
-    }
-    // ,additional: "additional from obj1"
-}
+var obj1 = {a: 1};
+var obj2 = {a: 2, b: 2};
+var obj3 = {c: 3};
+var my = objectMulti(obj1, obj2, obj3, {hello: "world"});
+var my2 = objectMulti(obj1, obj2, obj3);
 
-var obj2 = {
-    prototype: {
-        method2: function() {
-            console.log("Method 2 from obj2");
-        }
-    }
-    ,additional: "additional from obj2"
-}
+console.log(my.a);
+console.log(my.hello);
 
-var obj3 = {
-    prototype: {
-        method2: function() {
-            console.log("Method 3 from obj3");
-        }
-    }
-    ,additional: "additional from obj2"
-}
+console.log(my.hasOwnProperty('a'));
+console.log(my.hasOwnProperty('c'));
+console.log(my.hasOwnProperty('hello'));
 
-var additionalProps = {
-    additional: "additional properties"
-}
+console.log(my2.hasOwnProperty('a'));
+console.log(my2.hasOwnProperty('c'));
 
-var my = objectMulti(obj1, obj2, obj3, additionalProps);
-
-my.method1();
-my.method2();
-console.log(my.additional);
-console.log(my.hasOwnProperty('additional'));
 
 
 // page 495
